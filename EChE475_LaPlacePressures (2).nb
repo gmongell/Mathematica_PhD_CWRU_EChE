@@ -1,0 +1,220 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7329,        211]
+NotebookOptionsPosition[      6453,        181]
+NotebookOutlinePosition[      6794,        196]
+CellTagsIndexPosition[      6751,        193]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Calculate", " ", "the", " ", "area", " ", "of", " ", "a", " ", 
+  "fluid", " ", "covering", " ", "an", " ", "open", " ", 
+  RowBox[{"tube", ":"}]}]], "Input",
+ CellChangeTimes->{{3.5601641501045537`*^9, 3.560164192860999*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A", "[", "r_", "]"}], "=", 
+  RowBox[{"Pi", "*", 
+   RowBox[{"r", "^", "2"}]}]}]], "Input",
+ CellChangeTimes->{{3.5601641658274527`*^9, 3.560164178160158*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Calculate", " ", "the", " ", "surface", " ", "area", " ", "of", " ",
+   "a", " ", "spherical", " ", 
+  RowBox[{"buble", ":"}]}]], "Input",
+ CellChangeTimes->{{3.560164180208276*^9, 3.5601641896518154`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SA", "[", "r_", "]"}], "=", 
+  RowBox[{"4", "*", "Pi", "*", 
+   RowBox[{"r", "^", "2"}]}]}]], "Input",
+ CellChangeTimes->{{3.5601655792232947`*^9, 3.5601655889758525`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Kelvin", " ", "truncated", " ", 
+  RowBox[{"octahedron", ":"}]}]], "Input",
+ CellChangeTimes->{{3.560166639115917*^9, 3.560166644801242*^9}}],
+
+Cell[BoxData[
+ RowBox[{"P42a", " ", 
+  RowBox[{"structure", ":"}]}]], "Input",
+ CellChangeTimes->{{3.560166647145376*^9, 3.5601666509305925`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "Calculate", " ", "the", " ", "surface", " ", "area", " ", "of", " ", "a", 
+   " ", "Weaire"}], "-", 
+  RowBox[{"Phelan", " ", 
+   RowBox[{"foam", ":"}]}]}]], "Input",
+ CellChangeTimes->{{3.560164195686161*^9, 3.5601642014944935`*^9}, {
+  3.5601646804438877`*^9, 3.5601646887073603`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"References", " ", "for", " ", "these", " ", "three", " ", 
+  RowBox[{"structures", ":"}]}]], "Input",
+ CellChangeTimes->{{3.560166686653636*^9, 3.5601666915029135`*^9}, 
+   3.5602724607659054`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Acta", " ", 
+    RowBox[{"Math", ".", "11"}], " ", 
+    RowBox[{"(", "1887", ")"}], " ", "121"}], "-", 
+   RowBox[{"134", " ", 
+    RowBox[{"Phil", ".", "Mag", ".", "Lett", ".", "89"}]}]}], ":", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"8", " ", 
+     RowBox[{"(", "2009", ")"}], " ", "483"}], "-", 
+    RowBox[{"491", " ", 
+     RowBox[{"Phil", ".", "Mag", ".", "Lett", ".", "69"}]}]}], ":", 
+   RowBox[{
+    RowBox[{"2", " ", 
+     RowBox[{"(", "1994", ")"}], " ", "107"}], "-", "110"}]}]}]], "Input",
+ CellChangeTimes->{{3.5601666702106953`*^9, 3.5601666702116957`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"http", ":"}], "//", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"science", ".", "unitn", ".", "it"}], "/", 
+     RowBox[{"~", "gabbrielli"}]}], "/", "javaview"}], "/", 
+   RowBox[{"p42a_comparison", ".", "html"}]}]}]], "Input",
+ CellChangeTimes->{{3.5601667291070642`*^9, 3.5601667291080647`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "Do", " ", "I", " ", "want", " ", "to", " ", "model", " ", "the", " ", 
+   "foam", " ", "in", " ", "terms", " ", "of", " ", "the", " ", "radius", " ",
+    "of", " ", "a", " ", "sphere", " ", "it", " ", "is", " ", "enscribed", 
+   " ", 
+   RowBox[{"in", "?", " ", "If"}], " ", "so"}], ",", " ", 
+  RowBox[{
+  "then", " ", "what", " ", "other", " ", "relationships", " ", "must", " ", 
+   "I", " ", "specify", " ", "to", " ", "uniquely", " ", "create", " ", "the",
+    " ", "foam", " ", 
+   RowBox[{"bubble", "?", "  ", "If"}], " ", "not"}], ",", " ", 
+  RowBox[{"then", " ", "what", " ", "parameters", " ", "shall", " ", "I", " ", 
+   RowBox[{"use", "?"}]}]}]], "Input",
+ CellChangeTimes->{{3.5601655985063972`*^9, 3.560165662452055*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "The", " ", "work", " ", "exerted", " ", "to", " ", "create", " ", "such", 
+   " ", "afoam", " ", "is"}], ",", " ", 
+  RowBox[{"and", " ", "depends", " ", "on", " ", "the", " ", "surface", " ", 
+   RowBox[{"tension\[Gamma]", ":"}]}]}]], "Input",
+ CellChangeTimes->{{3.560164708709504*^9, 3.560164718465062*^9}, {
+  3.5601648018888335`*^9, 3.5601648142185388`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"W", "=", 
+  RowBox[{"F", "*", "d"}]}]], "Input",
+ CellChangeTimes->{{3.5602724665622373`*^9, 3.5602724729016*^9}}],
+
+Cell[BoxData[
+ RowBox[{"find", " ", "the", " ", "integral", " ", "version"}]], "Input",
+ CellChangeTimes->{{3.5602725062815094`*^9, 3.560272511842827*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "When", " ", "moving", " ", "a", " ", "spring", " ", "from", " ", "one", 
+   " ", "position", " ", "to", " ", "another"}], ",", " ", 
+  RowBox[{"the", " ", "amount", " ", "of", " ", "work", " ", "done", " ", 
+   RowBox[{"is", ":"}]}]}]], "Input",
+ CellChangeTimes->{{3.5601647214482327`*^9, 3.560164764642703*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "If", " ", "this", " ", "exercise", " ", "is", " ", "broken", " ", "down", 
+   " ", "into", " ", "n", " ", "timesteps"}], ",", " ", 
+  RowBox[{
+  "then", " ", "the", " ", "work", " ", "is", " ", "divided", " ", "and", " ",
+    "the", " ", "average", " ", "bubble", " ", "size", " ", "created", " ", 
+   "over", " ", "each", " ", "of", " ", "those", " ", "time", " ", "steps", 
+   " ", 
+   RowBox[{"is", ":"}]}]}]], "Input",
+ CellChangeTimes->{{3.560164767275854*^9, 3.560164792134276*^9}, {
+  3.5601650997198687`*^9, 3.5601651192599864`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "The", " ", "driving", " ", "force", " ", "for", " ", "the", " ", 
+   "deformation", " ", "of", " ", "bubbles", " ", "is", " ", "then", " ", 
+   "the", " ", "Laplace", " ", "Pressure"}], ",", 
+  RowBox[{"which", " ", "is", " ", "given", " ", 
+   RowBox[{"by", ":"}]}]}]], "Input",
+ CellChangeTimes->{{3.560167076546937*^9, 3.560167110122857*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "The", " ", "Laplace", " ", "pressure", " ", "creates", " ", "a", " ", 
+   "bubble", " ", "deformation", " ", "rate", " ", "given", " ", "by", " ", 
+   RowBox[{"(", 
+    RowBox[{"Solve", " ", "the", " ", "ODE", " ", "or", " ", "PDE"}], ")"}]}],
+   ":"}]], "Input",
+ CellChangeTimes->{{3.5601671076167135`*^9, 3.560167146402932*^9}}]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 250, 4, 31, "Input"],
+Cell[810, 26, 194, 5, 31, "Input"],
+Cell[1007, 33, 230, 4, 31, "Input"],
+Cell[1240, 39, 207, 5, 31, "Input"],
+Cell[1450, 46, 165, 3, 31, "Input"],
+Cell[1618, 51, 146, 3, 31, "Input"],
+Cell[1767, 56, 325, 8, 31, "Input"],
+Cell[2095, 66, 221, 4, 31, "Input"],
+Cell[2319, 72, 615, 17, 52, "Input"],
+Cell[2937, 91, 338, 9, 31, "Input"],
+Cell[3278, 102, 774, 15, 72, "Input"],
+Cell[4055, 119, 401, 8, 31, "Input"],
+Cell[4459, 129, 138, 3, 31, "Input"],
+Cell[4600, 134, 155, 2, 31, "Input"],
+Cell[4758, 138, 351, 7, 31, "Input"],
+Cell[5112, 147, 579, 12, 72, "Input"],
+Cell[5694, 161, 383, 8, 52, "Input"],
+Cell[6080, 171, 369, 8, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

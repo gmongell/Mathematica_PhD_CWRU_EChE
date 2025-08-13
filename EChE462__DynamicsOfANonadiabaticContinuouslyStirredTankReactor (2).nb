@@ -1,0 +1,843 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     37185,        834]
+NotebookOptionsPosition[     36583,        810]
+NotebookOutlinePosition[     36960,        826]
+CellTagsIndexPosition[     36917,        823]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[CapitalDelta]H", "=", 
+        RowBox[{"-", "200000"}]}], ",", 
+       RowBox[{"\[Rho]", "=", "1000"}], ",", 
+       RowBox[{"Cp", "=", "4"}], ",", 
+       RowBox[{"Tm", "=", "298"}], ",", 
+       RowBox[{"\[CapitalDelta]E", "=", "8000"}], ",", 
+       RowBox[{"k0", "=", "0.001"}], ",", "sol", ",", "pT", ",", "px", ",", 
+       "pgen", ",", "prem", ",", "pq", ",", "Temp"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ip", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"40", ",", "20"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"40", ",", "20"}], "}"}]}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"k", "[", "T_", "]"}], ":=", 
+       RowBox[{"k0", " ", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "\[CapitalDelta]E"}], " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"1", "/", "T"}], "-", 
+            RowBox[{"1", "/", "Tm"}]}], ")"}]}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Fn", "[", 
+        RowBox[{"\[Theta]_", ",", "Tint_", ",", "U_"}], "]"}], ":=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"x", "'"}], "[", "t", "]"}], "\[Equal]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"x", "[", "t", "]"}]}], "/", "\[Theta]"}], "+", 
+           RowBox[{
+            RowBox[{"k", "[", 
+             RowBox[{"Temp", "[", "t", "]"}], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"x", "[", "t", "]"}]}], ")"}]}]}]}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Temp", "'"}], "[", "t", "]"}], "\[Equal]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"Tinit", "-", 
+              RowBox[{"Temp", "[", "t", "]"}]}], ")"}], "/", "\[Theta]"}], 
+           "-", 
+           RowBox[{
+            RowBox[{"\[CapitalDelta]H", "/", 
+             RowBox[{"(", 
+              RowBox[{"\[Rho]", " ", "Cp"}], ")"}]}], " ", "c0", " ", 
+            RowBox[{"k", "[", 
+             RowBox[{"Temp", "[", "t", "]"}], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"x", "[", "t", "]"}]}], ")"}]}], "+", 
+           RowBox[{
+            RowBox[{"U", "/", 
+             RowBox[{"(", 
+              RowBox[{"\[Rho]", " ", "Cp"}], ")"}]}], " ", 
+            RowBox[{"(", 
+             RowBox[{"Tc", "-", 
+              RowBox[{"Temp", "[", "t", "]"}]}], ")"}]}]}]}], ",", 
+         RowBox[{
+          RowBox[{"Temp", "[", "0", "]"}], "\[Equal]", "Tint"}], ",", 
+         RowBox[{
+          RowBox[{"x", "[", "0", "]"}], "\[Equal]", "0"}]}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sol", "=", 
+       RowBox[{"Quiet", "@", 
+        RowBox[{"NDSolve", "[", 
+         RowBox[{
+          RowBox[{"Fn", "[", 
+           RowBox[{"\[Theta]", ",", "Tinit", ",", "U"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Temp", "[", "t", "]"}], ",", 
+            RowBox[{"x", "[", "t", "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "time"}], "}"}]}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"pT", "=", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Temp", "[", "t", "]"}], "/.", "sol"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "time"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{"\"\<time \>\"", ",", 
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<t\>\"", ",", "Italic"}], "]"}]}], "}"}], "]"}], 
+            ",", 
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{"\"\<temperature \>\"", ",", 
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<T\>\"", ",", "Italic"}], "]"}]}], "}"}], "]"}]}],
+            "}"}]}], ",", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"Orange", ",", "Thick"}], "}"}]}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"1.45", " ", "200"}]}], ",", 
+         RowBox[{"ImagePadding", "\[Rule]", "ip"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"px", "=", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"x", "[", "t", "]"}], "/.", "sol"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "time"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{"\"\<time \>\"", ",", 
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<t\>\"", ",", "Italic"}], "]"}]}], "}"}], "]"}], 
+            ",", 
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{"\"\<conversion \>\"", ",", 
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}]}], "}"}], "]"}]}],
+            "}"}]}], ",", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Darker", "@", "Green"}], ",", "Thick"}], "}"}]}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"1.45", " ", "200"}]}], ",", 
+         RowBox[{"ImagePadding", "\[Rule]", "ip"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"pgen", "=", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{"\[CapitalDelta]H", "/", 
+             RowBox[{"(", 
+              RowBox[{"\[Rho]", " ", "Cp"}], ")"}]}], ")"}]}], " ", "c0", " ", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"k", "[", "T", "]"}], " ", "\[Theta]"}], ")"}], "/", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", 
+             RowBox[{
+              RowBox[{"k", "[", "T", "]"}], " ", "\[Theta]"}]}], ")"}]}]}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"T", ",", "250", ",", "500"}], "}"}], ",", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"Red", ",", "Thick"}], "}"}]}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"1.45", " ", "200"}]}], ",", 
+         RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+         RowBox[{"ImagePadding", "\[Rule]", "ip"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"prem", "=", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"Tinit", "-", "T", "+", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"\[Theta]", " ", "U"}], ")"}], "/", 
+              RowBox[{"(", 
+               RowBox[{"\[Rho]", " ", "Cp"}], ")"}]}], " ", 
+             RowBox[{"(", 
+              RowBox[{"Tc", "-", "T"}], ")"}]}]}], ")"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"T", ",", "250", ",", "500"}], "}"}], ",", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"Blue", ",", "Thick", ",", "Dashed"}], "}"}]}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"1.45", " ", "200"}]}], ",", 
+         RowBox[{"ImagePadding", "\[Rule]", "ip"}], ",", 
+         RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"pq", "=", 
+       RowBox[{"Show", "[", 
+        RowBox[{"pgen", ",", "prem", ",", 
+         RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{"\"\<temperature \>\"", ",", 
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<T\>\"", ",", "Italic"}], "]"}]}], "}"}], "]"}], 
+            ",", 
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<heat generated \>\"", ",", "Red"}], " ", "]"}], 
+               ",", 
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\< heat removed\>\"", ",", "Blue"}], "]"}]}], 
+              "}"}], "]"}]}], "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Row", "[", 
+       RowBox[{"{", 
+        RowBox[{"pq", ",", 
+         RowBox[{"Column", "[", 
+          RowBox[{"{", 
+           RowBox[{"pT", ",", "px"}], "}"}], "]"}]}], "}"}], "]"}]}]}], "]"}],
+    ",", "\[IndentingNewLine]", 
+   RowBox[{"Grid", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"time", ",", "3000", ",", "\"\<time t\>\""}], "}"}], ",", 
+           "1000", ",", "5000", ",", 
+           RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}]}], ",", 
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+            "\[Theta]", ",", "200", ",", "\"\<residence time \[Theta]\>\""}], 
+            "}"}], ",", "30", ",", "300", ",", 
+           RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}]}]}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+            "Tinit", ",", "300", ",", 
+             "\"\<inlet temperature \!\(\*SubscriptBox[\(T\), \(0\)]\)\>\""}],
+             "}"}], ",", "250.", ",", "350.", ",", 
+           RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+            "Tc", ",", "300.", ",", 
+             "\"\<coolant temperature \!\(\*SubscriptBox[\(T\), \
+\(c\)]\)\>\""}], "}"}], ",", "250", ",", "350.", ",", 
+           RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}]}]}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+            "c0", ",", "2.", ",", 
+             "\"\<feed concentration \!\(\*SubscriptBox[\(c\), \
+SubscriptBox[\(A\), \(0\)]]\)\>\""}], "}"}], ",", "1", ",", "5.", ",", 
+           RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}]}], ",", 
+        RowBox[{"Control", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+            "U", ",", "30", ",", "\"\<heat transfer coefficient U\>\""}], 
+            "}"}], ",", "10", ",", "100", ",", 
+           RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}]}]}], 
+       "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "}"}], "]"}], 
+   ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Top"}], ",", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{
+     "time", ",", "U", ",", "\[Theta]", ",", "Tinit", ",", "Tc", ",", "c0"}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.569435281555667*^9, 3.569435343838752*^9}, 
+   3.569435468422874*^9, {3.5694922420191593`*^9, 3.569492242290023*^9}, {
+   3.569492292010988*^9, 3.569492292141417*^9}, {3.569492331757773*^9, 
+   3.5694923490773*^9}, {3.569493554110304*^9, 3.569493588315531*^9}, {
+   3.569497555602254*^9, 3.569497561574346*^9}, {3.569497695304254*^9, 
+   3.569497711367792*^9}, {3.569497851973247*^9, 3.569497883195237*^9}, {
+   3.5694979237399263`*^9, 3.569497924773457*^9}, 3.5694990048461037`*^9, {
+   3.569499057666429*^9, 3.5694990835511417`*^9}, {3.569499268887535*^9, 
+   3.56949928651406*^9}, {3.569499458160952*^9, 3.569499484653264*^9}, {
+   3.569499604758827*^9, 3.569499640465045*^9}, {3.569499673047908*^9, 
+   3.569499695433608*^9}, 3.5694997899468613`*^9, {3.569499830233531*^9, 
+   3.569499837558646*^9}, {3.569499919941044*^9, 3.5694999645474253`*^9}, {
+   3.569501019671628*^9, 3.569501022293723*^9}, {3.569523410810441*^9, 
+   3.569523433635693*^9}, {3.569523492656518*^9, 3.569523608579956*^9}, 
+   3.569523642831883*^9, {3.569593218128866*^9, 3.569593241982251*^9}, 
+   3.569593273580411*^9, {3.571771863042973*^9, 3.571771865867737*^9}, {
+   3.571771948930852*^9, 3.571771972393034*^9}, {3.571772448111309*^9, 
+   3.571772448506649*^9}, {3.5717725201967154`*^9, 3.571772637633808*^9}, {
+   3.5717730698178587`*^9, 3.571773087757132*^9}, {3.571773188833714*^9, 
+   3.571773223076839*^9}, {3.571773269673373*^9, 3.5717732707362423`*^9}, {
+   3.571773303167212*^9, 3.571773305073021*^9}, {3.5717734342791567`*^9, 
+   3.571773530052929*^9}, 3.5717737048984947`*^9, {3.5717739057664623`*^9, 
+   3.571773912405057*^9}, {3.5717748335014677`*^9, 3.571774847475128*^9}, {
+   3.571775083873905*^9, 3.571775255663612*^9}, 3.57177529550428*^9, {
+   3.571775339068284*^9, 3.571775350548904*^9}, {3.571775410025296*^9, 
+   3.5717754551671753`*^9}, {3.5717755001868277`*^9, 
+   3.5717755037809143`*^9}, {3.5717755351960087`*^9, 3.57177554765421*^9}, {
+   3.571775844706437*^9, 3.571775845519101*^9}, {3.572200006347597*^9, 
+   3.572200017202606*^9}, {3.572200096447928*^9, 3.5722001043557673`*^9}, {
+   3.572200174233816*^9, 3.572200268158792*^9}, {3.57220031119035*^9, 
+   3.572200362993146*^9}, {3.5722004475151567`*^9, 3.572200448283889*^9}, 
+   3.572200496712772*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`c0$$ = 2., $CellContext`Tc$$ = 
+    300., $CellContext`time$$ = 3000, $CellContext`Tinit$$ = 
+    300, $CellContext`U$$ = 30, $CellContext`\[Theta]$$ = 200, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`time$$], 3000, "time t"}, 1000, 5000}, {{
+       Hold[$CellContext`\[Theta]$$], 200, "residence time \[Theta]"}, 30, 
+      300}, {{
+       Hold[$CellContext`Tinit$$], 300, 
+       "inlet temperature \!\(\*SubscriptBox[\(T\), \(0\)]\)"}, 250., 350.}, {{
+       Hold[$CellContext`Tc$$], 300., 
+       "coolant temperature \!\(\*SubscriptBox[\(T\), \(c\)]\)"}, 250, 
+      350.}, {{
+       Hold[$CellContext`c0$$], 2., 
+       "feed concentration \!\(\*SubscriptBox[\(c\), SubscriptBox[\(A\), \
+\(0\)]]\)"}, 1, 5.}, {{
+       Hold[$CellContext`U$$], 30, "heat transfer coefficient U"}, 10, 100}, {
+      Hold[
+       Grid[{{
+          Manipulate`Place[1], 
+          Manipulate`Place[2]}, {
+          Manipulate`Place[3], 
+          Manipulate`Place[4]}, {
+          Manipulate`Place[5], 
+          Manipulate`Place[6]}}]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {327.5, {641.5, 162.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`time$14455$$ = 0, $CellContext`\[Theta]$14456$$ = 
+    0, $CellContext`Tinit$14457$$ = 0, $CellContext`Tc$14458$$ = 
+    0, $CellContext`c0$14459$$ = 0, $CellContext`U$14460$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`c0$$ = 2., $CellContext`Tc$$ = 
+        300., $CellContext`time$$ = 3000, $CellContext`Tinit$$ = 
+        300, $CellContext`U$$ = 30, $CellContext`\[Theta]$$ = 200}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`time$$, $CellContext`time$14455$$, 0], 
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$14456$$, 0], 
+        Hold[$CellContext`Tinit$$, $CellContext`Tinit$14457$$, 0], 
+        Hold[$CellContext`Tc$$, $CellContext`Tc$14458$$, 0], 
+        Hold[$CellContext`c0$$, $CellContext`c0$14459$$, 0], 
+        Hold[$CellContext`U$$, $CellContext`U$14460$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`\[CapitalDelta]H$ = -200000, $CellContext`\[Rho]$ = 
+         1000, $CellContext`Cp$ = 4, $CellContext`Tm$ = 
+         298, $CellContext`\[CapitalDelta]E$ = 8000, $CellContext`k0$ = 
+         0.001, $CellContext`sol$, $CellContext`pT$, $CellContext`px$, \
+$CellContext`pgen$, $CellContext`prem$, $CellContext`pq$, \
+$CellContext`Temp$}, $CellContext`ip = {{40, 20}, {40, 20}}; $CellContext`k[
+           Pattern[$CellContext`T$, 
+            Blank[]]] := $CellContext`k0$ 
+          Exp[(-$CellContext`\[CapitalDelta]E$) (1/$CellContext`T$ - 
+             1/$CellContext`Tm$)]; $CellContext`Fn[
+           Pattern[$CellContext`\[Theta]$, 
+            Blank[]], 
+           Pattern[$CellContext`Tint$, 
+            Blank[]], 
+           Pattern[$CellContext`U$, 
+            Blank[]]] := {
+          Derivative[
+            1][$CellContext`x][$CellContext`t] == \
+(-$CellContext`x[$CellContext`t])/$CellContext`\[Theta]$ + $CellContext`k[
+               $CellContext`Temp$[$CellContext`t]] (
+              1 - $CellContext`x[$CellContext`t]), 
+           Derivative[
+            1][$CellContext`Temp$][$CellContext`t] == ($CellContext`Tinit$$ - \
+$CellContext`Temp$[$CellContext`t])/$CellContext`\[Theta]$ - ((($CellContext`\
+\[CapitalDelta]H$/($CellContext`\[Rho]$ $CellContext`Cp$)) $CellContext`c0$$) \
+$CellContext`k[
+               $CellContext`Temp$[$CellContext`t]]) (
+             1 - $CellContext`x[$CellContext`t]) + \
+($CellContext`U$/($CellContext`\[Rho]$ $CellContext`Cp$)) ($CellContext`Tc$$ - \
+$CellContext`Temp$[$CellContext`t]), $CellContext`Temp$[
+            0] == $CellContext`Tint$, $CellContext`x[0] == 
+           0}; $CellContext`sol$ = Quiet[
+           NDSolve[
+            $CellContext`Fn[$CellContext`\[Theta]$$, $CellContext`Tinit$$, \
+$CellContext`U$$], {
+             $CellContext`Temp$[$CellContext`t], 
+             $CellContext`x[$CellContext`t]}, {$CellContext`t, 
+             0, $CellContext`time$$}]]; $CellContext`pT$ = Plot[
+           ReplaceAll[
+            $CellContext`Temp$[$CellContext`t], $CellContext`sol$], \
+{$CellContext`t, 0, $CellContext`time$$}, PlotRange -> All, Frame -> True, 
+           GridLines -> Automatic, FrameLabel -> {
+             Row[{"time ", 
+               Style["t", Italic]}], 
+             Row[{"temperature ", 
+               Style["T", Italic]}]}, PlotStyle -> {Orange, Thick}, ImageSize -> 
+           1.45 200, ImagePadding -> $CellContext`ip]; $CellContext`px$ = Plot[
+           ReplaceAll[
+            $CellContext`x[$CellContext`t], $CellContext`sol$], \
+{$CellContext`t, 0, $CellContext`time$$}, PlotRange -> {0, 1}, Frame -> True, 
+           GridLines -> Automatic, FrameLabel -> {
+             Row[{"time ", 
+               Style["t", Italic]}], 
+             Row[{"conversion ", 
+               Style["x", Italic]}]}, PlotStyle -> {
+             Darker[Green], Thick}, ImageSize -> 1.45 200, 
+           ImagePadding -> $CellContext`ip]; $CellContext`pgen$ = 
+         Plot[((-($CellContext`\[CapitalDelta]H$/($CellContext`\[Rho]$ \
+$CellContext`Cp$))) $CellContext`c0$$) (($CellContext`k[$CellContext`T] \
+$CellContext`\[Theta]$$)/(
+            1 + $CellContext`k[$CellContext`T] $CellContext`\[Theta]$$)), \
+{$CellContext`T, 250, 500}, PlotStyle -> {Red, Thick}, ImageSize -> 1.45 200, 
+           AspectRatio -> 1, 
+           ImagePadding -> $CellContext`ip]; $CellContext`prem$ = 
+         Plot[-($CellContext`Tinit$$ - $CellContext`T + (($CellContext`\
+\[Theta]$$ $CellContext`U$$)/($CellContext`\[Rho]$ $CellContext`Cp$)) \
+($CellContext`Tc$$ - $CellContext`T)), {$CellContext`T, 250, 500}, 
+           PlotStyle -> {Blue, Thick, Dashed}, ImageSize -> 1.45 200, 
+           ImagePadding -> $CellContext`ip, AspectRatio -> 
+           1]; $CellContext`pq$ = 
+         Show[$CellContext`pgen$, $CellContext`prem$, GridLines -> Automatic, 
+           Frame -> True, FrameLabel -> {
+             Row[{"temperature ", 
+               Style["T", Italic]}], 
+             Row[{
+               Style["heat generated ", Red], 
+               Style[" heat removed", Blue]}]}]; Row[{$CellContext`pq$, 
+           Column[{$CellContext`pT$, $CellContext`px$}]}]], 
+      "Specifications" :> {{{$CellContext`time$$, 3000, "time t"}, 1000, 5000,
+          Appearance -> "Labeled", ImageSize -> Tiny, ControlPlacement -> 
+         1}, {{$CellContext`\[Theta]$$, 200, "residence time \[Theta]"}, 30, 
+         300, Appearance -> "Labeled", ImageSize -> Tiny, ControlPlacement -> 
+         2}, {{$CellContext`Tinit$$, 300, 
+          "inlet temperature \!\(\*SubscriptBox[\(T\), \(0\)]\)"}, 250., 350.,
+          Appearance -> "Labeled", ImageSize -> Tiny, ControlPlacement -> 
+         3}, {{$CellContext`Tc$$, 300., 
+          "coolant temperature \!\(\*SubscriptBox[\(T\), \(c\)]\)"}, 250, 
+         350., Appearance -> "Labeled", ImageSize -> Tiny, ControlPlacement -> 
+         4}, {{$CellContext`c0$$, 2., 
+          "feed concentration \!\(\*SubscriptBox[\(c\), SubscriptBox[\(A\), \
+\(0\)]]\)"}, 1, 5., Appearance -> "Labeled", ImageSize -> Tiny, 
+         ControlPlacement -> 
+         5}, {{$CellContext`U$$, 30, "heat transfer coefficient U"}, 10, 100, 
+         Appearance -> "Labeled", ImageSize -> Tiny, ControlPlacement -> 6}, 
+        Grid[{{
+           Manipulate`Place[1], 
+           Manipulate`Place[2]}, {
+           Manipulate`Place[3], 
+           Manipulate`Place[4]}, {
+           Manipulate`Place[5], 
+           Manipulate`Place[6]}}]}, 
+      "Options" :> {
+       ControlPlacement -> Top, 
+        TrackedSymbols :> {$CellContext`time$$, $CellContext`U$$, \
+$CellContext`\[Theta]$$, $CellContext`Tinit$$, $CellContext`Tc$$, \
+$CellContext`c0$$}}, "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{661., {506., 511.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1571637216]
+}, Open  ]],
+
+Cell[TextData[{
+ "This Demonstration shows the dynamics of a non-isothermal continuously \
+stirred tank reactor (CSTR) where a first-order irreversible chemical \
+reaction ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox["A",
+     FontSlant->"Plain"], 
+    OverscriptBox["\[RightArrow]", 
+     RowBox[{"k", "(", "T", ")"}]], 
+    StyleBox["B",
+     FontSlant->"Plain"]}], TraditionalForm]], "InlineMath"],
+ " takes place. The dynamics of the system are described by the equations [1]"
+}], "ManipulateCaption",
+ CellChangeTimes->{{3.569435560005003*^9, 3.569435724964438*^9}, {
+   3.5694385704697447`*^9, 3.569438570470826*^9}, {3.569439236430113*^9, 
+   3.5694392451861362`*^9}, {3.5694979866692142`*^9, 3.569498000744322*^9}, {
+   3.569498080538801*^9, 3.5694980838461637`*^9}, {3.5694983083781853`*^9, 
+   3.5694983246421413`*^9}, {3.5694989213286467`*^9, 3.569498931576885*^9}, {
+   3.569500880421249*^9, 3.569500904258881*^9}, 3.569500971948566*^9, {
+   3.569501301061935*^9, 3.569501360437801*^9}, {3.569501413403061*^9, 
+   3.569501452204124*^9}, {3.569501496945732*^9, 3.569501794014819*^9}, {
+   3.569501839026585*^9, 3.5695018513112087`*^9}, {3.569501900631701*^9, 
+   3.569502236525709*^9}, {3.569502299221697*^9, 3.569502307703878*^9}, {
+   3.569502360984468*^9, 3.569502422004855*^9}, {3.56950306588013*^9, 
+   3.569503084936749*^9}, {3.569503455611658*^9, 3.569503468811607*^9}, 
+   3.569503506701737*^9, {3.5695038745267353`*^9, 3.569503959483121*^9}, {
+   3.569503994799906*^9, 3.569504029143018*^9}, {3.569504067147244*^9, 
+   3.569504068563395*^9}, {3.569504100267879*^9, 3.5695041847314453`*^9}, {
+   3.569505066995689*^9, 3.569505070100399*^9}, {3.571773383896834*^9, 
+   3.5717733841995277`*^9}, {3.571773975514982*^9, 3.5717739762557077`*^9}},
+ CellID->1974755802],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{"d", "\[InvisibleSpace]", "x"}], 
+     RowBox[{"d", "\[InvisibleSpace]", "t"}]], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "x"}], "/", "\[Theta]"}], "+", 
+     RowBox[{
+      RowBox[{"k", "(", "T", ")"}], 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "InlineMath"],
+ ",\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{"d", "\[InvisibleSpace]", "T"}], 
+     RowBox[{"d", "\[InvisibleSpace]", "t"}]], "=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["T", "0"], "-", "T"}], ")"}], "\[Theta]"], "-", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[CapitalDelta]", "\[VeryThinSpace]", "H"}], 
+       RowBox[{"\[Rho]", " ", 
+        SubscriptBox["C", "p"]}]], 
+      RowBox[{
+       SubscriptBox["c", 
+        SubscriptBox["A", "0"]], "(", 
+       RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+     RowBox[{
+      FractionBox["U", 
+       RowBox[{"\[Rho]", " ", 
+        SubscriptBox["C", "p"]}]], 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["T", "c"], "-", "T"}], ")"}]}]}]}], TraditionalForm]], 
+  "InlineMath"],
+ ",\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"x", "(", "0", ")"}], "=", "0"}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"T", "(", "0", ")"}], "=", 
+    SubscriptBox["T", "0"]}], TraditionalForm]], "InlineMath"],
+ ","
+}], "ManipulateCaption",
+ CellChangeTimes->{{3.569435560005003*^9, 3.569435724964438*^9}, {
+   3.5694385704697447`*^9, 3.569438570470826*^9}, {3.569439236430113*^9, 
+   3.5694392451861362`*^9}, {3.5694979866692142`*^9, 3.569498000744322*^9}, {
+   3.569498080538801*^9, 3.5694980838461637`*^9}, {3.5694983083781853`*^9, 
+   3.5694983246421413`*^9}, {3.5694989213286467`*^9, 3.569498931576885*^9}, {
+   3.569500880421249*^9, 3.569500904258881*^9}, 3.569500971948566*^9, {
+   3.569501301061935*^9, 3.569501360437801*^9}, {3.569501413403061*^9, 
+   3.569501452204124*^9}, {3.569501496945732*^9, 3.569501794014819*^9}, {
+   3.569501839026585*^9, 3.5695018513112087`*^9}, {3.569501900631701*^9, 
+   3.569502236525709*^9}, {3.569502299221697*^9, 3.569502307703878*^9}, {
+   3.569502360984468*^9, 3.569502422004855*^9}, {3.56950306588013*^9, 
+   3.569503084936749*^9}, {3.569503455611658*^9, 3.569503468811607*^9}, 
+   3.569503506701737*^9, {3.5695038745267353`*^9, 3.569503959483121*^9}, {
+   3.569503994799906*^9, 3.569504029143018*^9}, {3.569504067147244*^9, 
+   3.569504068563395*^9}, {3.569504100267879*^9, 3.569504167197358*^9}, {
+   3.5695042073104153`*^9, 3.569504248519425*^9}, {3.569504293902231*^9, 
+   3.569504311722024*^9}, {3.569504357251452*^9, 3.569504469459786*^9}, {
+   3.569505091421898*^9, 3.569505140547962*^9}, {3.5695051858633337`*^9, 
+   3.569505185986835*^9}, {3.569505282919881*^9, 3.569505344219105*^9}, {
+   3.5695055001344137`*^9, 3.5695055687268257`*^9}, {3.569505643313211*^9, 
+   3.5695056862095222`*^9}, {3.569505756938888*^9, 3.5695058064458313`*^9}, {
+   3.5695058709363003`*^9, 3.569505872083868*^9}, {3.569520625592668*^9, 
+   3.569520754420405*^9}, {3.5695208395186987`*^9, 3.56952085952143*^9}, 
+   3.569520916205967*^9, {3.5695209466806307`*^9, 3.5695209729491787`*^9}, {
+   3.569522173468686*^9, 3.569522176447254*^9}, {3.569522966867374*^9, 
+   3.569523108458844*^9}, {3.569523143379471*^9, 3.5695231635730333`*^9}, {
+   3.56952324265104*^9, 3.569523267074074*^9}, {3.569523345735487*^9, 
+   3.5695233471405287`*^9}, {3.5695245551109753`*^9, 3.569524829517494*^9}, {
+   3.569524870448723*^9, 3.569524902734683*^9}, {3.5695254046424847`*^9, 
+   3.569525404642632*^9}, {3.569525492137373*^9, 3.5695255260786963`*^9}, 
+   3.569525669195972*^9, {3.569526116089141*^9, 3.569526177798463*^9}, {
+   3.5695264033836803`*^9, 3.5695264750013647`*^9}, {3.5695265080868607`*^9, 
+   3.569526508526415*^9}, {3.569526688673862*^9, 3.569526750446952*^9}, {
+   3.569527206441435*^9, 3.569527249664638*^9}, {3.5695275921600657`*^9, 
+   3.569527675034533*^9}, {3.5695277140724783`*^9, 3.569527729428149*^9}, {
+   3.5695945224342933`*^9, 3.569594522843334*^9}, {3.571773232334178*^9, 
+   3.5717732526481028`*^9}, {3.571773330476946*^9, 3.5717733315460167`*^9}, 
+   3.571773396472269*^9, {3.5717735963192863`*^9, 3.57177359631944*^9}, {
+   3.5717736385876226`*^9, 3.571773640624564*^9}, {3.571773988897847*^9, 
+   3.5717740172070827`*^9}, {3.5729639762788897`*^9, 3.572963976729961*^9}},
+ CellID->1748065759],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", " "}], TraditionalForm]], "InlineMath"],
+ "and ",
+ Cell[BoxData[
+  FormBox["T", TraditionalForm]], "InlineMath"],
+ " are the conversion and temperature at the reactor outlet, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["T", "0"], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["T", "c"], TraditionalForm]], "InlineMath"],
+ " represent the reactor fluid inlet temperature and cooling temperature, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[CapitalDelta]", "\[InvisibleSpace]", "H"}], TraditionalForm]], 
+  "InlineMath"],
+ " is the heat of reaction, ",
+ Cell[BoxData[
+  FormBox["U", TraditionalForm]], "InlineMath"],
+ " is the heat transfer coefficient, ",
+ Cell[BoxData[
+  FormBox["\[Rho]", TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["C", "p"], TraditionalForm]], "InlineMath"],
+ " are the average density and heat capacity of the reactants, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", 
+    SubscriptBox[
+     StyleBox["A",
+      FontSlant->"Plain"], "0"]], TraditionalForm]], "InlineMath"],
+ " is the feed concentration,",
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"k", "(", "T", ")"}], "=", 
+    RowBox[{
+     SubscriptBox["k", "0"], " ", 
+     SuperscriptBox["e", 
+      RowBox[{
+       RowBox[{"-", "\[CapitalDelta]"}], "\[VeryThinSpace]", "E", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox["1", "T"], "-", 
+         FractionBox["1", 
+          SubscriptBox["T", "m"]]}], ")"}]}]]}]}], TraditionalForm]], 
+  "InlineMath"],
+ " is the reaction rate as a function of temperature, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[CapitalDelta]", "\[VeryThinSpace]", "E"}], TraditionalForm]], 
+  "InlineMath"],
+ " is the activation energy,",
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["k", "0"], " "}], TraditionalForm]], "InlineMath"],
+ "and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["T", "m"], TraditionalForm]], "InlineMath"],
+ " are constants. The solution shows multiple stationary states. These values \
+determine the number of steady states possible: the feed concentration ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", 
+    SubscriptBox[
+     StyleBox["A",
+      FontSlant->"Plain"], "0"]], TraditionalForm]], "InlineMath"],
+ ", the inlet temperature of the reactive and cooling fluid, the residence \
+time, and the heat transfer coefficient. A single steady state is most \
+common, but two and even three steady states can occur. When three steady \
+states occur only two of them are stable, whereas the other stationary point \
+(the middle one) is unstable. Qualitative and mathematical proofs of this \
+complex behavior can be found in standard chemical engineering texts [1], \
+[2], and [3]. "
+}], "ManipulateCaption",
+ CellChangeTimes->{{3.569435560005003*^9, 3.569435724964438*^9}, {
+   3.5694385704697447`*^9, 3.569438570470826*^9}, {3.569439236430113*^9, 
+   3.5694392451861362`*^9}, {3.5694979866692142`*^9, 3.569498000744322*^9}, {
+   3.569498080538801*^9, 3.5694980838461637`*^9}, {3.5694983083781853`*^9, 
+   3.5694983246421413`*^9}, {3.5694989213286467`*^9, 3.569498931576885*^9}, {
+   3.569500880421249*^9, 3.569500904258881*^9}, 3.569500971948566*^9, {
+   3.569501301061935*^9, 3.569501360437801*^9}, {3.569501413403061*^9, 
+   3.569501452204124*^9}, {3.569501496945732*^9, 3.569501794014819*^9}, {
+   3.569501839026585*^9, 3.5695018513112087`*^9}, {3.569501900631701*^9, 
+   3.569502236525709*^9}, {3.569502299221697*^9, 3.569502307703878*^9}, {
+   3.569502360984468*^9, 3.569502422004855*^9}, {3.56950306588013*^9, 
+   3.569503084936749*^9}, {3.569503455611658*^9, 3.569503468811607*^9}, 
+   3.569503506701737*^9, {3.5695038745267353`*^9, 3.569503959483121*^9}, {
+   3.569503994799906*^9, 3.569504029143018*^9}, {3.569504067147244*^9, 
+   3.569504068563395*^9}, {3.569504100267879*^9, 3.569504167197358*^9}, {
+   3.5695042073104153`*^9, 3.569504248519425*^9}, {3.569504293902231*^9, 
+   3.569504311722024*^9}, {3.569504357251452*^9, 3.569504469459786*^9}, {
+   3.569505091421898*^9, 3.569505140547962*^9}, {3.5695051858633337`*^9, 
+   3.569505185986835*^9}, {3.569505282919881*^9, 3.569505344219105*^9}, {
+   3.5695055001344137`*^9, 3.5695055687268257`*^9}, {3.569505643313211*^9, 
+   3.5695056862095222`*^9}, {3.569505756938888*^9, 3.5695058064458313`*^9}, {
+   3.5695058709363003`*^9, 3.569505872083868*^9}, {3.569520625592668*^9, 
+   3.569520754420405*^9}, {3.5695208395186987`*^9, 3.56952085952143*^9}, 
+   3.569520916205967*^9, {3.5695209466806307`*^9, 3.5695209729491787`*^9}, {
+   3.569522173468686*^9, 3.569522176447254*^9}, {3.569522966867374*^9, 
+   3.569523108458844*^9}, {3.569523143379471*^9, 3.5695231635730333`*^9}, {
+   3.56952324265104*^9, 3.569523267074074*^9}, {3.569523345735487*^9, 
+   3.5695233471405287`*^9}, {3.5695245551109753`*^9, 3.569524829517494*^9}, {
+   3.569524870448723*^9, 3.569524902734683*^9}, {3.5695254046424847`*^9, 
+   3.569525404642632*^9}, {3.569525492137373*^9, 3.5695255260786963`*^9}, 
+   3.569525669195972*^9, {3.569526116089141*^9, 3.569526177798463*^9}, {
+   3.5695264033836803`*^9, 3.5695264750013647`*^9}, {3.5695265080868607`*^9, 
+   3.569526508526415*^9}, {3.569526688673862*^9, 3.569526750446952*^9}, {
+   3.569527206441435*^9, 3.569527249664638*^9}, {3.5695275921600657`*^9, 
+   3.569527675034533*^9}, {3.5695277140724783`*^9, 3.569527729428149*^9}, {
+   3.5695945224342933`*^9, 3.569594522843334*^9}, {3.571773232334178*^9, 
+   3.5717732526481028`*^9}, {3.571773330476946*^9, 3.5717733315460167`*^9}, 
+   3.571773396472269*^9, {3.571774024743918*^9, 3.571774043710795*^9}, {
+   3.571774077901411*^9, 3.571774195834257*^9}, {3.571774311398643*^9, 
+   3.571774339114912*^9}, {3.571774449475403*^9, 3.571774450897005*^9}, {
+   3.571783298506385*^9, 3.5717833223395033`*^9}, {3.5717833706582537`*^9, 
+   3.5717834082091303`*^9}, 3.571848358128883*^9},
+ CellID->1047155965]
+},
+WindowSize->{701, 448},
+WindowMargins->{{0, Automatic}, {Automatic, 2}},
+Magnification->1.100000023841858,
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 14977, 354, 1219, "Input"],
+Cell[15559, 378, 8725, 167, 1035, "Output",
+ CellID->1571637216]
+}, Open  ]],
+Cell[24299, 548, 1790, 32, 47, "ManipulateCaption",
+ CellID->1974755802],
+Cell[26092, 582, 4524, 96, 82, "ManipulateCaption",
+ CellID->1748065759],
+Cell[30619, 680, 5960, 128, 176, "ManipulateCaption",
+ CellID->1047155965]
+}
+]
+*)
+
+(* End of internal cache information *)

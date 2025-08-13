@@ -1,0 +1,146 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3707,        137]
+NotebookOptionsPosition[      3174,        113]
+NotebookOutlinePosition[      3520,        128]
+CellTagsIndexPosition[      3477,        125]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Phi]", "[", "Dp_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"Dp", "/", "2"}], "*", 
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"k9", "/", "dtae2"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.575634841079294*^9, 3.5756348773961577`*^9}, {
+   3.5756349907303567`*^9, 3.5756349985147705`*^9}, 3.5756350800997143`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", "Dp", " ", 
+  SqrtBox[
+   FractionBox["k9", "dtae2"]]}]], "Output",
+ CellChangeTimes->{{3.5756348670065393`*^9, 3.5756348776925583`*^9}, 
+   3.5756350154876003`*^9, 3.575635080754915*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Eta]", "[", "Dp_", "]"}], "=", 
+  RowBox[{
+   FractionBox["3", 
+    RowBox[{"\[Phi]", "[", "Dp", "]"}]], 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"Tanh", "[", 
+       RowBox[{"\[Phi]", "[", "Dp", "]"}], "]"}]], "-", 
+     FractionBox["1", 
+      RowBox[{"\[Phi]", "[", "Dp", "]"}]]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.5756348829653673`*^9, 3.57563491864263*^9}, {
+  3.5756350020403767`*^9, 3.575635010308391*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"6", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", 
+       RowBox[{"Dp", " ", 
+        SqrtBox[
+         FractionBox["k9", "dtae2"]]}]]}], "+", 
+     RowBox[{"Coth", "[", 
+      RowBox[{
+       FractionBox["1", "2"], " ", "Dp", " ", 
+       SqrtBox[
+        FractionBox["k9", "dtae2"]]}], "]"}]}], ")"}]}], 
+  RowBox[{"Dp", " ", 
+   SqrtBox[
+    FractionBox["k9", "dtae2"]]}]]], "Output",
+ CellChangeTimes->{3.5756349198282323`*^9, 3.575635017812004*^9, 
+  3.575635082377318*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"robs", "[", "Dp_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"\[Eta]", "[", "Dp", "]"}], "*", "k9", "*", ".15"}]}]], "Input",
+ CellChangeTimes->{{3.575634944148675*^9, 3.5756349683131175`*^9}, {
+  3.5756350116343937`*^9, 3.575635013131996*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"0.8999999999999999`", " ", "k9", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", 
+       RowBox[{"Dp", " ", 
+        SqrtBox[
+         FractionBox["k9", "dtae2"]]}]]}], "+", 
+     RowBox[{"Coth", "[", 
+      RowBox[{
+       FractionBox["1", "2"], " ", "Dp", " ", 
+       SqrtBox[
+        FractionBox["k9", "dtae2"]]}], "]"}]}], ")"}]}], 
+  RowBox[{"Dp", " ", 
+   SqrtBox[
+    FractionBox["k9", "dtae2"]]}]]], "Output",
+ CellChangeTimes->{{3.5756349654115124`*^9, 3.5756349686563177`*^9}, 
+   3.5756350196684074`*^9, 3.575635085232123*^9}]
+}, Open  ]]
+},
+WindowSize->{701, 448},
+WindowMargins->{{114, Automatic}, {Automatic, 36}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 340, 8, 31, "Input"],
+Cell[922, 32, 241, 6, 56, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1200, 43, 487, 14, 48, "Input"],
+Cell[1690, 59, 549, 19, 118, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2276, 83, 272, 6, 31, "Input"],
+Cell[2551, 91, 607, 19, 118, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

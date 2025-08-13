@@ -1,0 +1,691 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     25911,        681]
+NotebookOptionsPosition[     24585,        631]
+NotebookOutlinePosition[     25257,        656]
+CellTagsIndexPosition[     25214,        653]
+WindowTitle->Conversion versus Reactor Volume for CSTR and PFTR - Source
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Conversion versus Reactor Volume for CSTR and PFTR", "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False,
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[BoxData[
+ GraphicsBox[RasterBox[CompressedData["
+1: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
+FP/69esnAAAAAAAAAAAAwM74B4thROM=
+   "], {{0, 0}, {1800, 25}}, {0, 255},
+   ColorFunction->RGBColor],
+  ImageSize->{1800, 25},
+  PlotRange->{{0, 1800}, {0, 25}}]], "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"plt1", ",", "plt2"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"plt1", "=", 
+       RowBox[{"ContourPlot", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"8", " ", "X", " ", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"nB", "-", "1"}], ")"}], " ", "X"}]}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "X"}], ")"}]}]}], "\[Equal]", " ", "V"}], ",", 
+         
+         RowBox[{"{", 
+          RowBox[{"V", ",", "0", ",", "140"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"X", ",", "0", ",", "1"}], "}"}], ",", 
+         RowBox[{"ContourStyle", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{"0.48", ",", "0", ",", "0"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{"\"\<volume\>\"", ",", "\"\<conversion\>\""}], "}"}]}]}], 
+        "]"}]}], ";", 
+      RowBox[{"plt2", "=", 
+       RowBox[{"ContourPlot", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"8", " ", 
+           RowBox[{"(", 
+            RowBox[{"X", "-", 
+             RowBox[{"nB", " ", "X"}], "-", 
+             RowBox[{"nB", " ", 
+              RowBox[{"Log", "[", 
+               RowBox[{"1", "-", "X"}], "]"}]}]}], ")"}]}], "\[Equal]", " ", 
+          "V"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"V", ",", "0", ",", "30"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"X", ",", "0", ",", "1"}], "}"}], ",", 
+         RowBox[{"PlotPoints", "\[Rule]", "100"}], ",", " ", 
+         RowBox[{"ContourStyle", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{"0", ",", "0", ",", "0.48"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{"\"\<volume\>\"", ",", "\"\<conversion\>\""}], "}"}]}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Switch", "[", 
+       RowBox[{"ctrl", ",", "\[IndentingNewLine]", "1", ",", 
+        RowBox[{"Show", "[", 
+         RowBox[{"plt1", ",", 
+          RowBox[{"Graphics", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"RGBColor", "[", 
+              RowBox[{"0", ",", "0.48", ",", "0"}], "]"}], ",", 
+             RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+             RowBox[{"Point", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"8", " ", "X", " ", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"nB", "-", "1"}], ")"}], " ", "X"}]}], ")"}], "/", 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "X"}], ")"}]}]}], "/.", 
+                 RowBox[{"X", "\[Rule]", " ", "0.9"}]}], ",", "0.9"}], "}"}], 
+              "]"}], ",", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Text", "[", 
+                RowBox[{
+                 RowBox[{"\"\<volume in liters: \>\"", "<>", 
+                  RowBox[{"ToString", "[", 
+                   RowBox[{"NumberForm", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"8", " ", "X", " ", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"nB", "-", "1"}], ")"}], " ", "X"}]}], ")"}], "/", 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "X"}], ")"}]}]}], "/.", 
+                    RowBox[{"X", "\[Rule]", " ", "0.9"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"6", ",", "3"}], "}"}]}], "]"}], "]"}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"50", ",", "0.5"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "0"}], "}"}]}], "]"}], ",", 
+               "Bold", ",", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0", ",", "0.48", ",", "0"}], "]"}], ",", "16"}], 
+              "]"}]}], "}"}], "]"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"400", ",", "400"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "2", ",", 
+        RowBox[{"Show", "[", 
+         RowBox[{"plt2", ",", 
+          RowBox[{"Graphics", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"RGBColor", "[", 
+              RowBox[{"0", ",", "0.48", ",", "0"}], "]"}], ",", 
+             RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+             RowBox[{"Point", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"8", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"X", "-", 
+                    RowBox[{"nB", " ", "X"}], "-", 
+                    RowBox[{"nB", " ", 
+                    RowBox[{"Log", "[", 
+                    RowBox[{"1", "-", "X"}], "]"}]}]}], ")"}]}], "/.", 
+                 RowBox[{"X", "\[Rule]", " ", "0.9"}]}], ",", "0.9"}], "}"}], 
+              "]"}], ",", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Text", "[", 
+                RowBox[{
+                 RowBox[{"\"\<volume in liters: \>\"", "<>", 
+                  RowBox[{"ToString", "[", 
+                   RowBox[{"NumberForm", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"8", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"X", "-", 
+                    RowBox[{"nB", " ", "X"}], "-", 
+                    RowBox[{"nB", " ", 
+                    RowBox[{"Log", "[", 
+                    RowBox[{"1", "-", "X"}], "]"}]}]}], ")"}]}], "/.", 
+                    RowBox[{"X", "\[Rule]", " ", "0.9"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"6", ",", "3"}], "}"}]}], "]"}], "]"}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"10", ",", "0.5"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "0"}], "}"}]}], "]"}], ",", 
+               "Bold", ",", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0", ",", "0.48", ",", "0"}], "]"}], ",", "16"}], 
+              "]"}]}], "}"}], "]"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"400", ",", "400"}], "}"}]}]}], "]"}]}], "]"}]}]}], "]"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ctrl", ",", "1", ",", "\"\<reactor type\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", " ", "\"\<CSTR\>\""}], ",", 
+       RowBox[{"2", "\[Rule]", " ", "\"\<PFTR\>\""}]}], "}"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "nB", ",", "1", ",", "\"\<\!\(\*SubscriptBox[\(n\), \(B\)]\)\>\""}], 
+      "}"}], ",", "0.5", ",", "2", ",", "0.05", ",", 
+     RowBox[{"Appearance", "\[Rule]", " ", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"ctrl", ",", "nB"}], "}"}]}]}], " ", "]"}]], "Input",
+ CellChangeTimes->{{3.5172204625625*^9, 3.517220717421875*^9}, {
+  3.517220751015625*^9, 3.51722076109375*^9}, {3.517220812640625*^9, 
+  3.517220869328125*^9}, {3.51722100615625*^9, 3.517221085609375*^9}, {
+  3.517221585734375*^9, 3.5172216139375*^9}, {3.517221695578125*^9, 
+  3.5172217084375*^9}, {3.517221773671875*^9, 3.5172218028125*^9}, {
+  3.51722194553125*^9, 3.517222054625*^9}, {3.5172221309375*^9, 
+  3.51722220634375*^9}, {3.5172222415*^9, 3.517222426796875*^9}, {
+  3.517222459375*^9, 3.517222673546875*^9}, {3.51722272965625*^9, 
+  3.4857411479348435`*^9}},
+ CellID->7484036]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`ctrl$$ = 1, $CellContext`nB$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`ctrl$$], 1, "reactor type"}, {
+      1 -> "CSTR", 2 -> "PFTR"}}, {{
+       Hold[$CellContext`nB$$], 1, "\!\(\*SubscriptBox[\(n\), \(B\)]\)"}, 0.5,
+       2, 0.05}}, Typeset`size$$ = {500., {246., 254.}}, Typeset`update$$ = 0,
+     Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`ctrl$617027$$ = False, $CellContext`nB$617028$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`ctrl$$ = 1, $CellContext`nB$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`ctrl$$, $CellContext`ctrl$617027$$, False], 
+        Hold[$CellContext`nB$$, $CellContext`nB$617028$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`plt1$, $CellContext`plt2$}, $CellContext`plt1$ = 
+         ContourPlot[(
+             8 $CellContext`X) ((1 + ($CellContext`nB$$ - 1) $CellContext`X)/(
+             1 - $CellContext`X)) == $CellContext`V, {$CellContext`V, 0, 
+            140}, {$CellContext`X, 0, 1}, ContourStyle -> {Thick, 
+             RGBColor[0.48, 0, 0]}, 
+           FrameLabel -> {"volume", "conversion"}]; $CellContext`plt2$ = 
+         ContourPlot[
+          8 ($CellContext`X - $CellContext`nB$$ $CellContext`X - \
+$CellContext`nB$$ Log[1 - $CellContext`X]) == $CellContext`V, {$CellContext`V,
+             0, 30}, {$CellContext`X, 0, 1}, PlotPoints -> 100, 
+           ContourStyle -> {Thick, 
+             RGBColor[0, 0, 0.48]}, FrameLabel -> {"volume", "conversion"}]; 
+        Switch[$CellContext`ctrl$$, 1, 
+          Show[$CellContext`plt1$, 
+           Graphics[{
+             RGBColor[0, 0.48, 0], 
+             PointSize[0.025], 
+             Point[{
+               
+               ReplaceAll[(
+                 8 $CellContext`X) ((
+                  1 + ($CellContext`nB$$ - 1) $CellContext`X)/(
+                 1 - $CellContext`X)), $CellContext`X -> 0.9], 0.9}], 
+             Style[
+              Text[
+               StringJoin["volume in liters: ", 
+                ToString[
+                 NumberForm[
+                  
+                  ReplaceAll[(
+                    8 $CellContext`X) ((
+                    1 + ($CellContext`nB$$ - 1) $CellContext`X)/(
+                    1 - $CellContext`X)), $CellContext`X -> 0.9], {6, 3}]]], {
+               50, 0.5}, {-1, 0}], Bold, 
+              RGBColor[0, 0.48, 0], 16]}], ImageSize -> {400, 400}], 2, 
+          Show[$CellContext`plt2$, 
+           Graphics[{
+             RGBColor[0, 0.48, 0], 
+             PointSize[0.025], 
+             Point[{
+               ReplaceAll[
+               8 ($CellContext`X - $CellContext`nB$$ $CellContext`X - \
+$CellContext`nB$$ Log[1 - $CellContext`X]), $CellContext`X -> 0.9], 0.9}], 
+             Style[
+              Text[
+               StringJoin["volume in liters: ", 
+                ToString[
+                 NumberForm[
+                  ReplaceAll[
+                  8 ($CellContext`X - $CellContext`nB$$ $CellContext`X - \
+$CellContext`nB$$ Log[1 - $CellContext`X]), $CellContext`X -> 0.9], {6, 
+                  3}]]], {10, 0.5}, {-1, 0}], Bold, 
+              RGBColor[0, 0.48, 0], 16]}], ImageSize -> {400, 400}]]], 
+      "Specifications" :> {{{$CellContext`ctrl$$, 1, "reactor type"}, {
+         1 -> "CSTR", 2 -> "PFTR"}}, {{$CellContext`nB$$, 1, 
+          "\!\(\*SubscriptBox[\(n\), \(B\)]\)"}, 0.5, 2, 0.05, Appearance -> 
+         "Labeled"}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`ctrl$$, $CellContext`nB$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{545., {304., 309.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->58273494],
+
+Cell[CellGroupData[{
+
+Cell["CAPTION", "Section",
+ CellFrame->{{0, 0}, {1, 0}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->12,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[TextData[{
+ "The Demonstration plots the conversion versus reactor volume for either a \
+CSTR (continuous stirred-tank reactor) or a PFTR (plug flow tubular reactor). \
+The volume (in liters) required to obtain 90% conversion in the reaction ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", " ", "\[RightArrow]", " ", 
+    RowBox[{
+     SubscriptBox["n", "B"], "\[VeryThinSpace]", "B"}]}], TraditionalForm]], 
+  "InlineMath"],
+ " is indicated by the green dot in the figure. The reaction takes place in \
+the gas phase with a rate constant ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", "=", 
+    RowBox[{"0.5", " ", 
+     SuperscriptBox["min", 
+      RowBox[{"-", "1"}]]}]}], TraditionalForm]], "InlineMath"],
+ ". The feed flow rate is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["v", "0"], "=", 
+    RowBox[{"4", " ", 
+     RowBox[{"liters", "/", "min"}]}]}], TraditionalForm]], "InlineMath"],
+ " and corresponds to a composition such that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["C", "A0"], "=", 
+    RowBox[{"2", 
+     RowBox[{"moles", "/", 
+      RowBox[{"liter", "."}]}]}]}], TraditionalForm]], "InlineMath"],
+ " This is a high-pressure gas-phase reaction since ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", "A"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["C", "A"], "\[VeryThinSpace]", "R", "\[VeryThinSpace]", 
+      "T"}], " ", "=", 
+     RowBox[{"49", " ", "atm"}]}]}], TraditionalForm]], "InlineMath"],
+ ". You can set the value of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "B"], TraditionalForm]], "InlineMath"],
+ ". Based on the present calculation, you can draw the following conclusions: \
+(1) to achieve the desired conversion, the required reactor volume is larger \
+for the CSTR than the PFTR; and (2) if the reaction reduces the number of \
+moles (e.g., ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["n", "b"], "=", "0.5"}], ")"}], TraditionalForm]], 
+  "InlineMath"],
+ ", the required reactor volume is smaller. For example, if ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["n", "b"], "=", "2"}], TraditionalForm]], "InlineMath"],
+ ", the reaction produces more moles, thus diluting the reactant ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]], "InlineMath"],
+ " and causing the volume to be larger."
+}], "Text"]
+}, Close]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["DETAILS", "Section",
+ CellFrame->{{0, 0}, {1, 0}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->12,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[TextData[{
+ "L. D. Schmidt, ",
+ StyleBox["The Engineering of Chemical Reactions",
+  FontSlant->"Italic"],
+ ", New York: Oxford University Press, 1998."
+}], "Text"]
+}, Close]],
+
+Cell[CellGroupData[{
+
+Cell["THIS NOTEBOOK IS THE SOURCE CODE FROM", "Text",
+ CellFrame->{{0, 0}, {0, 0}},
+ CellMargins->{{48, 10}, {4, 28}},
+ CellGroupingRules->{"SectionGrouping", 25},
+ CellFrameMargins->{{48, 48}, {6, 5}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->10,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[TextData[{
+ "\"",
+ ButtonBox["Conversion versus Reactor Volume for CSTR and PFTR",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/\
+ConversionVersusReactorVolumeForCSTRAndPFTR/"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/\
+ConversionVersusReactorVolumeForCSTRAndPFTR/"],
+ "\"",
+ " from ",
+ ButtonBox["the Wolfram Demonstrations Project",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+ "\[ParagraphSeparator]\[NonBreakingSpace]",
+ ButtonBox["http://demonstrations.wolfram.com/\
+ConversionVersusReactorVolumeForCSTRAndPFTR/",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/\
+ConversionVersusReactorVolumeForCSTRAndPFTR/"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/\
+ConversionVersusReactorVolumeForCSTRAndPFTR/"]
+}], "Text",
+ CellMargins->{{48, Inherited}, {0, Inherited}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.5]],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Housam Binous",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Housam+Binous"],
+     None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Housam+Binous"],
+ " and ",
+ ButtonBox["Ahmed Bellagi",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Ahmed+Bellagi"],
+     None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Ahmed+Bellagi"]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{66, 48}, {2, 4}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.6]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "A full-function Wolfram ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " system (Version 6 or higher) is required to edit this notebook.\n",
+ StyleBox[ButtonBox["GET WOLFRAM MATHEMATICA \[RightGuillemet]",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www.wolfram.com/products/mathematica/"], None},
+  ButtonNote->"http://www.wolfram.com/products/mathematica/"],
+  FontFamily->"Helvetica",
+  FontWeight->"Bold",
+  FontSlant->"Italic",
+  FontColor->RGBColor[1, 0.42, 0]]
+}], "Text",
+ CellFrame->True,
+ CellMargins->{{48, 68}, {8, 28}},
+ CellFrameMargins->12,
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ CellChangeTimes->{3.3750111182355957`*^9},
+ ParagraphSpacing->{1., 1.},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.411765],
+ Background->RGBColor[1, 1, 1]],
+
+Cell[TextData[{
+ "\[Copyright] ",
+ StyleBox[ButtonBox["Wolfram Demonstrations Project & Contributors",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+  FontColor->GrayLevel[0.6]],
+ "\[ThickSpace]\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+ StyleBox[ButtonBox["Terms of Use",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/termsofuse.html"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/termsofuse.html"],
+  FontColor->GrayLevel[0.6]],
+ "\[ThickSpace]\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+ StyleBox[ButtonBox["Make a new version of this Demonstration \
+\[RightGuillemet]",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/participate/upload.jsp?id=\
+ConversionVersusReactorVolumeForCSTRAndPFTR"], None},
+  ButtonNote->None],
+  FontColor->GrayLevel[0.6]]
+}], "Text",
+ CellFrame->{{0, 0}, {0, 0.5}},
+ CellMargins->{{48, 10}, {20, 50}},
+ CellFrameMargins->{{6, 0}, {6, 6}},
+ CellFrameColor->GrayLevel[0.6],
+ FontFamily->"Verdana",
+ FontSize->9,
+ FontColor->GrayLevel[0.6]]
+}, Open  ]]
+}, Open  ]]
+},
+Editable->True,
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+CellInsertionPointCell->None,
+WindowSize->{710, 650},
+WindowMargins->{{Inherited, Inherited}, {Inherited, 0}},
+WindowElements->{
+ "StatusArea", "MemoryMonitor", "MagnificationPopUp", "VerticalScrollBar", 
+  "MenuBar"},
+WindowTitle->"Conversion versus Reactor Volume for CSTR and PFTR - Source",
+DockedCells->{},
+CellContext->Notebook,
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[652, 23, 170, 3, 70, "Section"],
+Cell[825, 28, 3700, 64, 70, "Section"],
+Cell[4528, 94, 8295, 202, 70, "Input",
+ CellID->7484036]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12860, 301, 4482, 95, 70, "Output",
+ CellID->58273494],
+Cell[CellGroupData[{
+Cell[17367, 400, 209, 6, 70, "Section"],
+Cell[17579, 408, 2339, 66, 70, "Text"]
+}, Close]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19966, 480, 209, 6, 70, "Section"],
+Cell[20178, 488, 168, 5, 70, "Text"]
+}, Close]],
+Cell[CellGroupData[{
+Cell[20382, 498, 355, 9, 70, "Text",
+ CellGroupingRules->{"SectionGrouping", 25}],
+Cell[20740, 509, 1060, 31, 70, "Text"],
+Cell[21803, 542, 696, 22, 70, "Text"],
+Cell[CellGroupData[{
+Cell[22524, 568, 815, 24, 70, "Text"],
+Cell[23342, 594, 1215, 33, 70, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+(* NotebookSignature LTNFCic#XvDutCDfd9W40yP7 *)

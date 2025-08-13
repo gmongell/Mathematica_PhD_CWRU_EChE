@@ -1,0 +1,1556 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     68060,       1547]
+NotebookOptionsPosition[     64120,       1426]
+NotebookOutlinePosition[     65874,       1481]
+CellTagsIndexPosition[     65546,       1469]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Action of a Continuous Stirred-Tank Reactor", "DemoTitle",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.51254540315625*^9, 3.4941981089427757`*^9}, 
+   3.494198882753621*^9, {3.4942294663625746`*^9, 3.4942295330603895`*^9}, {
+   3.5109159633388095`*^9, 3.510915982220837*^9}, {3.510916029582905*^9, 
+   3.510916044216939*^9}, {3.511056460997219*^9, 3.5110565295473223`*^9}, {
+   3.511880291310471*^9, 3.511880294031272*^9}, {3.511892919651696*^9, 
+   3.511892921748927*^9}}],
+
+Cell["", "InitializationSection"],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "sol", ",", "ca", ",", "cb", ",", "cc", ",", "cm", ",", "T", ",", "k", 
+       ",", "Ncp", ",", "Q", ",", "Ta2", ",", "UA", ",", "Ta1", ",", "cpA", 
+       ",", "cpB", ",", "cpc", ",", "\[CapitalDelta]H", ",", "Fa0", ",", "T0",
+        ",", "Fb0", ",", "Fm0", ",", "ca0", ",", "v0", ",", "cb0", ",", "cm0",
+        ",", "tau", ",", "V", ",", "rhoa0", ",", "rhob0", ",", "rhom0", ",", 
+       "thetaCp", ",", "mc", ",", "cc0"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"UA", "=", "16000"}], ";", 
+      RowBox[{"Ta1", "=", "60"}], ";", 
+      RowBox[{"cpA", "=", "35"}], ";", 
+      RowBox[{"cpB", "=", "18"}], ";", 
+      RowBox[{"cpc", "=", "46"}], ";", 
+      RowBox[{"\[CapitalDelta]H", "=", 
+       RowBox[{"-", "36000"}]}], ";", 
+      RowBox[{"Fa0", "=", "80"}], ";", 
+      RowBox[{"T0", "=", "75"}], ";", 
+      RowBox[{"Fb0", "=", "1000"}], ";", 
+      RowBox[{"Fm0", "=", "100"}], ";", 
+      RowBox[{
+       RowBox[{"k", "[", 
+        RowBox[{"T", "[", "t_", "]"}], "]"}], ":=", 
+       RowBox[{"16.96", " ", 
+        RowBox[{"10", "^", "12"}], " ", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "32400"}], "/", "1.987"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"T", "[", "t", "]"}], "+", "460"}], ")"}]}], "]"}]}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"V", "=", 
+       RowBox[{"500", "/", "7.484"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"rhoa0", "=", "0.923"}], ";", 
+      RowBox[{"rhob0", "=", "3.45"}], ";", 
+      RowBox[{"rhom0", "=", "1.54"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"v0", "=", 
+       RowBox[{
+        RowBox[{"Fa0", "/", "rhoa0"}], "+", 
+        RowBox[{"Fb0", "/", "rhob0"}], "+", 
+        RowBox[{"Fm0", "/", "rhom0"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ca0", "=", 
+       RowBox[{"Fa0", "/", "v0"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"cb0", "=", 
+       RowBox[{"Fb0", "/", "v0"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"cm0", "=", 
+       RowBox[{"Fm0", "/", "v0"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"tau", "=", 
+       RowBox[{"V", "/", "v0"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"cc0", "=", "0"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Ncp", "[", "t_", "]"}], ":=", 
+       RowBox[{
+        RowBox[{"35", " ", 
+         RowBox[{"ca", "[", "t", "]"}], " ", "V"}], "+", 
+        RowBox[{"18", " ", 
+         RowBox[{"cb", "[", "t", "]"}], " ", "V"}], "+", 
+        RowBox[{"46", " ", 
+         RowBox[{"cc", "[", "t", "]"}], " ", "V"}], "+", 
+        RowBox[{"19.5", " ", 
+         RowBox[{"cm", "[", "t", "]"}], " ", "V"}]}]}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"thetaCp", "=", 
+       RowBox[{"35", "+", 
+        RowBox[{
+         RowBox[{"Fb0", "/", "Fa0"}], " ", "18"}], "+", 
+        RowBox[{"19.5", " ", 
+         RowBox[{"Fm0", "/", "Fa0"}]}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"mc", "=", "1000"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Q", "[", "t_", "]"}], ":=", 
+       RowBox[{"mc", " ", "18", " ", 
+        RowBox[{"(", 
+         RowBox[{"Ta1", "-", 
+          RowBox[{"Ta2", "[", "t", "]"}]}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Ta2", "[", "t_", "]"}], ":=", " ", 
+       RowBox[{
+        RowBox[{"T", "[", "t", "]"}], "-", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"T", "[", "t", "]"}], "-", "Ta1"}], ")"}], " ", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", "UA"}], "/", 
+           RowBox[{"(", 
+            RowBox[{"18", " ", "mc"}], ")"}]}], "]"}]}]}]}], ";", 
+      RowBox[{"sol", "=", 
+       RowBox[{"NDSolve", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"ca", "'"}], "[", "t", "]"}], "\[Equal]", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"1", "/", "tau"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"ca0", "-", 
+                RowBox[{"ca", "[", "t", "]"}]}], ")"}]}], "-", 
+             RowBox[{
+              RowBox[{"k", "[", 
+               RowBox[{"T", "[", "t", "]"}], "]"}], " ", 
+              RowBox[{"ca", "[", "t", "]"}]}]}]}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cb", "'"}], "[", "t", "]"}], "\[Equal]", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"1", "/", "tau"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"cb0", "-", 
+                RowBox[{"cb", "[", "t", "]"}]}], ")"}]}], "-", 
+             RowBox[{
+              RowBox[{"k", "[", 
+               RowBox[{"T", "[", "t", "]"}], "]"}], " ", 
+              RowBox[{"ca", "[", "t", "]"}]}]}]}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cc", "'"}], "[", "t", "]"}], "\[Equal]", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"1", "/", "tau"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"cc0", "-", 
+                RowBox[{"cc", "[", "t", "]"}]}], ")"}]}], "+", 
+             RowBox[{
+              RowBox[{"k", "[", 
+               RowBox[{"T", "[", "t", "]"}], "]"}], " ", 
+              RowBox[{"ca", "[", "t", "]"}]}]}]}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cm", "'"}], "[", "t", "]"}], "\[Equal]", " ", 
+            RowBox[{
+             RowBox[{"1", "/", "tau"}], " ", 
+             RowBox[{"(", 
+              RowBox[{"cm0", "-", 
+               RowBox[{"cm", "[", "t", "]"}]}], ")"}]}]}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"T", "'"}], "[", "t", "]"}], "\[Equal]", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Q", "[", "t", "]"}], "-", 
+               RowBox[{"Fa0", " ", "thetaCp", " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"T", "[", "t", "]"}], "-", "T0"}], ")"}]}], "-", 
+               RowBox[{"\[CapitalDelta]H", " ", "V", " ", 
+                RowBox[{"k", "[", 
+                 RowBox[{"T", "[", "t", "]"}], "]"}], " ", 
+                RowBox[{"ca", "[", "t", "]"}]}]}], ")"}], "/", 
+             RowBox[{"Ncp", "[", "t", "]"}]}]}], ",", 
+           RowBox[{
+            RowBox[{"ca", "[", "0", "]"}], "\[Equal]", "cat0"}], ",", 
+           RowBox[{
+            RowBox[{"T", "[", "0", "]"}], "\[Equal]", "Tt0"}], ",", 
+           RowBox[{
+            RowBox[{"cc", "[", "0", "]"}], "\[Equal]", "0"}], " ", ",", 
+           RowBox[{
+            RowBox[{"cb", "[", "0", "]"}], "\[Equal]", "3.45"}], ",", 
+           RowBox[{
+            RowBox[{"cm", "[", "0", "]"}], "\[Equal]", " ", "0"}]}], " ", 
+          "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"ca", "[", "t", "]"}], ",", 
+           RowBox[{"cb", "[", "t", "]"}], ",", 
+           RowBox[{"cc", "[", "t", "]"}], ",", 
+           RowBox[{"cm", "[", "t", "]"}], ",", 
+           RowBox[{"T", "[", "t", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "100"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"T", "[", "t", "]"}], ",", 
+            RowBox[{"ca", "[", "t", "]"}]}], "}"}], "/.", "sol"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "100"}], "}"}], ",", 
+        RowBox[{"PlotPoints", "\[Rule]", " ", "10000"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"50", ",", "240"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0.20"}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", " ", "1"}], ",", 
+        RowBox[{"Frame", "\[Rule]", "  ", "True"}], ",", 
+        RowBox[{"ColorFunction", "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ColorData", "[", "\"\<Rainbow\>\"", "]"}], "[", 
+            RowBox[{"#3", " ", "100"}], "]"}], "&"}], ")"}]}], ",", 
+        RowBox[{"MaxRecursion", "\[Rule]", "0"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Thick"}], ",", 
+        RowBox[{"AxesOrigin", "\[Rule]", " ", 
+         RowBox[{"{", 
+          RowBox[{"50", ",", "0"}], "}"}]}], ",", 
+        RowBox[{"GridLines", "\[Rule]", " ", "Automatic"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+            "\"\<temperature in \[Degree]F\>\"", ",", "\"\<Times\>\"", ",", 
+             "14"}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{
+            "\"\<propylene oxide concentration in \
+mol/\!\(\*SuperscriptBox[\(dm\), \(3\)]\)\>\"", ",", "\"\<Times\>\"", ",", 
+             "14"}], "]"}]}], "}"}]}], ",", " ", 
+        RowBox[{"Epilog", "\[Rule]", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+           RowBox[{"RGBColor", "[", 
+            RowBox[{"0.88", ",", "0", ",", "0"}], "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{
+             RowBox[{"Evaluate", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"T", "[", "t", "]"}], ",", 
+                 RowBox[{"ca", "[", "t", "]"}]}], "}"}], "/.", "sol"}], "]"}],
+              "/.", 
+             RowBox[{"t", "\[Rule]", " ", "100"}]}], "]"}], ",", 
+           RowBox[{"Thickness", "[", "0.0125", "]"}], ",", 
+           RowBox[{"RGBColor", "[", 
+            RowBox[{"0", ",", "0.88", ",", "0"}], "]"}], ",", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"180", ",", "0"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"180", ",", "0.20"}], "}"}]}], "}"}], "]"}], ",", 
+           RowBox[{"Opacity", "[", "0.6", "]"}], ",", "LightGreen", ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"180", ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"240", ",", "0.20"}], "}"}]}], "]"}], ",", 
+           RowBox[{"Rotate", "[", 
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Text", "[", 
+                RowBox[{"\"\<undesirable   region\>\"", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"210", ",", "0.1"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", "Bold", ",", 
+               "Black", ",", "18"}], "]"}], ",", 
+             RowBox[{"Pi", "/", "2"}]}], "]"}]}], "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"450", ",", "400"}], "}"}]}]}], "]"}]}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Tt0", ",", "60", ",", "\"\<initial reactor temperature\>\""}], 
+      "}"}], ",", "60", ",", "160", ",", "5", ",", 
+     RowBox[{"Appearance", "\[Rule]", " ", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "cat0", ",", "0", ",", 
+       "\"\<initial propylene oxide concentration\>\""}], "}"}], ",", "0", 
+     ",", "0.14", ",", "0.01", ",", 
+     RowBox[{"Appearance", "\[Rule]", " ", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", " ", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"Tt0", ",", "cat0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"SynchronousUpdating", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.511061614776717*^9, 3.5110617633620358`*^9}, {
+   3.5110620327755747`*^9, 3.5110621468068247`*^9}, 3.511062208156351*^9, {
+   3.5110622408184547`*^9, 3.511062245660468*^9}, {3.511062309010742*^9, 
+   3.5110623115427475`*^9}, {3.511062351048829*^9, 3.511062458859113*^9}, {
+   3.511062523043248*^9, 3.511062586001416*^9}, {3.5110626316385374`*^9, 
+   3.5110627589998055`*^9}, {3.511062844331954*^9, 3.5110628516759663`*^9}, {
+   3.511071625308916*^9, 3.5110717009271784`*^9}, {3.5110718639697313`*^9, 
+   3.5110719426059155`*^9}, {3.5110719798250237`*^9, 3.511072024169197*^9}, {
+   3.5111946053513527`*^9, 3.511194862786217*^9}, {3.5111950046700573`*^9, 
+   3.5111950110034194`*^9}, {3.5111952865434628`*^9, 
+   3.5111952872298636`*^9}, {3.5112747219259214`*^9, 
+   3.5112748919859257`*^9}, {3.5112749376214886`*^9, 
+   3.5112749496356897`*^9}, {3.511880160637187*^9, 3.5118801685780907`*^9}},
+ CellID->302384952],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cat0$$ = 0, $CellContext`Tt0$$ = 60, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Tt0$$], 60, "initial reactor temperature"}, 60, 160, 
+      5}, {{
+       Hold[$CellContext`cat0$$], 0, "initial propylene oxide concentration"},
+       0, 0.14, 0.01}}, Typeset`size$$ = {450., {198., 202.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`Tt0$149565$$ = 0, $CellContext`cat0$149566$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cat0$$ = 0, $CellContext`Tt0$$ = 60}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`Tt0$$, $CellContext`Tt0$149565$$, 0], 
+        Hold[$CellContext`cat0$$, $CellContext`cat0$149566$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`sol$, $CellContext`ca$, $CellContext`cb$, \
+$CellContext`cc$, $CellContext`cm$, $CellContext`T$, $CellContext`k$, \
+$CellContext`Ncp$, $CellContext`Q$, $CellContext`Ta2$, $CellContext`UA$, \
+$CellContext`Ta1$, $CellContext`cpA$, $CellContext`cpB$, $CellContext`cpc$, \
+$CellContext`\[CapitalDelta]H$, $CellContext`Fa0$, $CellContext`T0$, \
+$CellContext`Fb0$, $CellContext`Fm0$, $CellContext`ca0$, $CellContext`v0$, \
+$CellContext`cb0$, $CellContext`cm0$, $CellContext`tau$, $CellContext`V$, \
+$CellContext`rhoa0$, $CellContext`rhob0$, $CellContext`rhom0$, \
+$CellContext`thetaCp$, $CellContext`mc$, $CellContext`cc0$}, $CellContext`UA$ = 
+         16000; $CellContext`Ta1$ = 60; $CellContext`cpA$ = 
+         35; $CellContext`cpB$ = 18; $CellContext`cpc$ = 
+         46; $CellContext`\[CapitalDelta]H$ = -36000; $CellContext`Fa0$ = 
+         80; $CellContext`T0$ = 75; $CellContext`Fb0$ = 
+         1000; $CellContext`Fm0$ = 100; $CellContext`k$[
+           $CellContext`T$[
+            Pattern[$CellContext`t$, 
+             Blank[]]]] := (16.96 10^12) 
+          Exp[((-32400)/1.987)/($CellContext`T$[$CellContext`t$] + 
+            460)]; $CellContext`V$ = 500/7.484; $CellContext`rhoa0$ = 
+         0.923; $CellContext`rhob0$ = 3.45; $CellContext`rhom0$ = 
+         1.54; $CellContext`v0$ = $CellContext`Fa0$/$CellContext`rhoa0$ + \
+$CellContext`Fb0$/$CellContext`rhob0$ + $CellContext`Fm0$/$CellContext`rhom0$; \
+$CellContext`ca0$ = $CellContext`Fa0$/$CellContext`v0$; $CellContext`cb0$ = \
+$CellContext`Fb0$/$CellContext`v0$; $CellContext`cm0$ = \
+$CellContext`Fm0$/$CellContext`v0$; $CellContext`tau$ = \
+$CellContext`V$/$CellContext`v0$; $CellContext`cc0$ = 0; $CellContext`Ncp$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := (
+            35 $CellContext`ca$[$CellContext`t$]) $CellContext`V$ + (
+            18 $CellContext`cb$[$CellContext`t$]) $CellContext`V$ + (
+            46 $CellContext`cc$[$CellContext`t$]) $CellContext`V$ + (
+            19.5 $CellContext`cm$[$CellContext`t$]) $CellContext`V$; \
+$CellContext`thetaCp$ = 
+         35 + ($CellContext`Fb0$/$CellContext`Fa0$) 18 + 
+          19.5 ($CellContext`Fm0$/$CellContext`Fa0$); $CellContext`mc$ = 
+         1000; $CellContext`Q$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := ($CellContext`mc$ 
+           18) ($CellContext`Ta1$ - $CellContext`Ta2$[$CellContext`t$]); \
+$CellContext`Ta2$[
+           Pattern[$CellContext`t$, 
+            
+            Blank[]]] := $CellContext`T$[$CellContext`t$] - \
+($CellContext`T$[$CellContext`t$] - $CellContext`Ta1$) 
+          Exp[(-$CellContext`UA$)/(18 $CellContext`mc$)]; $CellContext`sol$ = 
+         NDSolve[{
+           Derivative[
+             1][$CellContext`ca$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`ca0$ - \
+$CellContext`ca$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cb$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cb0$ - \
+$CellContext`cb$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cc$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cc0$ - \
+$CellContext`cc$[$CellContext`t]) + $CellContext`k$[
+                $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cm$][$CellContext`t] == (
+              1/$CellContext`tau$) ($CellContext`cm0$ - \
+$CellContext`cm$[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`T$][$CellContext`t] == \
+($CellContext`Q$[$CellContext`t] - ($CellContext`Fa0$ $CellContext`thetaCp$) \
+($CellContext`T$[$CellContext`t] - $CellContext`T0$) - (($CellContext`\
+\[CapitalDelta]H$ $CellContext`V$) $CellContext`k$[
+                 $CellContext`T$[$CellContext`t]]) \
+$CellContext`ca$[$CellContext`t])/$CellContext`Ncp$[$CellContext`t], \
+$CellContext`ca$[0] == $CellContext`cat0$$, $CellContext`T$[
+             0] == $CellContext`Tt0$$, $CellContext`cc$[0] == 
+            0, $CellContext`cb$[0] == 3.45, $CellContext`cm$[0] == 0}, {
+            $CellContext`ca$[$CellContext`t], 
+            $CellContext`cb$[$CellContext`t], 
+            $CellContext`cc$[$CellContext`t], 
+            $CellContext`cm$[$CellContext`t], 
+            $CellContext`T$[$CellContext`t]}, {$CellContext`t, 0, 100}]; 
+        ParametricPlot[
+          Evaluate[
+           ReplaceAll[{
+             $CellContext`T$[$CellContext`t], 
+             $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+{$CellContext`t, 0, 100}, PlotPoints -> 10000, 
+          PlotRange -> {{50, 240}, {0, 0.2}}, AspectRatio -> 1, Frame -> True,
+           ColorFunction -> (ColorData["Rainbow"][#3 100]& ), MaxRecursion -> 
+          0, PlotStyle -> Thick, AxesOrigin -> {50, 0}, GridLines -> 
+          Automatic, FrameLabel -> {
+            Style["temperature in \[Degree]F", "Times", 14], 
+            Style[
+            "propylene oxide concentration in \
+mol/\!\(\*SuperscriptBox[\(dm\), \(3\)]\)", "Times", 14]}, Epilog -> {
+            PointSize[0.025], 
+            RGBColor[0.88, 0, 0], 
+            Point[
+             ReplaceAll[
+              Evaluate[
+               ReplaceAll[{
+                 $CellContext`T$[$CellContext`t], 
+                 $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+$CellContext`t -> 100]], 
+            Thickness[0.0125], 
+            RGBColor[0, 0.88, 0], 
+            Line[{{180, 0}, {180, 0.2}}], 
+            Opacity[0.6], LightGreen, 
+            Rectangle[{180, 0}, {240, 0.2}], 
+            Rotate[
+             Style[
+              Text["undesirable   region", {210, 0.1}, {0, 0}], Bold, Black, 
+              18], Pi/2]}, ImageSize -> {450, 400}]], 
+      "Specifications" :> {{{$CellContext`Tt0$$, 60, 
+          "initial reactor temperature"}, 60, 160, 5, Appearance -> 
+         "Labeled"}, {{$CellContext`cat0$$, 0, 
+          "initial propylene oxide concentration"}, 0, 0.14, 0.01, Appearance -> 
+         "Labeled"}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`Tt0$$, $CellContext`cat0$$}, 
+        SynchronousUpdating -> False}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{533., {265., 270.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.511892642178516*^9},
+ CellID->496196892]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell["\<\
+The startup of a reactor may lead to significant overshoot in temperature, \
+causing economic loss due to undesirable side reactions, equipment damage, \
+or, in the worst case, safety concerns.\
+\>", "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.511064378049101*^9, 3.5110644658412657`*^9}, {
+   3.5110647958489113`*^9, 3.5110648309570165`*^9}, {3.511880181545319*^9, 
+   3.5118802103541727`*^9}, {3.511892750459056*^9, 3.51189281004436*^9}, {
+   3.513014275142117*^9, 3.513014275835553*^9}},
+ CellID->165821616],
+
+Cell[TextData[{
+ "This Demonstration simulates the startup of a propylene glycol reactor. The \
+feed is composed of propylene oxide in an excess of water. You can change the \
+values of the reactor's initial temperature and initial propylene oxide \
+concentration. The Demonstration plots the concentration-temperature phase \
+plane for various initial conditions. The practical stability limit (for this \
+problem ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"180", "\[Degree]F"}], TraditionalForm]], "InlineMath"],
+ ") can be exceeded for certain values of the initial conditions (see \
+Snapshot 3). Finally, the steady state is indicated by the red dot."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.511064378049101*^9, 3.5110647630988655`*^9}, {
+   3.511064845431039*^9, 3.5110649648892574`*^9}, {3.511880223968399*^9, 
+   3.511880233304392*^9}, {3.5118803076225567`*^9, 3.511880307970057*^9}, 
+   3.51188039089537*^9, {3.511892829328432*^9, 3.511892830080168*^9}, {
+   3.513014303218767*^9, 3.513014304106739*^9}, {3.513014346876883*^9, 
+   3.513014366628257*^9}},
+ CellID->3524795]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cat0$$ = 0.12, $CellContext`Tt0$$ = 60, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Tt0$$], 60, "initial reactor temperature"}, 60, 160, 
+      5}, {{
+       Hold[$CellContext`cat0$$], 0, "initial propylene oxide concentration"},
+       0, 0.14, 0.01}}, Typeset`size$$ = {450., {198., 202.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`Tt0$643039$$ = 0, $CellContext`cat0$643040$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cat0$$ = 0, $CellContext`Tt0$$ = 60}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`Tt0$$, $CellContext`Tt0$643039$$, 0], 
+        Hold[$CellContext`cat0$$, $CellContext`cat0$643040$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`sol$, $CellContext`ca$, $CellContext`cb$, \
+$CellContext`cc$, $CellContext`cm$, $CellContext`T$, $CellContext`k$, \
+$CellContext`Ncp$, $CellContext`Q$, $CellContext`Ta2$, $CellContext`UA$, \
+$CellContext`Ta1$, $CellContext`cpA$, $CellContext`cpB$, $CellContext`cpc$, \
+$CellContext`\[CapitalDelta]H$, $CellContext`Fa0$, $CellContext`T0$, \
+$CellContext`Fb0$, $CellContext`Fm0$, $CellContext`ca0$, $CellContext`v0$, \
+$CellContext`cb0$, $CellContext`cm0$, $CellContext`tau$, $CellContext`V$, \
+$CellContext`rhoa0$, $CellContext`rhob0$, $CellContext`rhom0$, \
+$CellContext`thetaCp$, $CellContext`mc$, $CellContext`cc0$}, $CellContext`UA$ = 
+         16000; $CellContext`Ta1$ = 60; $CellContext`cpA$ = 
+         35; $CellContext`cpB$ = 18; $CellContext`cpc$ = 
+         46; $CellContext`\[CapitalDelta]H$ = -36000; $CellContext`Fa0$ = 
+         80; $CellContext`T0$ = 75; $CellContext`Fb0$ = 
+         1000; $CellContext`Fm0$ = 100; $CellContext`k$[
+           $CellContext`T$[
+            Pattern[$CellContext`t$, 
+             Blank[]]]] := (16.96 10^12) 
+          Exp[((-32400)/1.987)/($CellContext`T$[$CellContext`t$] + 
+            460)]; $CellContext`V$ = 500/7.484; $CellContext`rhoa0$ = 
+         0.923; $CellContext`rhob0$ = 3.45; $CellContext`rhom0$ = 
+         1.54; $CellContext`v0$ = $CellContext`Fa0$/$CellContext`rhoa0$ + \
+$CellContext`Fb0$/$CellContext`rhob0$ + $CellContext`Fm0$/$CellContext`rhom0$; \
+$CellContext`ca0$ = $CellContext`Fa0$/$CellContext`v0$; $CellContext`cb0$ = \
+$CellContext`Fb0$/$CellContext`v0$; $CellContext`cm0$ = \
+$CellContext`Fm0$/$CellContext`v0$; $CellContext`tau$ = \
+$CellContext`V$/$CellContext`v0$; $CellContext`cc0$ = 0; $CellContext`Ncp$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := (
+            35 $CellContext`ca$[$CellContext`t$]) $CellContext`V$ + (
+            18 $CellContext`cb$[$CellContext`t$]) $CellContext`V$ + (
+            46 $CellContext`cc$[$CellContext`t$]) $CellContext`V$ + (
+            19.5 $CellContext`cm$[$CellContext`t$]) $CellContext`V$; \
+$CellContext`thetaCp$ = 
+         35 + ($CellContext`Fb0$/$CellContext`Fa0$) 18 + 
+          19.5 ($CellContext`Fm0$/$CellContext`Fa0$); $CellContext`mc$ = 
+         1000; $CellContext`Q$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := ($CellContext`mc$ 
+           18) ($CellContext`Ta1$ - $CellContext`Ta2$[$CellContext`t$]); \
+$CellContext`Ta2$[
+           Pattern[$CellContext`t$, 
+            
+            Blank[]]] := $CellContext`T$[$CellContext`t$] - \
+($CellContext`T$[$CellContext`t$] - $CellContext`Ta1$) 
+          Exp[(-$CellContext`UA$)/(18 $CellContext`mc$)]; $CellContext`sol$ = 
+         NDSolve[{
+           Derivative[
+             1][$CellContext`ca$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`ca0$ - \
+$CellContext`ca$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cb$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cb0$ - \
+$CellContext`cb$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cc$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cc0$ - \
+$CellContext`cc$[$CellContext`t]) + $CellContext`k$[
+                $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cm$][$CellContext`t] == (
+              1/$CellContext`tau$) ($CellContext`cm0$ - \
+$CellContext`cm$[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`T$][$CellContext`t] == \
+($CellContext`Q$[$CellContext`t] - ($CellContext`Fa0$ $CellContext`thetaCp$) \
+($CellContext`T$[$CellContext`t] - $CellContext`T0$) - (($CellContext`\
+\[CapitalDelta]H$ $CellContext`V$) $CellContext`k$[
+                 $CellContext`T$[$CellContext`t]]) \
+$CellContext`ca$[$CellContext`t])/$CellContext`Ncp$[$CellContext`t], \
+$CellContext`ca$[0] == $CellContext`cat0$$, $CellContext`T$[
+             0] == $CellContext`Tt0$$, $CellContext`cc$[0] == 
+            0, $CellContext`cb$[0] == 3.45, $CellContext`cm$[0] == 0}, {
+            $CellContext`ca$[$CellContext`t], 
+            $CellContext`cb$[$CellContext`t], 
+            $CellContext`cc$[$CellContext`t], 
+            $CellContext`cm$[$CellContext`t], 
+            $CellContext`T$[$CellContext`t]}, {$CellContext`t, 0, 100}]; 
+        ParametricPlot[
+          Evaluate[
+           ReplaceAll[{
+             $CellContext`T$[$CellContext`t], 
+             $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+{$CellContext`t, 0, 100}, PlotPoints -> 10000, 
+          PlotRange -> {{50, 240}, {0, 0.2}}, AspectRatio -> 1, Frame -> True,
+           ColorFunction -> (ColorData["Rainbow"][#3 100]& ), MaxRecursion -> 
+          0, PlotStyle -> Thick, AxesOrigin -> {50, 0}, GridLines -> 
+          Automatic, FrameLabel -> {
+            Style["temperature in \[Degree]F", "Times", 14], 
+            Style[
+            "propylene oxide concentration in \
+mol/\!\(\*SuperscriptBox[\(dm\), \(3\)]\)", "Times", 14]}, Epilog -> {
+            PointSize[0.025], 
+            RGBColor[0.88, 0, 0], 
+            Point[
+             ReplaceAll[
+              Evaluate[
+               ReplaceAll[{
+                 $CellContext`T$[$CellContext`t], 
+                 $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+$CellContext`t -> 100]], 
+            Thickness[0.0125], 
+            RGBColor[0, 0.88, 0], 
+            Line[{{180, 0}, {180, 0.2}}], 
+            Opacity[0.6], LightGreen, 
+            Rectangle[{180, 0}, {240, 0.2}], 
+            Rotate[
+             Style[
+              Text["undesirable   region", {210, 0.1}, {0, 0}], Bold, Black, 
+              18], Pi/2]}, ImageSize -> {450, 400}]], 
+      "Specifications" :> {{{$CellContext`Tt0$$, 60, 
+          "initial reactor temperature"}, 60, 160, 5, Appearance -> 
+         "Labeled"}, {{$CellContext`cat0$$, 0, 
+          "initial propylene oxide concentration"}, 0, 0.14, 0.01, Appearance -> 
+         "Labeled"}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`Tt0$$, $CellContext`cat0$$}, 
+        SynchronousUpdating -> False}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{533., {265., 270.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1162935890]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cat0$$ = 0, $CellContext`Tt0$$ = 60, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Tt0$$], 60, "initial reactor temperature"}, 60, 160, 
+      5}, {{
+       Hold[$CellContext`cat0$$], 0, "initial propylene oxide concentration"},
+       0, 0.14, 0.01}}, Typeset`size$$ = {450., {198., 202.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`Tt0$643094$$ = 0, $CellContext`cat0$643095$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cat0$$ = 0, $CellContext`Tt0$$ = 60}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`Tt0$$, $CellContext`Tt0$643094$$, 0], 
+        Hold[$CellContext`cat0$$, $CellContext`cat0$643095$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`sol$, $CellContext`ca$, $CellContext`cb$, \
+$CellContext`cc$, $CellContext`cm$, $CellContext`T$, $CellContext`k$, \
+$CellContext`Ncp$, $CellContext`Q$, $CellContext`Ta2$, $CellContext`UA$, \
+$CellContext`Ta1$, $CellContext`cpA$, $CellContext`cpB$, $CellContext`cpc$, \
+$CellContext`\[CapitalDelta]H$, $CellContext`Fa0$, $CellContext`T0$, \
+$CellContext`Fb0$, $CellContext`Fm0$, $CellContext`ca0$, $CellContext`v0$, \
+$CellContext`cb0$, $CellContext`cm0$, $CellContext`tau$, $CellContext`V$, \
+$CellContext`rhoa0$, $CellContext`rhob0$, $CellContext`rhom0$, \
+$CellContext`thetaCp$, $CellContext`mc$, $CellContext`cc0$}, $CellContext`UA$ = 
+         16000; $CellContext`Ta1$ = 60; $CellContext`cpA$ = 
+         35; $CellContext`cpB$ = 18; $CellContext`cpc$ = 
+         46; $CellContext`\[CapitalDelta]H$ = -36000; $CellContext`Fa0$ = 
+         80; $CellContext`T0$ = 75; $CellContext`Fb0$ = 
+         1000; $CellContext`Fm0$ = 100; $CellContext`k$[
+           $CellContext`T$[
+            Pattern[$CellContext`t$, 
+             Blank[]]]] := (16.96 10^12) 
+          Exp[((-32400)/1.987)/($CellContext`T$[$CellContext`t$] + 
+            460)]; $CellContext`V$ = 500/7.484; $CellContext`rhoa0$ = 
+         0.923; $CellContext`rhob0$ = 3.45; $CellContext`rhom0$ = 
+         1.54; $CellContext`v0$ = $CellContext`Fa0$/$CellContext`rhoa0$ + \
+$CellContext`Fb0$/$CellContext`rhob0$ + $CellContext`Fm0$/$CellContext`rhom0$; \
+$CellContext`ca0$ = $CellContext`Fa0$/$CellContext`v0$; $CellContext`cb0$ = \
+$CellContext`Fb0$/$CellContext`v0$; $CellContext`cm0$ = \
+$CellContext`Fm0$/$CellContext`v0$; $CellContext`tau$ = \
+$CellContext`V$/$CellContext`v0$; $CellContext`cc0$ = 0; $CellContext`Ncp$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := (
+            35 $CellContext`ca$[$CellContext`t$]) $CellContext`V$ + (
+            18 $CellContext`cb$[$CellContext`t$]) $CellContext`V$ + (
+            46 $CellContext`cc$[$CellContext`t$]) $CellContext`V$ + (
+            19.5 $CellContext`cm$[$CellContext`t$]) $CellContext`V$; \
+$CellContext`thetaCp$ = 
+         35 + ($CellContext`Fb0$/$CellContext`Fa0$) 18 + 
+          19.5 ($CellContext`Fm0$/$CellContext`Fa0$); $CellContext`mc$ = 
+         1000; $CellContext`Q$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := ($CellContext`mc$ 
+           18) ($CellContext`Ta1$ - $CellContext`Ta2$[$CellContext`t$]); \
+$CellContext`Ta2$[
+           Pattern[$CellContext`t$, 
+            
+            Blank[]]] := $CellContext`T$[$CellContext`t$] - \
+($CellContext`T$[$CellContext`t$] - $CellContext`Ta1$) 
+          Exp[(-$CellContext`UA$)/(18 $CellContext`mc$)]; $CellContext`sol$ = 
+         NDSolve[{
+           Derivative[
+             1][$CellContext`ca$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`ca0$ - \
+$CellContext`ca$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cb$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cb0$ - \
+$CellContext`cb$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cc$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cc0$ - \
+$CellContext`cc$[$CellContext`t]) + $CellContext`k$[
+                $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cm$][$CellContext`t] == (
+              1/$CellContext`tau$) ($CellContext`cm0$ - \
+$CellContext`cm$[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`T$][$CellContext`t] == \
+($CellContext`Q$[$CellContext`t] - ($CellContext`Fa0$ $CellContext`thetaCp$) \
+($CellContext`T$[$CellContext`t] - $CellContext`T0$) - (($CellContext`\
+\[CapitalDelta]H$ $CellContext`V$) $CellContext`k$[
+                 $CellContext`T$[$CellContext`t]]) \
+$CellContext`ca$[$CellContext`t])/$CellContext`Ncp$[$CellContext`t], \
+$CellContext`ca$[0] == $CellContext`cat0$$, $CellContext`T$[
+             0] == $CellContext`Tt0$$, $CellContext`cc$[0] == 
+            0, $CellContext`cb$[0] == 3.45, $CellContext`cm$[0] == 0}, {
+            $CellContext`ca$[$CellContext`t], 
+            $CellContext`cb$[$CellContext`t], 
+            $CellContext`cc$[$CellContext`t], 
+            $CellContext`cm$[$CellContext`t], 
+            $CellContext`T$[$CellContext`t]}, {$CellContext`t, 0, 100}]; 
+        ParametricPlot[
+          Evaluate[
+           ReplaceAll[{
+             $CellContext`T$[$CellContext`t], 
+             $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+{$CellContext`t, 0, 100}, PlotPoints -> 10000, 
+          PlotRange -> {{50, 240}, {0, 0.2}}, AspectRatio -> 1, Frame -> True,
+           ColorFunction -> (ColorData["Rainbow"][#3 100]& ), MaxRecursion -> 
+          0, PlotStyle -> Thick, AxesOrigin -> {50, 0}, GridLines -> 
+          Automatic, FrameLabel -> {
+            Style["temperature in \[Degree]F", "Times", 14], 
+            Style[
+            "propylene oxide concentration in \
+mol/\!\(\*SuperscriptBox[\(dm\), \(3\)]\)", "Times", 14]}, Epilog -> {
+            PointSize[0.025], 
+            RGBColor[0.88, 0, 0], 
+            Point[
+             ReplaceAll[
+              Evaluate[
+               ReplaceAll[{
+                 $CellContext`T$[$CellContext`t], 
+                 $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+$CellContext`t -> 100]], 
+            Thickness[0.0125], 
+            RGBColor[0, 0.88, 0], 
+            Line[{{180, 0}, {180, 0.2}}], 
+            Opacity[0.6], LightGreen, 
+            Rectangle[{180, 0}, {240, 0.2}], 
+            Rotate[
+             Style[
+              Text["undesirable   region", {210, 0.1}, {0, 0}], Bold, Black, 
+              18], Pi/2]}, ImageSize -> {450, 400}]], 
+      "Specifications" :> {{{$CellContext`Tt0$$, 60, 
+          "initial reactor temperature"}, 60, 160, 5, Appearance -> 
+         "Labeled"}, {{$CellContext`cat0$$, 0, 
+          "initial propylene oxide concentration"}, 0, 0.14, 0.01, Appearance -> 
+         "Labeled"}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`Tt0$$, $CellContext`cat0$$}, 
+        SynchronousUpdating -> False}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{533., {265., 270.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1214831883],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cat0$$ = 0.02, $CellContext`Tt0$$ = 125, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Tt0$$], 125, "initial reactor temperature"}, 60, 160,
+       5}, {{
+       Hold[$CellContext`cat0$$], 0.02, 
+       "initial propylene oxide concentration"}, 0, 0.14, 0.01}}, 
+    Typeset`size$$ = {450., {198., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`Tt0$643149$$ = 0, $CellContext`cat0$643150$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cat0$$ = 0.02, $CellContext`Tt0$$ = 125}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`Tt0$$, $CellContext`Tt0$643149$$, 0], 
+        Hold[$CellContext`cat0$$, $CellContext`cat0$643150$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`sol$, $CellContext`ca$, $CellContext`cb$, \
+$CellContext`cc$, $CellContext`cm$, $CellContext`T$, $CellContext`k$, \
+$CellContext`Ncp$, $CellContext`Q$, $CellContext`Ta2$, $CellContext`UA$, \
+$CellContext`Ta1$, $CellContext`cpA$, $CellContext`cpB$, $CellContext`cpc$, \
+$CellContext`\[CapitalDelta]H$, $CellContext`Fa0$, $CellContext`T0$, \
+$CellContext`Fb0$, $CellContext`Fm0$, $CellContext`ca0$, $CellContext`v0$, \
+$CellContext`cb0$, $CellContext`cm0$, $CellContext`tau$, $CellContext`V$, \
+$CellContext`rhoa0$, $CellContext`rhob0$, $CellContext`rhom0$, \
+$CellContext`thetaCp$, $CellContext`mc$, $CellContext`cc0$}, $CellContext`UA$ = 
+         16000; $CellContext`Ta1$ = 60; $CellContext`cpA$ = 
+         35; $CellContext`cpB$ = 18; $CellContext`cpc$ = 
+         46; $CellContext`\[CapitalDelta]H$ = -36000; $CellContext`Fa0$ = 
+         80; $CellContext`T0$ = 75; $CellContext`Fb0$ = 
+         1000; $CellContext`Fm0$ = 100; $CellContext`k$[
+           $CellContext`T$[
+            Pattern[$CellContext`t$, 
+             Blank[]]]] := (16.96 10^12) 
+          Exp[((-32400)/1.987)/($CellContext`T$[$CellContext`t$] + 
+            460)]; $CellContext`V$ = 500/7.484; $CellContext`rhoa0$ = 
+         0.923; $CellContext`rhob0$ = 3.45; $CellContext`rhom0$ = 
+         1.54; $CellContext`v0$ = $CellContext`Fa0$/$CellContext`rhoa0$ + \
+$CellContext`Fb0$/$CellContext`rhob0$ + $CellContext`Fm0$/$CellContext`rhom0$; \
+$CellContext`ca0$ = $CellContext`Fa0$/$CellContext`v0$; $CellContext`cb0$ = \
+$CellContext`Fb0$/$CellContext`v0$; $CellContext`cm0$ = \
+$CellContext`Fm0$/$CellContext`v0$; $CellContext`tau$ = \
+$CellContext`V$/$CellContext`v0$; $CellContext`cc0$ = 0; $CellContext`Ncp$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := (
+            35 $CellContext`ca$[$CellContext`t$]) $CellContext`V$ + (
+            18 $CellContext`cb$[$CellContext`t$]) $CellContext`V$ + (
+            46 $CellContext`cc$[$CellContext`t$]) $CellContext`V$ + (
+            19.5 $CellContext`cm$[$CellContext`t$]) $CellContext`V$; \
+$CellContext`thetaCp$ = 
+         35 + ($CellContext`Fb0$/$CellContext`Fa0$) 18 + 
+          19.5 ($CellContext`Fm0$/$CellContext`Fa0$); $CellContext`mc$ = 
+         1000; $CellContext`Q$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := ($CellContext`mc$ 
+           18) ($CellContext`Ta1$ - $CellContext`Ta2$[$CellContext`t$]); \
+$CellContext`Ta2$[
+           Pattern[$CellContext`t$, 
+            
+            Blank[]]] := $CellContext`T$[$CellContext`t$] - \
+($CellContext`T$[$CellContext`t$] - $CellContext`Ta1$) 
+          Exp[(-$CellContext`UA$)/(18 $CellContext`mc$)]; $CellContext`sol$ = 
+         NDSolve[{
+           Derivative[
+             1][$CellContext`ca$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`ca0$ - \
+$CellContext`ca$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cb$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cb0$ - \
+$CellContext`cb$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cc$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cc0$ - \
+$CellContext`cc$[$CellContext`t]) + $CellContext`k$[
+                $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cm$][$CellContext`t] == (
+              1/$CellContext`tau$) ($CellContext`cm0$ - \
+$CellContext`cm$[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`T$][$CellContext`t] == \
+($CellContext`Q$[$CellContext`t] - ($CellContext`Fa0$ $CellContext`thetaCp$) \
+($CellContext`T$[$CellContext`t] - $CellContext`T0$) - (($CellContext`\
+\[CapitalDelta]H$ $CellContext`V$) $CellContext`k$[
+                 $CellContext`T$[$CellContext`t]]) \
+$CellContext`ca$[$CellContext`t])/$CellContext`Ncp$[$CellContext`t], \
+$CellContext`ca$[0] == $CellContext`cat0$$, $CellContext`T$[
+             0] == $CellContext`Tt0$$, $CellContext`cc$[0] == 
+            0, $CellContext`cb$[0] == 3.45, $CellContext`cm$[0] == 0}, {
+            $CellContext`ca$[$CellContext`t], 
+            $CellContext`cb$[$CellContext`t], 
+            $CellContext`cc$[$CellContext`t], 
+            $CellContext`cm$[$CellContext`t], 
+            $CellContext`T$[$CellContext`t]}, {$CellContext`t, 0, 100}]; 
+        ParametricPlot[
+          Evaluate[
+           ReplaceAll[{
+             $CellContext`T$[$CellContext`t], 
+             $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+{$CellContext`t, 0, 100}, PlotPoints -> 10000, 
+          PlotRange -> {{50, 240}, {0, 0.2}}, AspectRatio -> 1, Frame -> True,
+           ColorFunction -> (ColorData["Rainbow"][#3 100]& ), MaxRecursion -> 
+          0, PlotStyle -> Thick, AxesOrigin -> {50, 0}, GridLines -> 
+          Automatic, FrameLabel -> {
+            Style["temperature in \[Degree]F", "Times", 14], 
+            Style[
+            "propylene oxide concentration in \
+mol/\!\(\*SuperscriptBox[\(dm\), \(3\)]\)", "Times", 14]}, Epilog -> {
+            PointSize[0.025], 
+            RGBColor[0.88, 0, 0], 
+            Point[
+             ReplaceAll[
+              Evaluate[
+               ReplaceAll[{
+                 $CellContext`T$[$CellContext`t], 
+                 $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+$CellContext`t -> 100]], 
+            Thickness[0.0125], 
+            RGBColor[0, 0.88, 0], 
+            Line[{{180, 0}, {180, 0.2}}], 
+            Opacity[0.6], LightGreen, 
+            Rectangle[{180, 0}, {240, 0.2}], 
+            Rotate[
+             Style[
+              Text["undesirable   region", {210, 0.1}, {0, 0}], Bold, Black, 
+              18], Pi/2]}, ImageSize -> {450, 400}]], 
+      "Specifications" :> {{{$CellContext`Tt0$$, 125, 
+          "initial reactor temperature"}, 60, 160, 5, Appearance -> 
+         "Labeled"}, {{$CellContext`cat0$$, 0.02, 
+          "initial propylene oxide concentration"}, 0, 0.14, 0.01, Appearance -> 
+         "Labeled"}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`Tt0$$, $CellContext`cat0$$}, 
+        SynchronousUpdating -> False}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{533., {265., 270.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1552425552],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cat0$$ = 0.13, $CellContext`Tt0$$ = 135, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Tt0$$], 135, "initial reactor temperature"}, 60, 160,
+       5}, {{
+       Hold[$CellContext`cat0$$], 0.13, 
+       "initial propylene oxide concentration"}, 0, 0.14, 0.01}}, 
+    Typeset`size$$ = {450., {198., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`Tt0$643204$$ = 0, $CellContext`cat0$643205$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cat0$$ = 0.13, $CellContext`Tt0$$ = 135}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`Tt0$$, $CellContext`Tt0$643204$$, 0], 
+        Hold[$CellContext`cat0$$, $CellContext`cat0$643205$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`sol$, $CellContext`ca$, $CellContext`cb$, \
+$CellContext`cc$, $CellContext`cm$, $CellContext`T$, $CellContext`k$, \
+$CellContext`Ncp$, $CellContext`Q$, $CellContext`Ta2$, $CellContext`UA$, \
+$CellContext`Ta1$, $CellContext`cpA$, $CellContext`cpB$, $CellContext`cpc$, \
+$CellContext`\[CapitalDelta]H$, $CellContext`Fa0$, $CellContext`T0$, \
+$CellContext`Fb0$, $CellContext`Fm0$, $CellContext`ca0$, $CellContext`v0$, \
+$CellContext`cb0$, $CellContext`cm0$, $CellContext`tau$, $CellContext`V$, \
+$CellContext`rhoa0$, $CellContext`rhob0$, $CellContext`rhom0$, \
+$CellContext`thetaCp$, $CellContext`mc$, $CellContext`cc0$}, $CellContext`UA$ = 
+         16000; $CellContext`Ta1$ = 60; $CellContext`cpA$ = 
+         35; $CellContext`cpB$ = 18; $CellContext`cpc$ = 
+         46; $CellContext`\[CapitalDelta]H$ = -36000; $CellContext`Fa0$ = 
+         80; $CellContext`T0$ = 75; $CellContext`Fb0$ = 
+         1000; $CellContext`Fm0$ = 100; $CellContext`k$[
+           $CellContext`T$[
+            Pattern[$CellContext`t$, 
+             Blank[]]]] := (16.96 10^12) 
+          Exp[((-32400)/1.987)/($CellContext`T$[$CellContext`t$] + 
+            460)]; $CellContext`V$ = 500/7.484; $CellContext`rhoa0$ = 
+         0.923; $CellContext`rhob0$ = 3.45; $CellContext`rhom0$ = 
+         1.54; $CellContext`v0$ = $CellContext`Fa0$/$CellContext`rhoa0$ + \
+$CellContext`Fb0$/$CellContext`rhob0$ + $CellContext`Fm0$/$CellContext`rhom0$; \
+$CellContext`ca0$ = $CellContext`Fa0$/$CellContext`v0$; $CellContext`cb0$ = \
+$CellContext`Fb0$/$CellContext`v0$; $CellContext`cm0$ = \
+$CellContext`Fm0$/$CellContext`v0$; $CellContext`tau$ = \
+$CellContext`V$/$CellContext`v0$; $CellContext`cc0$ = 0; $CellContext`Ncp$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := (
+            35 $CellContext`ca$[$CellContext`t$]) $CellContext`V$ + (
+            18 $CellContext`cb$[$CellContext`t$]) $CellContext`V$ + (
+            46 $CellContext`cc$[$CellContext`t$]) $CellContext`V$ + (
+            19.5 $CellContext`cm$[$CellContext`t$]) $CellContext`V$; \
+$CellContext`thetaCp$ = 
+         35 + ($CellContext`Fb0$/$CellContext`Fa0$) 18 + 
+          19.5 ($CellContext`Fm0$/$CellContext`Fa0$); $CellContext`mc$ = 
+         1000; $CellContext`Q$[
+           Pattern[$CellContext`t$, 
+            Blank[]]] := ($CellContext`mc$ 
+           18) ($CellContext`Ta1$ - $CellContext`Ta2$[$CellContext`t$]); \
+$CellContext`Ta2$[
+           Pattern[$CellContext`t$, 
+            
+            Blank[]]] := $CellContext`T$[$CellContext`t$] - \
+($CellContext`T$[$CellContext`t$] - $CellContext`Ta1$) 
+          Exp[(-$CellContext`UA$)/(18 $CellContext`mc$)]; $CellContext`sol$ = 
+         NDSolve[{
+           Derivative[
+             1][$CellContext`ca$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`ca0$ - \
+$CellContext`ca$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cb$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cb0$ - \
+$CellContext`cb$[$CellContext`t]) - $CellContext`k$[
+               $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cc$][$CellContext`t] == (
+               1/$CellContext`tau$) ($CellContext`cc0$ - \
+$CellContext`cc$[$CellContext`t]) + $CellContext`k$[
+                $CellContext`T$[$CellContext`t]] \
+$CellContext`ca$[$CellContext`t], 
+            Derivative[
+             1][$CellContext`cm$][$CellContext`t] == (
+              1/$CellContext`tau$) ($CellContext`cm0$ - \
+$CellContext`cm$[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`T$][$CellContext`t] == \
+($CellContext`Q$[$CellContext`t] - ($CellContext`Fa0$ $CellContext`thetaCp$) \
+($CellContext`T$[$CellContext`t] - $CellContext`T0$) - (($CellContext`\
+\[CapitalDelta]H$ $CellContext`V$) $CellContext`k$[
+                 $CellContext`T$[$CellContext`t]]) \
+$CellContext`ca$[$CellContext`t])/$CellContext`Ncp$[$CellContext`t], \
+$CellContext`ca$[0] == $CellContext`cat0$$, $CellContext`T$[
+             0] == $CellContext`Tt0$$, $CellContext`cc$[0] == 
+            0, $CellContext`cb$[0] == 3.45, $CellContext`cm$[0] == 0}, {
+            $CellContext`ca$[$CellContext`t], 
+            $CellContext`cb$[$CellContext`t], 
+            $CellContext`cc$[$CellContext`t], 
+            $CellContext`cm$[$CellContext`t], 
+            $CellContext`T$[$CellContext`t]}, {$CellContext`t, 0, 100}]; 
+        ParametricPlot[
+          Evaluate[
+           ReplaceAll[{
+             $CellContext`T$[$CellContext`t], 
+             $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+{$CellContext`t, 0, 100}, PlotPoints -> 10000, 
+          PlotRange -> {{50, 240}, {0, 0.2}}, AspectRatio -> 1, Frame -> True,
+           ColorFunction -> (ColorData["Rainbow"][#3 100]& ), MaxRecursion -> 
+          0, PlotStyle -> Thick, AxesOrigin -> {50, 0}, GridLines -> 
+          Automatic, FrameLabel -> {
+            Style["temperature in \[Degree]F", "Times", 14], 
+            Style[
+            "propylene oxide concentration in \
+mol/\!\(\*SuperscriptBox[\(dm\), \(3\)]\)", "Times", 14]}, Epilog -> {
+            PointSize[0.025], 
+            RGBColor[0.88, 0, 0], 
+            Point[
+             ReplaceAll[
+              Evaluate[
+               ReplaceAll[{
+                 $CellContext`T$[$CellContext`t], 
+                 $CellContext`ca$[$CellContext`t]}, $CellContext`sol$]], \
+$CellContext`t -> 100]], 
+            Thickness[0.0125], 
+            RGBColor[0, 0.88, 0], 
+            Line[{{180, 0}, {180, 0.2}}], 
+            Opacity[0.6], LightGreen, 
+            Rectangle[{180, 0}, {240, 0.2}], 
+            Rotate[
+             Style[
+              Text["undesirable   region", {210, 0.1}, {0, 0}], Bold, Black, 
+              18], Pi/2]}, ImageSize -> {450, 400}]], 
+      "Specifications" :> {{{$CellContext`Tt0$$, 135, 
+          "initial reactor temperature"}, 60, 160, 5, Appearance -> 
+         "Labeled"}, {{$CellContext`cat0$$, 0.13, 
+          "initial propylene oxide concentration"}, 0, 0.14, 0.01, Appearance -> 
+         "Labeled"}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`Tt0$$, $CellContext`cat0$$}, 
+        SynchronousUpdating -> False}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{533., {265., 270.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1837425061]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell["All relevant equations and parameter values are from [1].", \
+"DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.5110712609916496`*^9, 3.5110713055837207`*^9}, {
+   3.511892667555503*^9, 3.5118926904905663`*^9}, {3.513014405326622*^9, 
+   3.513014406433926*^9}},
+ CellID->14405151],
+
+Cell["Reference", "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.5109161815733876`*^9, 3.5109162726676693`*^9}, {
+   3.5109165717007575`*^9, 3.5109165890848103`*^9}, {3.5130144113307734`*^9, 
+   3.5130144149738197`*^9}},
+ CellID->400915719],
+
+Cell[TextData[{
+ "[1] H. S. Fogler, ",
+ StyleBox["Elements of Chemical Reaction Engineering",
+  FontSlant->"Italic"],
+ ", 3rd ed., Upper Saddle River, NJ: Prentice Hall, 1999."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.5109161815733876`*^9, 3.5109162726676693`*^9}, {
+   3.5109165717007575`*^9, 3.5109165890848103`*^9}, {3.5130144113307734`*^9, 
+   3.5130144291789637`*^9}},
+ CellID->348667019]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.5125459418125*^9},
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.51254594309375*^9},
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.512545944*^9},
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell["", "SearchTermsSection"],
+
+Cell["", "RelatedLinksSection"],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Housam Binous",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Housam+Binous"],
+     None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Housam+Binous"],
+ " and ",
+ ButtonBox["Ahmed Bellagi",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Ahmed+Bellagi"],
+     None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Ahmed+Bellagi"]
+}], "Author",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.51254594996875*^9, 3.51254595071875*^9}, 
+   3.512546058734375*^9},
+ CellID->399939808]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{830, 478},
+WindowMargins->{{75, Automatic}, {Automatic, 29}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{612, 792}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "WindowsANSI"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[57517, 1241, 372, 9, 27, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[57892, 1252, 678, 16, 27, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[58573, 1270, 340, 11, 27, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[58916, 1283, 637, 15, 27, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[59556, 1300, 905, 22, 27, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[60464, 1324, 369, 9, 27, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[60836, 1335, 1520, 32, 27, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[62359, 1369, 908, 21, 27, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 64647, 1442},
+ {"RotateAndZoomIn3D", 64756, 1445},
+ {"DragLocators", 64866, 1448},
+ {"CreateAndDeleteLocators", 64982, 1451},
+ {"SliderZoom", 65096, 1454},
+ {"GamepadControls", 65202, 1457},
+ {"AutomaticAnimation", 65315, 1460},
+ {"BookmarkAnimation", 65432, 1463}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 481, 7, 74, "DemoTitle"],
+Cell[1063, 31, 33, 0, 287, "InitializationSection"],
+Cell[CellGroupData[{
+Cell[1121, 35, 29, 0, 194, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[1175, 39, 12955, 310, 765, "Input",
+ CellID->302384952],
+Cell[14133, 351, 8100, 159, 547, "Output",
+ CellID->496196892]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22282, 516, 36, 0, 169, "ManipulateCaptionSection"],
+Cell[22321, 518, 543, 10, 37, "ManipulateCaption",
+ CellID->165821616],
+Cell[22867, 530, 1108, 20, 83, "ManipulateCaption",
+ CellID->3524795]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24012, 555, 28, 0, 173, "ThumbnailSection"],
+Cell[24043, 557, 8062, 158, 547, "Output",
+ CellID->1162935890]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32142, 720, 28, 0, 143, "SnapshotsSection"],
+Cell[32173, 722, 8059, 158, 547, "Output",
+ CellID->1214831883],
+Cell[40235, 882, 8081, 159, 547, "Output",
+ CellID->1552425552],
+Cell[48319, 1043, 8081, 159, 547, "Output",
+ CellID->1837425061]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56437, 1207, 26, 0, 336, "DetailsSection"],
+Cell[56466, 1209, 297, 6, 22, "DetailNotes",
+ CellID->14405151],
+Cell[56766, 1217, 254, 5, 22, "DetailNotes",
+ CellID->400915719],
+Cell[57023, 1224, 417, 10, 22, "DetailNotes",
+ CellID->348667019]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57477, 1239, 37, 0, 126, "ControlSuggestionsSection"],
+Cell[57517, 1241, 372, 9, 27, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[57892, 1252, 678, 16, 27, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[58573, 1270, 340, 11, 27, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[58916, 1283, 637, 15, 27, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[59556, 1300, 905, 22, 27, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[60464, 1324, 369, 9, 27, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[60836, 1335, 1520, 32, 27, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[62359, 1369, 908, 21, 27, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[63282, 1393, 30, 0, 155, "SearchTermsSection"],
+Cell[63315, 1395, 31, 0, 129, "RelatedLinksSection"],
+Cell[CellGroupData[{
+Cell[63371, 1399, 25, 0, 129, "AuthorSection"],
+Cell[63399, 1401, 693, 21, 22, "Author",
+ CellID->399939808]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

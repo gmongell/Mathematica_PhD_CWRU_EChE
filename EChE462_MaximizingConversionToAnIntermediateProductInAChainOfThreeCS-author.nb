@@ -1,0 +1,1533 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     62513,       1524]
+NotebookOptionsPosition[     57897,       1379]
+NotebookOutlinePosition[     59670,       1435]
+CellTagsIndexPosition[     59342,       1423]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Maximizing Conversion to an Intermediate Product in a Chain of Three CSTRs in \
+Series\
+\>", "DemoTitle",
+ CellChangeTimes->{{3.5579514279358177`*^9, 3.557951495322556*^9}, {
+  3.557951639719235*^9, 3.5579516562435217`*^9}, {3.557952040557815*^9, 
+  3.557952058206972*^9}, {3.558271649808809*^9, 3.5582716674005675`*^9}, {
+  3.558447375688643*^9, 3.558447396532167*^9}, {3.5584474923848667`*^9, 
+  3.558447493294774*^9}, {3.5587447360798187`*^9, 3.5587447584933987`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["", "InitializationSection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"a_", ",", "V_", ",", "V1_", ",", "V2_"}], "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"w", "=", 
+      RowBox[{"V", "-", "V1", "-", "V2"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"q", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{" ", 
+          RowBox[{"kA", " ", 
+           SuperscriptBox["q", "2"], " ", "w"}]}], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", " ", "q"}], "-", " ", 
+            RowBox[{"a", " ", "kA", " ", "w"}]}], ")"}], "3"]], "-", 
+        RowBox[{
+         RowBox[{"(", " ", 
+          RowBox[{"kA", " ", 
+           SuperscriptBox["q", "2"], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"2", " ", "q"}], "+", " ", 
+             RowBox[{"kA", " ", "w"}], "+", " ", 
+             RowBox[{"a", " ", "kA", " ", "w"}]}], ")"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", " ", "kA"}], "-", 
+             FractionBox[
+              RowBox[{" ", "q"}], "w"]}], ")"}], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", " ", "q"}], "-", " ", 
+             RowBox[{"kA", " ", "w"}]}], ")"}], " ", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", " ", "q"}], "-", " ", 
+              RowBox[{"a", " ", "kA", " ", "w"}]}], ")"}], "2"]}], ")"}]}]}], 
+       ")"}], " ", 
+      RowBox[{
+       RowBox[{"ca", "[", "0", "]"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", " ", "kA"}], "-", 
+           FractionBox[
+            RowBox[{" ", "q"}], "w"]}], ")"}], " ", "w"}], ")"}]}]}], "-", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["q", "3"], " ", 
+        RowBox[{"cb", "[", "0", "]"}]}]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", " ", "q"}], "-", " ", 
+         RowBox[{"a", " ", "kA", " ", "w"}]}], ")"}], "3"]]}]}], 
+   "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.5579512561747017`*^9, {3.5580036426171017`*^9, 3.558003643183021*^9}, 
+   3.558003680361165*^9, {3.558003730951857*^9, 3.558003731486556*^9}, {
+   3.558003775670505*^9, 3.558003777532827*^9}, {3.558003812076038*^9, 
+   3.5580038127735443`*^9}, {3.5580040374526567`*^9, 
+   3.5580040767670717`*^9}, {3.558004424720381*^9, 3.558004425811153*^9}, 
+   3.5580044857917757`*^9, {3.558004736548978*^9, 3.558004851028914*^9}, {
+   3.558004883935704*^9, 3.558004884689289*^9}, {3.5580049784479237`*^9, 
+   3.558004997410198*^9}, {3.560524871285308*^9, 3.560524943503742*^9}, 
+   3.560525027041301*^9, {3.560525069624847*^9, 3.56052514203763*^9}, 
+   3.56052523488666*^9, 3.560525449414418*^9},
+ CellID->1662322087],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"q", "=", "7.5"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.5579512561747017`*^9, {3.5580036426171017`*^9, 3.558003643183021*^9}, 
+   3.558003680361165*^9, {3.558003730951857*^9, 3.558003731486556*^9}, {
+   3.558003775670505*^9, 3.558003777532827*^9}, {3.558003812076038*^9, 
+   3.5580038127735443`*^9}, {3.5580040374526567`*^9, 
+   3.5580040767670717`*^9}, {3.558004424720381*^9, 3.558004425811153*^9}, 
+   3.5580044857917757`*^9, {3.558004736548978*^9, 3.558004851028914*^9}, {
+   3.558004883935704*^9, 3.558004884689289*^9}, {3.5580049784479237`*^9, 
+   3.558004997410198*^9}, {3.560524871285308*^9, 3.560524943503742*^9}, {
+   3.560525027041301*^9, 3.560525033048645*^9}},
+ CellID->861473694],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"kA", "=", "0.1"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.5579512561747017`*^9, {3.5580036426171017`*^9, 3.558003643183021*^9}, 
+   3.558003680361165*^9, {3.558003730951857*^9, 3.558003731486556*^9}, {
+   3.558003775670505*^9, 3.558003777532827*^9}, {3.558003812076038*^9, 
+   3.5580038127735443`*^9}, {3.5580040374526567`*^9, 
+   3.5580040767670717`*^9}, {3.558004424720381*^9, 3.558004425811153*^9}, 
+   3.5580044857917757`*^9, {3.558004736548978*^9, 3.558004851028914*^9}, {
+   3.558004883935704*^9, 3.558004884689289*^9}, {3.5580049784479237`*^9, 
+   3.558004997410198*^9}, {3.560524871285308*^9, 3.560524943503742*^9}, {
+   3.560525027041301*^9, 3.560525035005888*^9}},
+ CellID->453626984],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"V", "=", "100"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.5579512561747017`*^9, {3.5580036426171017`*^9, 3.558003643183021*^9}, 
+   3.558003680361165*^9, {3.558003730951857*^9, 3.558003731486556*^9}, {
+   3.558003775670505*^9, 3.558003777532827*^9}, {3.558003812076038*^9, 
+   3.5580038127735443`*^9}, {3.5580040374526567`*^9, 
+   3.5580040767670717`*^9}, {3.558004424720381*^9, 3.558004425811153*^9}, 
+   3.5580044857917757`*^9, {3.558004736548978*^9, 3.558004851028914*^9}, {
+   3.558004883935704*^9, 3.558004884689289*^9}, {3.5580049784479237`*^9, 
+   3.558004997410198*^9}, {3.560524871285308*^9, 3.560524943503742*^9}, {
+   3.560525027041301*^9, 3.560525037357245*^9}},
+ CellID->541773238],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ca", "[", "0", "]"}], "=", "1"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.5579512561747017`*^9, {3.5580036426171017`*^9, 3.558003643183021*^9}, 
+   3.558003680361165*^9, {3.558003730951857*^9, 3.558003731486556*^9}, {
+   3.558003775670505*^9, 3.558003777532827*^9}, {3.558003812076038*^9, 
+   3.5580038127735443`*^9}, {3.5580040374526567`*^9, 
+   3.5580040767670717`*^9}, {3.558004424720381*^9, 3.558004425811153*^9}, 
+   3.5580044857917757`*^9, {3.558004736548978*^9, 3.558004851028914*^9}, {
+   3.558004883935704*^9, 3.558004884689289*^9}, {3.5580049784479237`*^9, 
+   3.558004997410198*^9}, {3.560524871285308*^9, 3.560524943503742*^9}, {
+   3.560525027041301*^9, 3.5605250395285177`*^9}},
+ CellID->252147786],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"cb", "[", "0", "]"}], "=", "0"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.5579512561747017`*^9, {3.5580036426171017`*^9, 3.558003643183021*^9}, 
+   3.558003680361165*^9, {3.558003730951857*^9, 3.558003731486556*^9}, {
+   3.558003775670505*^9, 3.558003777532827*^9}, {3.558003812076038*^9, 
+   3.5580038127735443`*^9}, {3.5580040374526567`*^9, 
+   3.5580040767670717`*^9}, {3.558004424720381*^9, 3.558004425811153*^9}, 
+   3.5580044857917757`*^9, {3.558004736548978*^9, 3.558004851028914*^9}, {
+   3.558004883935704*^9, 3.558004884689289*^9}, {3.5580049784479237`*^9, 
+   3.558004997410198*^9}, {3.560524871285308*^9, 3.560524943503742*^9}, {
+   3.560525027041301*^9, 3.5605250395285177`*^9}},
+ CellID->862603771]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"max", ",", "cstr3Vol", ",", "text", ",", "point"}], "}"}], ",",
+      "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"max", "=", 
+       RowBox[{"Quiet", "@", 
+        RowBox[{"Maximize", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"f", "[", 
+             RowBox[{"a", ",", "V", ",", "V1", ",", "V2"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"V1", "+", "V2"}], "\[LessEqual]", "V"}], ",", 
+            RowBox[{"V1", "\[GreaterEqual]", "0"}], ",", 
+            RowBox[{"V2", "\[GreaterEqual]", "0"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"V1", ",", "V2"}], "}"}]}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cstr3Vol", "=", 
+       RowBox[{"V", "-", 
+        RowBox[{
+         RowBox[{"max", "[", 
+          RowBox[{"[", 
+           RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "-", 
+        RowBox[{
+         RowBox[{"max", "[", 
+          RowBox[{"[", 
+           RowBox[{"2", ",", "2"}], "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], "  ", ";", "\[IndentingNewLine]", 
+      RowBox[{"text", "=", 
+       RowBox[{"Graphics3D", "[", 
+        RowBox[{"{", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+             RowBox[{"max", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"max", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+                RowBox[{"[", "2", "]"}], "]"}], ",", 
+               RowBox[{
+                RowBox[{"max", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "2"}], "]"}], "]"}], "[", 
+                RowBox[{"[", "2", "]"}], "]"}], ",", 
+               RowBox[{
+                RowBox[{"max", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "+", "0.025"}]}], "}"}]}], 
+            "]"}], ",", "12"}], "]"}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"point", "=", 
+       RowBox[{"Graphics3D", "[", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", 
+          RowBox[{"PointSize", "[", "0.02", "]"}], ",", 
+          RowBox[{"Point", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "2"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
+             RowBox[{"max", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}]}], "}"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Plot3D", "[", 
+           RowBox[{
+            RowBox[{"f", "[", 
+             RowBox[{"a", ",", "V", ",", "V1", ",", "V2"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"V1", ",", "0.0", ",", 
+              RowBox[{"0.5", " ", "V"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"V2", ",", ".0", ",", 
+              RowBox[{"0.5", " ", "V"}]}], "}"}], ",", 
+            RowBox[{"Mesh", "\[Rule]", "4"}], ",", 
+            RowBox[{"FaceGrids", "\[Rule]", "All"}], ",", 
+            RowBox[{"AxesLabel", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Row", "[", 
+                RowBox[{"{", 
+                 RowBox[{"\"\<CSTR I volume: \>\"", ",", 
+                  RowBox[{"Round", "[", 
+                   RowBox[{
+                    RowBox[{"max", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "]"}], 
+               ",", 
+               RowBox[{"Row", "[", 
+                RowBox[{"{", " ", 
+                 RowBox[{"\"\<CSTR II volume: \>\"", ",", 
+                  RowBox[{"Round", "[", 
+                   RowBox[{
+                    RowBox[{"max", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"2", ",", "2"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "]"}]}], 
+              "}"}]}], ",", 
+            RowBox[{"PlotLabel", "\[Rule]", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<CSTR III volume: \>\"", ",", 
+                RowBox[{"Round", "[", "cstr3Vol", "]"}]}], "}"}], "]"}]}]}], 
+           "]"}], ",", "point", ",", "text"}], "}"}], ",", 
+        RowBox[{"ImagePadding", "\[Rule]", "30"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"1.2", 
+          RowBox[{"{", 
+           RowBox[{"500", ",", "400"}], "}"}]}]}]}], "]"}]}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "0.5", ",", "\"\<rate of reaction ratio, kB/kA\>\""}],
+       "}"}], ",", ".05", ",", "1.", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", "a", "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.557951269040641*^9, 3.557951281233203*^9}, {
+   3.558003235635521*^9, 3.558003241102927*^9}, {3.558003278937591*^9, 
+   3.55800338754464*^9}, {3.558003499922153*^9, 3.558003602928879*^9}, 
+   3.5580039174902782`*^9, {3.558005245548476*^9, 3.558005391924301*^9}, {
+   3.558006003042224*^9, 3.558006023086219*^9}, {3.5580066289044647`*^9, 
+   3.5580066403656893`*^9}, {3.558008792445664*^9, 3.558008894582828*^9}, 
+   3.558009014150836*^9, {3.558271686105438*^9, 3.558271751841011*^9}, {
+   3.5584471725513783`*^9, 3.5584472906295147`*^9}, {3.558447523752585*^9, 
+   3.558447525094211*^9}, {3.5584475566533947`*^9, 3.5584475780903997`*^9}, {
+   3.558447654183249*^9, 3.558447756658453*^9}, {3.5584478047384443`*^9, 
+   3.558447814077571*^9}, {3.5605254097017517`*^9, 3.560525411499192*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.5, "rate of reaction ratio, kB/kA"}, 0.05, 
+      1.}}, Typeset`size$$ = {600., {238., 242.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$4748$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = 0.5}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$4748$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`max$, $CellContext`cstr3Vol$, $CellContext`text$, \
+$CellContext`point$}, $CellContext`max$ = Quiet[
+           Maximize[{
+             $CellContext`f[$CellContext`a$$, $CellContext`V, \
+$CellContext`V1, $CellContext`V2], $CellContext`V1 + $CellContext`V2 <= \
+$CellContext`V, $CellContext`V1 >= 0, $CellContext`V2 >= 
+             0}, {$CellContext`V1, $CellContext`V2}]]; $CellContext`cstr3Vol$ = \
+$CellContext`V - Part[
+           Part[$CellContext`max$, 2, 1], 2] - Part[
+           Part[$CellContext`max$, 2, 2], 2]; $CellContext`text$ = Graphics3D[{
+            Style[
+             Text[
+              Part[$CellContext`max$, 1], {
+               Part[
+                Part[$CellContext`max$, 2, 1], 2], 
+               Part[
+                Part[$CellContext`max$, 2, 2], 2], Part[$CellContext`max$, 1] + 
+               0.025}], 12]}]; $CellContext`point$ = Graphics3D[{Red, 
+            PointSize[0.02], 
+            Point[{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2], 
+              Part[$CellContext`max$, 1]}]}]; Show[{
+           Plot3D[
+            $CellContext`f[$CellContext`a$$, $CellContext`V, $CellContext`V1, \
+$CellContext`V2], {$CellContext`V1, 0., 0.5 $CellContext`V}, {$CellContext`V2,
+              0., 0.5 $CellContext`V}, Mesh -> 4, FaceGrids -> All, AxesLabel -> {
+              Row[{"CSTR I volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 1], 2]]}], 
+              Row[{"CSTR II volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 2], 2]]}]}, PlotLabel -> 
+            Row[{"CSTR III volume: ", 
+               
+               Round[$CellContext`cstr3Vol$]}]], $CellContext`point$, \
+$CellContext`text$}, ImagePadding -> 30, ImageSize -> 1.2 {500, 400}]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.5, 
+          "rate of reaction ratio, kB/kA"}, 0.05, 1., Appearance -> "Labeled",
+          ImageSize -> Tiny}}, 
+      "Options" :> {TrackedSymbols :> {$CellContext`a$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{649., {284., 289.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`V, 
+          Blank[]], 
+         Pattern[$CellContext`V1, 
+          Blank[]], 
+         Pattern[$CellContext`V2, 
+          
+          Blank[]]] := ($CellContext`q ((((
+               1. $CellContext`kA) $CellContext`q^2) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))/(-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3 - (((
+              1. $CellContext`kA) $CellContext`q^2) (
+             2. $CellContext`q + (
+               1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2) + ((
+                1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2)))/(((-$CellContext`kA - (
+              1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) (-$CellContext`q - (
+              1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2))) (-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^2))) ($CellContext`ca[
+           0]/((-$CellContext`kA - (
+            1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) ($CellContext`V - $CellContext`V1 - $CellContext`V2))) - ((
+          1. $CellContext`q^3) $CellContext`cb[
+          0])/(-$CellContext`q - ((
+           1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3, $CellContext`V = 100, $CellContext`q = 
+       7.5, $CellContext`kA = 0.1, $CellContext`ca[0] = 1, $CellContext`cb[0] = 
+       0}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->672389283]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell["\<\
+This Demonstration examines a three-stage continuous-flow stirred tank \
+reactor (CSTR). The concentration of an intermediate product of a series of \
+consecutive reactions exiting the third reactor is to be maximized by varying \
+the relative volumes of the reactors.\
+\>", "ManipulateCaption",
+ CellChangeTimes->{{3.5579517504868517`*^9, 3.55795192289533*^9}, {
+  3.557951953042569*^9, 3.557951955032881*^9}, {3.5579969439046803`*^9, 
+  3.557996992409719*^9}, {3.557997040840954*^9, 3.55799711698125*^9}, {
+  3.557997149572977*^9, 3.557997263141876*^9}, {3.5579972990860167`*^9, 
+  3.557997356652281*^9}, {3.5579974041836*^9, 3.557997458769186*^9}, {
+  3.557997491641871*^9, 3.557997683612631*^9}, {3.557997731301886*^9, 
+  3.557997736926449*^9}, {3.558000917239571*^9, 3.558000925091708*^9}, {
+  3.558000980340497*^9, 3.558001004335738*^9}, {3.558001396368742*^9, 
+  3.558001457949163*^9}, {3.558001501016412*^9, 3.5580015188581657`*^9}, {
+  3.558001555613091*^9, 3.558001623495306*^9}, {3.5582718075665827`*^9, 
+  3.5582718087086973`*^9}, {3.558447364740611*^9, 3.5584473652469063`*^9}, {
+  3.558744875348411*^9, 3.558744909819541*^9}, {3.5605103466529903`*^9, 
+  3.560510346798012*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.5, "rate of reaction ratio, kB/kA"}, 0.05, 
+      1.}}, Typeset`size$$ = {600., {238., 242.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$4797$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = 0.5}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$4797$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`max$, $CellContext`cstr3Vol$, $CellContext`text$, \
+$CellContext`point$}, $CellContext`max$ = Quiet[
+           Maximize[{
+             $CellContext`f[$CellContext`a$$, $CellContext`V, \
+$CellContext`V1, $CellContext`V2], $CellContext`V1 + $CellContext`V2 <= \
+$CellContext`V, $CellContext`V1 >= 0, $CellContext`V2 >= 
+             0}, {$CellContext`V1, $CellContext`V2}]]; $CellContext`cstr3Vol$ = \
+$CellContext`V - Part[
+           Part[$CellContext`max$, 2, 1], 2] - Part[
+           Part[$CellContext`max$, 2, 2], 2]; $CellContext`text$ = Graphics3D[{
+            Style[
+             Text[
+              Part[$CellContext`max$, 1], {
+               Part[
+                Part[$CellContext`max$, 2, 1], 2], 
+               Part[
+                Part[$CellContext`max$, 2, 2], 2], Part[$CellContext`max$, 1] + 
+               0.025}], 12]}]; $CellContext`point$ = Graphics3D[{Red, 
+            PointSize[0.02], 
+            Point[{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2], 
+              Part[$CellContext`max$, 1]}]}]; Show[{
+           Plot3D[
+            $CellContext`f[$CellContext`a$$, $CellContext`V, $CellContext`V1, \
+$CellContext`V2], {$CellContext`V1, 0., 0.5 $CellContext`V}, {$CellContext`V2,
+              0., 0.5 $CellContext`V}, Mesh -> 4, FaceGrids -> All, AxesLabel -> {
+              Row[{"CSTR I volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 1], 2]]}], 
+              Row[{"CSTR II volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 2], 2]]}]}, PlotLabel -> 
+            Row[{"CSTR III volume: ", 
+               
+               Round[$CellContext`cstr3Vol$]}]], $CellContext`point$, \
+$CellContext`text$}, ImagePadding -> 30, ImageSize -> 1.2 {500, 400}]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.5, 
+          "rate of reaction ratio, kB/kA"}, 0.05, 1., Appearance -> "Labeled",
+          ImageSize -> Tiny}}, 
+      "Options" :> {TrackedSymbols :> {$CellContext`a$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{649., {284., 289.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`V, 
+          Blank[]], 
+         Pattern[$CellContext`V1, 
+          Blank[]], 
+         Pattern[$CellContext`V2, 
+          
+          Blank[]]] := ($CellContext`q ((((
+               1. $CellContext`kA) $CellContext`q^2) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))/(-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3 - (((
+              1. $CellContext`kA) $CellContext`q^2) (
+             2. $CellContext`q + (
+               1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2) + ((
+                1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2)))/(((-$CellContext`kA - (
+              1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) (-$CellContext`q - (
+              1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2))) (-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^2))) ($CellContext`ca[
+           0]/((-$CellContext`kA - (
+            1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) ($CellContext`V - $CellContext`V1 - $CellContext`V2))) - ((
+          1. $CellContext`q^3) $CellContext`cb[
+          0])/(-$CellContext`q - ((
+           1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3, $CellContext`V = 100, $CellContext`q = 
+       7.5, $CellContext`kA = 0.1, $CellContext`ca[0] = 1, $CellContext`cb[0] = 
+       0}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->787728867]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.05, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.05, "rate of reaction ratio, kB/kA"}, 0.05, 
+      1.}}, Typeset`size$$ = {600., {238., 242.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$4846$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = 0.05}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$4846$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`max$, $CellContext`cstr3Vol$, $CellContext`text$, \
+$CellContext`point$}, $CellContext`max$ = Quiet[
+           Maximize[{
+             $CellContext`f[$CellContext`a$$, $CellContext`V, \
+$CellContext`V1, $CellContext`V2], $CellContext`V1 + $CellContext`V2 <= \
+$CellContext`V, $CellContext`V1 >= 0, $CellContext`V2 >= 
+             0}, {$CellContext`V1, $CellContext`V2}]]; $CellContext`cstr3Vol$ = \
+$CellContext`V - Part[
+           Part[$CellContext`max$, 2, 1], 2] - Part[
+           Part[$CellContext`max$, 2, 2], 2]; $CellContext`text$ = Graphics3D[{
+            Style[
+             Text[
+              Part[$CellContext`max$, 1], {
+               Part[
+                Part[$CellContext`max$, 2, 1], 2], 
+               Part[
+                Part[$CellContext`max$, 2, 2], 2], Part[$CellContext`max$, 1] + 
+               0.025}], 12]}]; $CellContext`point$ = Graphics3D[{Red, 
+            PointSize[0.02], 
+            Point[{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2], 
+              Part[$CellContext`max$, 1]}]}]; Show[{
+           Plot3D[
+            $CellContext`f[$CellContext`a$$, $CellContext`V, $CellContext`V1, \
+$CellContext`V2], {$CellContext`V1, 0., 0.5 $CellContext`V}, {$CellContext`V2,
+              0., 0.5 $CellContext`V}, Mesh -> 4, FaceGrids -> All, AxesLabel -> {
+              Row[{"CSTR I volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 1], 2]]}], 
+              Row[{"CSTR II volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 2], 2]]}]}, PlotLabel -> 
+            Row[{"CSTR III volume: ", 
+               
+               Round[$CellContext`cstr3Vol$]}]], $CellContext`point$, \
+$CellContext`text$}, ImagePadding -> 30, ImageSize -> 1.2 {500, 400}]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.05, 
+          "rate of reaction ratio, kB/kA"}, 0.05, 1., Appearance -> "Labeled",
+          ImageSize -> Tiny}}, 
+      "Options" :> {TrackedSymbols :> {$CellContext`a$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{649., {284., 289.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`V, 
+          Blank[]], 
+         Pattern[$CellContext`V1, 
+          Blank[]], 
+         Pattern[$CellContext`V2, 
+          
+          Blank[]]] := ($CellContext`q ((((
+               1. $CellContext`kA) $CellContext`q^2) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))/(-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3 - (((
+              1. $CellContext`kA) $CellContext`q^2) (
+             2. $CellContext`q + (
+               1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2) + ((
+                1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2)))/(((-$CellContext`kA - (
+              1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) (-$CellContext`q - (
+              1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2))) (-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^2))) ($CellContext`ca[
+           0]/((-$CellContext`kA - (
+            1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) ($CellContext`V - $CellContext`V1 - $CellContext`V2))) - ((
+          1. $CellContext`q^3) $CellContext`cb[
+          0])/(-$CellContext`q - ((
+           1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3, $CellContext`V = 100, $CellContext`q = 
+       7.5, $CellContext`kA = 0.1, $CellContext`ca[0] = 1, $CellContext`cb[0] = 
+       0}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->122383914],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 1., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 1., "rate of reaction ratio, kB/kA"}, 0.05, 
+      1.}}, Typeset`size$$ = {600., {238., 242.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$4895$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = 1.}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$4895$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`max$, $CellContext`cstr3Vol$, $CellContext`text$, \
+$CellContext`point$}, $CellContext`max$ = Quiet[
+           Maximize[{
+             $CellContext`f[$CellContext`a$$, $CellContext`V, \
+$CellContext`V1, $CellContext`V2], $CellContext`V1 + $CellContext`V2 <= \
+$CellContext`V, $CellContext`V1 >= 0, $CellContext`V2 >= 
+             0}, {$CellContext`V1, $CellContext`V2}]]; $CellContext`cstr3Vol$ = \
+$CellContext`V - Part[
+           Part[$CellContext`max$, 2, 1], 2] - Part[
+           Part[$CellContext`max$, 2, 2], 2]; $CellContext`text$ = Graphics3D[{
+            Style[
+             Text[
+              Part[$CellContext`max$, 1], {
+               Part[
+                Part[$CellContext`max$, 2, 1], 2], 
+               Part[
+                Part[$CellContext`max$, 2, 2], 2], Part[$CellContext`max$, 1] + 
+               0.025}], 12]}]; $CellContext`point$ = Graphics3D[{Red, 
+            PointSize[0.02], 
+            Point[{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2], 
+              Part[$CellContext`max$, 1]}]}]; Show[{
+           Plot3D[
+            $CellContext`f[$CellContext`a$$, $CellContext`V, $CellContext`V1, \
+$CellContext`V2], {$CellContext`V1, 0., 0.5 $CellContext`V}, {$CellContext`V2,
+              0., 0.5 $CellContext`V}, Mesh -> 4, FaceGrids -> All, AxesLabel -> {
+              Row[{"CSTR I volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 1], 2]]}], 
+              Row[{"CSTR II volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 2], 2]]}]}, PlotLabel -> 
+            Row[{"CSTR III volume: ", 
+               
+               Round[$CellContext`cstr3Vol$]}]], $CellContext`point$, \
+$CellContext`text$}, ImagePadding -> 30, ImageSize -> 1.2 {500, 400}]], 
+      "Specifications" :> {{{$CellContext`a$$, 1., 
+          "rate of reaction ratio, kB/kA"}, 0.05, 1., Appearance -> "Labeled",
+          ImageSize -> Tiny}}, 
+      "Options" :> {TrackedSymbols :> {$CellContext`a$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{649., {284., 289.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`V, 
+          Blank[]], 
+         Pattern[$CellContext`V1, 
+          Blank[]], 
+         Pattern[$CellContext`V2, 
+          
+          Blank[]]] := ($CellContext`q ((((
+               1. $CellContext`kA) $CellContext`q^2) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))/(-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3 - (((
+              1. $CellContext`kA) $CellContext`q^2) (
+             2. $CellContext`q + (
+               1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2) + ((
+                1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2)))/(((-$CellContext`kA - (
+              1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) (-$CellContext`q - (
+              1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2))) (-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^2))) ($CellContext`ca[
+           0]/((-$CellContext`kA - (
+            1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) ($CellContext`V - $CellContext`V1 - $CellContext`V2))) - ((
+          1. $CellContext`q^3) $CellContext`cb[
+          0])/(-$CellContext`q - ((
+           1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3, $CellContext`V = 100, $CellContext`q = 
+       7.5, $CellContext`kA = 0.1, $CellContext`ca[0] = 1, $CellContext`cb[0] = 
+       0}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1764592419],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.536, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.536, "rate of reaction ratio, kB/kA"}, 0.05, 
+      1.}}, Typeset`size$$ = {600., {238., 242.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$4944$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = 0.536}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$4944$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`max$, $CellContext`cstr3Vol$, $CellContext`text$, \
+$CellContext`point$}, $CellContext`max$ = Quiet[
+           Maximize[{
+             $CellContext`f[$CellContext`a$$, $CellContext`V, \
+$CellContext`V1, $CellContext`V2], $CellContext`V1 + $CellContext`V2 <= \
+$CellContext`V, $CellContext`V1 >= 0, $CellContext`V2 >= 
+             0}, {$CellContext`V1, $CellContext`V2}]]; $CellContext`cstr3Vol$ = \
+$CellContext`V - Part[
+           Part[$CellContext`max$, 2, 1], 2] - Part[
+           Part[$CellContext`max$, 2, 2], 2]; $CellContext`text$ = Graphics3D[{
+            Style[
+             Text[
+              Part[$CellContext`max$, 1], {
+               Part[
+                Part[$CellContext`max$, 2, 1], 2], 
+               Part[
+                Part[$CellContext`max$, 2, 2], 2], Part[$CellContext`max$, 1] + 
+               0.025}], 12]}]; $CellContext`point$ = Graphics3D[{Red, 
+            PointSize[0.02], 
+            Point[{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2], 
+              Part[$CellContext`max$, 1]}]}]; Show[{
+           Plot3D[
+            $CellContext`f[$CellContext`a$$, $CellContext`V, $CellContext`V1, \
+$CellContext`V2], {$CellContext`V1, 0., 0.5 $CellContext`V}, {$CellContext`V2,
+              0., 0.5 $CellContext`V}, Mesh -> 4, FaceGrids -> All, AxesLabel -> {
+              Row[{"CSTR I volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 1], 2]]}], 
+              Row[{"CSTR II volume: ", 
+                Round[
+                 Part[
+                  Part[$CellContext`max$, 2, 2], 2]]}]}, PlotLabel -> 
+            Row[{"CSTR III volume: ", 
+               
+               Round[$CellContext`cstr3Vol$]}]], $CellContext`point$, \
+$CellContext`text$}, ImagePadding -> 30, ImageSize -> 1.2 {500, 400}]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.536, 
+          "rate of reaction ratio, kB/kA"}, 0.05, 1., Appearance -> "Labeled",
+          ImageSize -> Tiny}}, 
+      "Options" :> {TrackedSymbols :> {$CellContext`a$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{32780., {284., 289.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`V, 
+          Blank[]], 
+         Pattern[$CellContext`V1, 
+          Blank[]], 
+         Pattern[$CellContext`V2, 
+          
+          Blank[]]] := ($CellContext`q ((((
+               1. $CellContext`kA) $CellContext`q^2) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))/(-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3 - (((
+              1. $CellContext`kA) $CellContext`q^2) (
+             2. $CellContext`q + (
+               1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2) + ((
+                1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2)))/(((-$CellContext`kA - (
+              1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) (-$CellContext`q - (
+              1. $CellContext`kA) ($CellContext`V - $CellContext`V1 - \
+$CellContext`V2))) (-$CellContext`q - ((
+               1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^2))) ($CellContext`ca[
+           0]/((-$CellContext`kA - (
+            1. $CellContext`q)/($CellContext`V - $CellContext`V1 - \
+$CellContext`V2)) ($CellContext`V - $CellContext`V1 - $CellContext`V2))) - ((
+          1. $CellContext`q^3) $CellContext`cb[
+          0])/(-$CellContext`q - ((
+           1. $CellContext`a) $CellContext`kA) ($CellContext`V - \
+$CellContext`V1 - $CellContext`V2))^3, $CellContext`V = 100, $CellContext`q = 
+       7.5, $CellContext`kA = 0.1, $CellContext`ca[0] = 1, $CellContext`cb[0] = 
+       0}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->755621063]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell[TextData[{
+ "Consider the consecutive first-order reaction ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox["A",
+     FontSlant->"Plain"], 
+    OverscriptBox["\[LongRightArrow]", 
+     SubscriptBox["k", 
+      StyleBox["A",
+       FontSlant->"Plain"]]], 
+    StyleBox["B",
+     FontSlant->"Plain"], 
+    OverscriptBox["\[LongRightArrow]", 
+     SubscriptBox["k", 
+      StyleBox["B",
+       FontSlant->"Plain"]]], 
+    StyleBox["C",
+     FontSlant->"Plain"]}], TraditionalForm]], "InlineMath"],
+ " with ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["k", 
+    StyleBox["A",
+     FontSlant->"Plain"]], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["k", 
+    StyleBox["B",
+     FontSlant->"Plain"]], TraditionalForm]], "InlineMath"],
+ " representing the reaction rate constants. The equations describing the \
+steady state condition of three CSTRs in series are"
+}], "DetailNotes",
+ CellChangeTimes->{{3.557997879398171*^9, 3.557997903798419*^9}, {
+   3.557997956787012*^9, 3.557998297129197*^9}, {3.557999757493946*^9, 
+   3.557999803396105*^9}, 3.55800092789342*^9, {3.5580010540492287`*^9, 
+   3.558001077148843*^9}, {3.558001136355575*^9, 3.558001222236608*^9}, {
+   3.558001677834961*^9, 3.55800168712649*^9}, {3.558002583251133*^9, 
+   3.558002584329876*^9}, {3.5580026379450397`*^9, 3.558002648227221*^9}, {
+   3.558002740432826*^9, 3.558002757926359*^9}, {3.558002811267186*^9, 
+   3.558002903571519*^9}, {3.558002977016567*^9, 3.558002996333159*^9}, {
+   3.558003056248554*^9, 3.558003059958104*^9}, 3.558003157843967*^9, {
+   3.558003990325817*^9, 3.558003994211389*^9}, {3.558004636618024*^9, 
+   3.5580046366181507`*^9}, {3.558005635048656*^9, 3.558005660886284*^9}, {
+   3.558005699793673*^9, 3.558005702842305*^9}, {3.5580092054237127`*^9, 
+   3.558009253662505*^9}, {3.558010223743946*^9, 3.558010225228763*^9}, {
+   3.558010264671447*^9, 3.558010266257848*^9}, {3.558271884976323*^9, 
+   3.5582719081726427`*^9}, {3.558447889917014*^9, 3.558447889933778*^9}, {
+   3.558447930034863*^9, 3.5584479812203503`*^9}, {3.558744944181974*^9, 
+   3.55874495648533*^9}, {3.560510365649352*^9, 3.5605103891586103`*^9}},
+ CellID->27255263],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["A", 
+         RowBox[{"n", "-", "1"}]], "-", 
+        SubscriptBox["A", "n"]}], ")"}], " ", 
+      RowBox[{"q", "/", 
+       SubscriptBox["V", "n"]}]}], "-", 
+     RowBox[{
+      SubscriptBox["k", 
+       StyleBox["A",
+        FontSlant->"Plain"]], 
+      SubscriptBox["A", "n"]}]}]}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["B", 
+         RowBox[{"n", "-", "1"}]], "-", 
+        SubscriptBox["B", "n"]}], ")"}], 
+      RowBox[{"q", "/", 
+       SubscriptBox["V", "n"]}]}], "+", 
+     RowBox[{
+      SubscriptBox["k", 
+       StyleBox["A",
+        FontSlant->"Plain"]], 
+      SubscriptBox["A", "n"]}], "-", 
+     RowBox[{
+      SubscriptBox["k", 
+       StyleBox["B",
+        FontSlant->"Plain"]], 
+      SubscriptBox["B", "n"]}]}]}], TraditionalForm]], "InlineMath"],
+ ","
+}], "DetailNotes",
+ CellChangeTimes->{{3.557997879398171*^9, 3.557997903798419*^9}, {
+   3.557997956787012*^9, 3.557998297129197*^9}, {3.557999757493946*^9, 
+   3.557999803396105*^9}, 3.55800092789342*^9, {3.5580010540492287`*^9, 
+   3.558001077148843*^9}, {3.558001136355575*^9, 3.558001222236608*^9}, {
+   3.558001677834961*^9, 3.55800168712649*^9}, {3.558002583251133*^9, 
+   3.558002584329876*^9}, {3.5580026379450397`*^9, 3.558002648227221*^9}, {
+   3.558002740432826*^9, 3.558002757926359*^9}, {3.558002811267186*^9, 
+   3.558002903571519*^9}, {3.558002977016567*^9, 3.558002996333159*^9}, {
+   3.558003056248554*^9, 3.558003059958104*^9}, 3.558003157843967*^9, {
+   3.558003990325817*^9, 3.558003994211389*^9}, {3.558004636618024*^9, 
+   3.5580046366181507`*^9}, {3.558005635048656*^9, 3.558005660886284*^9}, {
+   3.558005699793673*^9, 3.558005702842305*^9}, {3.5580092054237127`*^9, 
+   3.558009253662505*^9}, {3.558010223743946*^9, 3.558010225228763*^9}, {
+   3.558010264671447*^9, 3.558010266257848*^9}, {3.558271884976323*^9, 
+   3.5582719081726427`*^9}, {3.558447889917014*^9, 3.558447901672785*^9}, {
+   3.558448024132964*^9, 3.558448087477214*^9}},
+ CellID->2065807247],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["A", "n"], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["B", "n"], TraditionalForm]], "InlineMath"],
+ " are the reactant concentrations, ",
+ Cell[BoxData[
+  FormBox["q", TraditionalForm]], "InlineMath"],
+ " is the flow rate, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["V", "n"], TraditionalForm]], "InlineMath"],
+ " is the reactor volume for reactors ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"n", "=", "1"}], ",", "2", ",", "3"}], TraditionalForm]], 
+  "InlineMath"],
+ ", with initial concentrations ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["A", "0"], "=", "1"}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     SubscriptBox["B", "0"], "=", 
+     RowBox[{
+      SubscriptBox["C", "0"], "=", "0"}]}]}], TraditionalForm]], "InlineMath"],
+ ". Here ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["V", "1"], "+", 
+     SubscriptBox["V", 
+      RowBox[{"2", " "}]], "+", 
+     SubscriptBox["V", "3"]}], "=", "100"}], TraditionalForm]], 
+  "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"q", "=", "7.5"}], TraditionalForm]], "InlineMath"],
+ ", and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["k", "A"], "=", "0.1"}], TraditionalForm]], "InlineMath"],
+ "."
+}], "DetailNotes",
+ CellChangeTimes->{{3.557997879398171*^9, 3.557997903798419*^9}, {
+   3.557997956787012*^9, 3.557998297129197*^9}, {3.557999757493946*^9, 
+   3.557999803396105*^9}, 3.55800092789342*^9, {3.5580010540492287`*^9, 
+   3.558001077148843*^9}, {3.558001136355575*^9, 3.558001222236608*^9}, {
+   3.558001677834961*^9, 3.55800168712649*^9}, {3.558002583251133*^9, 
+   3.558002584329876*^9}, {3.5580026379450397`*^9, 3.558002648227221*^9}, {
+   3.558002740432826*^9, 3.558002757926359*^9}, {3.558002811267186*^9, 
+   3.558002903571519*^9}, {3.558002977016567*^9, 3.558002996333159*^9}, {
+   3.558003056248554*^9, 3.558003059958104*^9}, 3.558003157843967*^9, {
+   3.558003990325817*^9, 3.558003994211389*^9}, {3.558004636618024*^9, 
+   3.5580046366181507`*^9}, {3.558005635048656*^9, 3.558005660886284*^9}, {
+   3.558005699793673*^9, 3.558005702842305*^9}, {3.5580092054237127`*^9, 
+   3.558009253662505*^9}, {3.558010223743946*^9, 3.558010225228763*^9}, {
+   3.558010264671447*^9, 3.558010266257848*^9}, {3.558271884976323*^9, 
+   3.5582719081726427`*^9}, {3.558447889917014*^9, 3.5584479046320343`*^9}, {
+   3.558448112048287*^9, 3.55844823459205*^9}, {3.5605103992578506`*^9, 
+   3.560510400007021*^9}},
+ CellID->1654279280],
+
+Cell[TextData[{
+ "The concentration of reactant ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox["B",
+    FontSlant->"Plain"], TraditionalForm]], "InlineMath"],
+ " exiting the third reactor can be maximized by varying the reactor \
+volumes."
+}], "DetailNotes",
+ CellChangeTimes->{{3.557997879398171*^9, 3.557997903798419*^9}, {
+   3.557997956787012*^9, 3.557998297129197*^9}, {3.557999757493946*^9, 
+   3.557999803396105*^9}, 3.55800092789342*^9, {3.5580010540492287`*^9, 
+   3.558001077148843*^9}, {3.558001136355575*^9, 3.558001222236608*^9}, {
+   3.558001677834961*^9, 3.55800168712649*^9}, {3.558002583251133*^9, 
+   3.558002584329876*^9}, {3.5580026379450397`*^9, 3.558002648227221*^9}, {
+   3.558002740432826*^9, 3.558002757926359*^9}, {3.558002811267186*^9, 
+   3.558002903571519*^9}, {3.558002977016567*^9, 3.558002996333159*^9}, {
+   3.558003056248554*^9, 3.558003059958104*^9}, 3.558003157843967*^9, {
+   3.558003990325817*^9, 3.558003994211389*^9}, {3.558004636618024*^9, 
+   3.5580046366181507`*^9}, {3.558005635048656*^9, 3.558005660886284*^9}, {
+   3.558005699793673*^9, 3.558005702842305*^9}, {3.5580092054237127`*^9, 
+   3.558009253662505*^9}, {3.558010223743946*^9, 3.558010225228763*^9}, {
+   3.558010264671447*^9, 3.558010266257848*^9}, {3.558271884976323*^9, 
+   3.5582719081726427`*^9}, {3.558447889917014*^9, 3.5584479046320343`*^9}, {
+   3.558448112048287*^9, 3.558448234583809*^9}, {3.558744978382723*^9, 
+   3.5587449902387753`*^9}},
+ CellID->1081251]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.5584482520984507`*^9},
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.558271916438469*^9},
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.5582719129511204`*^9},
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9, 
+  3.558448240365838*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.55844824139972*^9},
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["chemical kinetics", "SearchTerms",
+ CellChangeTimes->{{3.55874500249454*^9, 3.5587450084389563`*^9}},
+ CellID->1955717030],
+
+Cell["chemical engineering", "SearchTerms",
+ CellChangeTimes->{{3.558745012549862*^9, 3.558745018223312*^9}},
+ CellID->351422228]
+}, Open  ]],
+
+Cell["", "RelatedLinksSection"],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Clay Gruesbeck",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Clay+Gruesbeck"]\
+, None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Clay+Gruesbeck"]
+}], "Author",
+ CellChangeTimes->{{3.557951383172394*^9, 3.5579513886383877`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{712, 625},
+WindowMargins->{{8, Automatic}, {Automatic, 37}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{612, 792}},
+Magnification->1.,
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "WindowsANSI"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[51309, 1192, 355, 9, 27, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[51667, 1203, 719, 17, 27, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[52389, 1222, 340, 11, 27, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[52732, 1235, 637, 15, 27, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[53372, 1252, 887, 22, 27, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[54262, 1276, 393, 10, 27, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[54658, 1288, 1504, 32, 27, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[56165, 1322, 908, 21, 27, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 58442, 1396},
+ {"RotateAndZoomIn3D", 58551, 1399},
+ {"DragLocators", 58661, 1402},
+ {"CreateAndDeleteLocators", 58777, 1405},
+ {"SliderZoom", 58891, 1408},
+ {"GamepadControls", 58997, 1411},
+ {"AutomaticAnimation", 59111, 1414},
+ {"BookmarkAnimation", 59228, 1417}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 481, 8, 104, "DemoTitle"],
+Cell[CellGroupData[{
+Cell[1085, 34, 33, 0, 287, "InitializationSection"],
+Cell[1121, 36, 2934, 80, 141, "Input",
+ InitializationCell->True,
+ CellID->1662322087],
+Cell[4058, 118, 757, 14, 27, "Input",
+ InitializationCell->True,
+ CellID->861473694],
+Cell[4818, 134, 758, 14, 27, "Input",
+ InitializationCell->True,
+ CellID->453626984],
+Cell[5579, 150, 757, 14, 27, "Input",
+ InitializationCell->True,
+ CellID->541773238],
+Cell[6339, 166, 787, 15, 27, "Input",
+ InitializationCell->True,
+ CellID->252147786],
+Cell[7129, 183, 787, 15, 27, "Input",
+ InitializationCell->True,
+ CellID->862603771]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7953, 203, 29, 0, 236, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[8007, 207, 6530, 155, 448, "Input"],
+Cell[14540, 364, 5328, 111, 585, "Output",
+ CellID->672389283]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19917, 481, 36, 0, 169, "ManipulateCaptionSection"],
+Cell[19956, 483, 1201, 18, 52, "ManipulateCaption"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21194, 506, 28, 0, 173, "ThumbnailSection"],
+Cell[21225, 508, 5328, 111, 585, "Output",
+ CellID->787728867]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26590, 624, 28, 0, 143, "SnapshotsSection"],
+Cell[26621, 626, 5332, 111, 585, "Output",
+ CellID->122383914],
+Cell[31956, 739, 5325, 111, 585, "Output",
+ CellID->1764592419],
+Cell[37284, 852, 5338, 111, 585, "Output",
+ CellID->755621063]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42659, 968, 26, 0, 336, "DetailsSection"],
+Cell[42688, 970, 2189, 51, 61, "DetailNotes",
+ CellID->27255263],
+Cell[44880, 1023, 2244, 59, 23, "DetailNotes",
+ CellID->2065807247],
+Cell[47127, 1084, 2634, 73, 57, "DetailNotes",
+ CellID->1654279280],
+Cell[49764, 1159, 1468, 26, 38, "DetailNotes",
+ CellID->1081251]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51269, 1190, 37, 0, 126, "ControlSuggestionsSection"],
+Cell[51309, 1192, 355, 9, 27, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[51667, 1203, 719, 17, 27, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[52389, 1222, 340, 11, 27, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[52732, 1235, 637, 15, 27, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[53372, 1252, 887, 22, 27, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[54262, 1276, 393, 10, 27, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[54658, 1288, 1504, 32, 27, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[56165, 1322, 908, 21, 27, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57110, 1348, 30, 0, 155, "SearchTermsSection"],
+Cell[57143, 1350, 128, 2, 22, "SearchTerms",
+ CellID->1955717030],
+Cell[57274, 1354, 129, 2, 22, "SearchTerms",
+ CellID->351422228]
+}, Open  ]],
+Cell[57418, 1359, 31, 0, 141, "RelatedLinksSection"],
+Cell[CellGroupData[{
+Cell[57474, 1363, 25, 0, 124, "AuthorSection"],
+Cell[57502, 1365, 367, 10, 21, "Author"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

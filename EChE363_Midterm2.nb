@@ -1,0 +1,263 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7853,        254]
+NotebookOptionsPosition[      6584,        206]
+NotebookOutlinePosition[      6927,        221]
+CellTagsIndexPosition[      6884,        218]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Guy", " ", 
+   RowBox[{"F", ".", " ", "Mongelli"}]}], ",", " ", 
+  RowBox[{
+   RowBox[{
+   "F", ".", "E", ".", 
+    "                                                                         \
+     ", "ECHE"}], " ", "363"}]}]], "Input",
+ CellChangeTimes->{{3.5753345803274746`*^9, 3.5753345938792496`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Prof", ".", " ", "Landau"}], "                                                                                                     ", 
+  RowBox[{
+   RowBox[{"4", "/", "19"}], "/", "2013"}]}]], "Input",
+ CellChangeTimes->{{3.57533459493331*^9, 3.5753346050488887`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Midterm", " ", "Exam", " ", "#2"}]], "Input",
+ CellChangeTimes->{{3.575334607014001*^9, 3.5753346097711587`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", "[", "T_", "]"}], "=", 
+  RowBox[{"Exp", "[", 
+   RowBox[{"7.261", "-", 
+    RowBox[{"1402.46", "*", 
+     RowBox[{"T", "^", 
+      RowBox[{"-", "1"}]}]}], "+", 
+    RowBox[{"51387", "*", 
+     RowBox[{"T", "^", 
+      RowBox[{"-", "2"}]}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5753346310623765`*^9, 3.575334677022005*^9}}],
+
+Cell[BoxData[
+ SuperscriptBox["\[ExponentialE]", 
+  RowBox[{"7.261`", "\[VeryThinSpace]", "+", 
+   FractionBox["51387", 
+    SuperscriptBox["T", "2"]], "-", 
+   FractionBox["1402.46`", "T"]}]]], "Output",
+ CellChangeTimes->{{3.5753346658403654`*^9, 3.5753346773390236`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PPrime", "[", "T_", "]"}], "=", 
+  RowBox[{"D", "[", 
+   RowBox[{
+    RowBox[{"P", "[", "T", "]"}], ",", "T"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.575334685100467*^9, 3.5753347018944283`*^9}, {
+  3.5753347675401826`*^9, 3.5753347801319027`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{"7.261`", "\[VeryThinSpace]", "+", 
+    FractionBox["51387", 
+     SuperscriptBox["T", "2"]], "-", 
+    FractionBox["1402.46`", "T"]}]], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["102774", 
+      SuperscriptBox["T", "3"]]}], "+", 
+    FractionBox["1402.46`", 
+     SuperscriptBox["T", "2"]]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.575334777140732*^9, 3.5753347804899235`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PPrime", "[", "80.2", "]"}]], "Input",
+ CellChangeTimes->{{3.5753347846061587`*^9, 3.575334792164591*^9}}],
+
+Cell[BoxData["0.002008916471084773`"], "Output",
+ CellChangeTimes->{3.575334792478609*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"P", "[", "80.2", "]"}]], "Input",
+ CellChangeTimes->{{3.5753351206353784`*^9, 3.5753351254626546`*^9}}],
+
+Cell[BoxData["0.10679867967632253`"], "Output",
+ CellChangeTimes->{3.5753351258626776`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"The", " ", "PiSat", " ", "computation", " ", "might", " ", "be", 
+  " ", "from", " ", "useless", " ", 
+  RowBox[{"data", "."}]}]], "Input",
+ CellChangeTimes->{{3.5753364819862432`*^9, 3.575336493084878*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PiSat", "=", 
+  RowBox[{"96", "/", "27816"}]}]], "Input",
+ CellChangeTimes->{{3.57533501575338*^9, 3.5753350321173153`*^9}}],
+
+Cell[BoxData[
+ FractionBox["4", "1159"]], "Output",
+ CellChangeTimes->{3.5753350437389803`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"R", "=", 
+   RowBox[{"8.3144621", 
+    RowBox[{"(", "75", ")"}]}]}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"J", "/", "mol"}], "-", "K"}], " ", "*)"}], ";"}]], "Input",
+ CellChangeTimes->{{3.575334918241802*^9, 3.575334918514818*^9}, {
+  3.575334972369898*^9, 3.575334985599655*^9}, {3.575336422678851*^9, 
+  3.5753364389387813`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CHvap", "=", 
+  RowBox[{
+   RowBox[{"PPrime", "[", "80.2", "]"}], "*", "R", "*", 
+   RowBox[{
+    RowBox[{"80.2", "^", "2"}], "/", "PiSat"}]}]}]], "Input",
+ CellChangeTimes->{{3.5753348055803585`*^9, 3.5753348238304024`*^9}, {
+  3.5753349125184746`*^9, 3.5753349350637646`*^9}}],
+
+Cell[BoxData["2.3346913924160395`*^6"], "Output",
+ CellChangeTimes->{3.5753350495593133`*^9, 3.5753364427559996`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CHvap", "=", 
+  RowBox[{
+   RowBox[{"PPrime", "[", "80.2", "]"}], "*", "R", "*", 
+   RowBox[{
+    RowBox[{"80.2", "^", "2"}], "/", 
+    RowBox[{"P", "[", "80.2", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.5753351352862167`*^9, 3.5753351366312933`*^9}}],
+
+Cell[BoxData["75446.68352172687`"], "Output",
+ CellChangeTimes->{3.5753351373343334`*^9, 3.5753364443080883`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mmHg", "/", "K"}], "*", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"J", "/", "mol"}], "-", "K"}], ")"}], "*", 
+  RowBox[{
+   RowBox[{"K", "^", "2"}], "/", "mmHg"}]}]], "Input",
+ CellChangeTimes->{{3.575335069339444*^9, 3.57533509233776*^9}, {
+   3.575335396960183*^9, 3.5753354100439315`*^9}, 3.5753364494433823`*^9}],
+
+Cell[BoxData[
+ RowBox[{"J", "/", "mol"}]], "Input",
+ CellChangeTimes->{{3.575335428222972*^9, 3.5753354695823374`*^9}, {
+  3.5753364534296103`*^9, 3.575336456669795*^9}}],
+
+Cell[BoxData[
+ RowBox[{"It", " ", 
+  RowBox[{"won", "'"}], "t", " ", 
+  RowBox[{"matter", ".", " ", "Since"}], " ", "the", " ", "Clausius", " ", 
+  "Clayperone", " ", "equations", " ", "tells", " ", "us", " ", "that", " ", 
+  "whatever", " ", "the", " ", "derivative", " ", "of", " ", "the", " ", 
+  "Psat", " ", "function", " ", "with", " ", "respect", " ", "to", " ", 
+  "temperature", " ", "will", " ", "be", " ", "the", " ", "original", " ", 
+  "function", " ", "multiplied", " ", "by", " ", "a", " ", "certain", " ", 
+  RowBox[{"factor", ".", "  ", "If"}], " ", "you", " ", "convert", " ", 
+  "units", " ", "and", " ", "calculate", " ", "the", " ", "derivatives", " ", 
+  "and", " ", "plug", " ", "them", " ", "in", " ", "the", " ", "unit", " ", 
+  "conversion", " ", "factors", " ", "will", " ", 
+  RowBox[{"cancel", "."}]}]], "Input",
+ CellChangeTimes->{{3.57533529514336*^9, 3.5753353739568677`*^9}}]
+},
+WindowSize->{701, 448},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 340, 9, 31, "Input"],
+Cell[900, 31, 303, 5, 31, "Input"],
+Cell[1206, 38, 137, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[1368, 44, 370, 11, 31, "Input"],
+Cell[1741, 57, 274, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2052, 68, 286, 7, 31, "Input"],
+Cell[2341, 77, 480, 14, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2858, 96, 130, 2, 31, "Input"],
+Cell[2991, 100, 90, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3118, 106, 127, 2, 31, "Input"],
+Cell[3248, 110, 91, 1, 31, "Output"]
+}, Open  ]],
+Cell[3354, 114, 231, 4, 31, "Input"],
+Cell[CellGroupData[{
+Cell[3610, 122, 148, 3, 31, "Input"],
+Cell[3761, 127, 95, 2, 46, "Output"]
+}, Open  ]],
+Cell[3871, 132, 382, 10, 31, "Input"],
+Cell[CellGroupData[{
+Cell[4278, 146, 302, 7, 31, "Input"],
+Cell[4583, 155, 117, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4737, 161, 278, 7, 31, "Input"],
+Cell[5018, 170, 113, 1, 31, "Output"]
+}, Open  ]],
+Cell[5146, 174, 350, 9, 31, "Input"],
+Cell[5499, 185, 170, 3, 31, "Input"],
+Cell[5672, 190, 908, 14, 112, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

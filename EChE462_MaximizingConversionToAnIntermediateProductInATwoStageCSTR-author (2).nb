@@ -1,0 +1,1612 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     64068,       1603]
+NotebookOptionsPosition[     59923,       1474]
+NotebookOutlinePosition[     61602,       1527]
+CellTagsIndexPosition[     61274,       1515]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Maximizing Conversion to an Intermediate Product in a Two-Stage CSTR\
+\>", "DemoTitle",
+ CellChangeTimes->{
+  3.553200696992131*^9, {3.553200748235134*^9, 3.553200829033445*^9}, {
+   3.553323562781459*^9, 3.553323614818282*^9}, {3.5533236450919037`*^9, 
+   3.553323699879608*^9}, 3.5533285680345783`*^9, {3.5539623367970934`*^9, 
+   3.5539623479669085`*^9}, {3.554327115395938*^9, 3.5543271155188093`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["", "InitializationSection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"q", "=", "10."}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Vo", "=", "100."}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"EP", "=", "4000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"kP", "=", 
+   RowBox[{"10", "^", "2"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"cR", "[", "0", "]"}], "=", "1."}], ";", 
+  RowBox[{
+   RowBox[{"cP", "[", "0", "]"}], "=", 
+   RowBox[{
+    RowBox[{"cW", "[", "0", "]"}], "=", "0."}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"T1_", ",", "T2_", ",", "a_", ",", "b_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"2", " ", "q", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"2", " ", "q", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"E", "^", 
+                   RowBox[{"(", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"a", " ", "EP"}], ")"}], "/", "T2"}], ")"}]}], 
+                    ")"}]}], " ", "b", " ", "kP"}], ")"}], "/", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"-", 
+                    RowBox[{"E", "^", 
+                    RowBox[{"(", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{"EP", "/", "T2"}], ")"}]}], ")"}]}]}], " ", 
+                   "kP"}], "-", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"2", " ", "q"}], ")"}], "/", "Vo"}]}], ")"}]}], 
+               ")"}]}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", 
+                  RowBox[{"E", "^", 
+                   RowBox[{"(", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"a", " ", "EP"}], ")"}], "/", "T2"}], ")"}]}], 
+                    ")"}]}]}], " ", "b", " ", "kP"}], "-", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"2", " ", "q"}], ")"}], "/", "Vo"}]}], ")"}], " ", 
+              "Vo"}], ")"}]}], ")"}]}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", 
+            RowBox[{"E", "^", 
+             RowBox[{"(", 
+              RowBox[{"-", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"a", " ", "EP"}], ")"}], "/", "T1"}], ")"}]}], 
+              ")"}]}], " ", "b", " ", "kP", " ", "q"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", 
+                RowBox[{"E", "^", 
+                 RowBox[{"(", 
+                  RowBox[{"-", 
+                   RowBox[{"(", 
+                    RowBox[{"EP", "/", "T1"}], ")"}]}], ")"}]}]}], " ", 
+               "kP"}], "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"2", " ", "q"}], ")"}], "/", "Vo"}]}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", 
+                RowBox[{"E", "^", 
+                 RowBox[{"(", 
+                  RowBox[{"-", 
+                   RowBox[{"(", 
+                    RowBox[{"EP", "/", "T2"}], ")"}]}], ")"}]}]}], " ", 
+               "kP"}], "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"2", " ", "q"}], ")"}], "/", "Vo"}]}], ")"}], " ", 
+            "Vo"}], ")"}]}]}], ")"}], " ", 
+       RowBox[{"cR", "[", "0", "]"}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"E", "^", 
+            RowBox[{"(", 
+             RowBox[{"-", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"a", " ", "EP"}], ")"}], "/", "T1"}], ")"}]}], 
+             ")"}]}]}], " ", "b", " ", "kP"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "q"}], ")"}], "/", "Vo"}]}], ")"}], " ", "Vo"}], 
+      ")"}]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"4", " ", 
+       RowBox[{"q", "^", "2"}], " ", 
+       RowBox[{"cP", "[", "0", "]"}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"E", "^", 
+            RowBox[{"(", 
+             RowBox[{"-", 
+              RowBox[{"(", 
+               RowBox[{"EP", "/", "T1"}], ")"}]}], ")"}]}]}], " ", "kP"}], 
+         "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "q"}], ")"}], "/", "Vo"}]}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"E", "^", 
+            RowBox[{"(", 
+             RowBox[{"-", 
+              RowBox[{"(", 
+               RowBox[{"EP", "/", "T2"}], ")"}]}], ")"}]}]}], " ", "kP"}], 
+         "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "q"}], ")"}], "/", "Vo"}]}], ")"}], " ", 
+       RowBox[{"Vo", "^", "2"}]}], ")"}]}]}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.553200579385064*^9, {3.5534223073503637`*^9, 3.553422325381258*^9}, {
+   3.55342238610251*^9, 3.55342240610997*^9}, {3.553422454440984*^9, 
+   3.553422506108259*^9}, 3.553422727936605*^9, {3.553425218840073*^9, 
+   3.5534252336679087`*^9}, {3.5539705236792793`*^9, 3.553970536814732*^9}, {
+   3.57617294870848*^9, 3.57617295273671*^9}},
+ CellID->1079997341]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Quiet", "@", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"max", ",", "point", ",", "line1", ",", "line2", ",", "plot"}],
+        "}"}], ",", 
+      RowBox[{
+       RowBox[{"max", "=", 
+        RowBox[{"Maximize", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"f", "[", 
+             RowBox[{"T1", ",", "T2", ",", "a", ",", "b"}], "]"}], ",", 
+            RowBox[{"250", "<", "T1", "<", "750"}], ",", 
+            RowBox[{"250", "<", "T2", "<", "750"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"T1", ",", "T2"}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"line1", "=", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "2"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "}"}]}], "}"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"line2", "=", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "2"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"max", "[", 
+               RowBox[{"[", 
+                RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", "0"}], "}"}]}], "}"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"point", "=", 
+        RowBox[{"Point", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"max", "[", 
+             RowBox[{"[", 
+              RowBox[{"2", ",", "1"}], "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"max", "[", 
+             RowBox[{"[", 
+              RowBox[{"2", ",", "2"}], "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"plot", "=", 
+        RowBox[{"ContourPlot", "[", 
+         RowBox[{
+          RowBox[{"f", "[", 
+           RowBox[{"T1", ",", "T2", ",", "a", ",", "b"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"T1", ",", "250", ",", "750"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"T2", ",", "250", ",", "750"}], "}"}], ",", 
+          RowBox[{"ColorFunction", "\[Rule]", "\"\<Rainbow\>\""}], ",", 
+          RowBox[{"ContourStyle", "\[Rule]", "Dotted"}], ",", 
+          RowBox[{
+          "PlotLabel", "\[Rule]", 
+           "\"\<reactants \[LongRightArrow] products \[LongRightArrow] \
+waste\>\""}], ",", 
+          RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+          RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+          RowBox[{"FrameLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+            "\"\<temperature of reactor I\>\"", ",", 
+             "\"\<temperature of reactor II\>\"", ",", 
+             RowBox[{
+              RowBox[{"Flatten", "[", "max", "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"450", ",", "450"}], "}"}]}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", 
+        RowBox[{"plot", ",", 
+         RowBox[{"Graphics", "[", 
+          RowBox[{"{", 
+           RowBox[{"line1", ",", "line2", ",", "point"}], "}"}], "]"}]}], 
+        "]"}]}]}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "0.75", ",", "\"\<E products / E waste\>\""}], "}"}], 
+     ",", "0.5", ",", "1.", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"b", ",", "1.", ",", "\"\<A products / A waste\>\""}], "}"}], 
+     ",", "0.25", ",", "10", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Top"}], ",", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.553200648349477*^9, 3.55320064835157*^9}, {
+  3.553417852913796*^9, 3.553417860619114*^9}, {3.5534227280403843`*^9, 
+  3.553422728107099*^9}, {3.553425241868222*^9, 3.553425259605592*^9}, {
+  3.5539625794760256`*^9, 3.553962580413044*^9}, {3.554327149686255*^9, 
+  3.554327188832546*^9}, {3.554327292758299*^9, 3.554327384844619*^9}},
+ CellID->983525743],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.75, $CellContext`b$$ = 1., 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.75, "E products / E waste"}, 0.5, 1.}, {{
+       Hold[$CellContext`b$$], 1., "A products / A waste"}, 0.25, 10}}, 
+    Typeset`size$$ = {450., {223., 227.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$329383$$ = 0, $CellContext`b$329384$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0.75, $CellContext`b$$ = 1.}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$329383$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$329384$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Quiet[
+        Module[{$CellContext`max$, $CellContext`point$, $CellContext`line1$, \
+$CellContext`line2$, $CellContext`plot$}, $CellContext`max$ = Maximize[{
+             $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], 250 < $CellContext`T1 < 750, 
+             250 < $CellContext`T2 < 
+             750}, {$CellContext`T1, $CellContext`T2}]; $CellContext`line1$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {0, 
+              Part[
+               Part[$CellContext`max$, 2, 1], 2]}}]; $CellContext`line2$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 0}}]; $CellContext`point$ = 
+          Point[{
+             Part[
+              Part[$CellContext`max$, 2, 1], 2], 
+             Part[
+              Part[$CellContext`max$, 2, 2], 2]}]; $CellContext`plot$ = 
+          ContourPlot[
+            $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], {$CellContext`T1, 250, 
+             750}, {$CellContext`T2, 250, 750}, ColorFunction -> "Rainbow", 
+            ContourStyle -> Dotted, PlotLabel -> 
+            "reactants \[LongRightArrow] products \[LongRightArrow] waste", 
+            Frame -> True, GridLines -> Automatic, 
+            FrameLabel -> {
+             "temperature of reactor I", "temperature of reactor II", 
+              Part[
+               Flatten[$CellContext`max$], 1]}, ImageSize -> {450, 450}]; 
+         Show[$CellContext`plot$, 
+           
+           Graphics[{$CellContext`line1$, $CellContext`line2$, \
+$CellContext`point$}]]]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.75, "E products / E waste"}, 
+         0.5, 1., Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`b$$, 1., "A products / A waste"}, 0.25, 10, 
+         Appearance -> "Labeled", ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Top, 
+        TrackedSymbols :> {$CellContext`a$$, $CellContext`b$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{499., {283., 288.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`T1, 
+          Blank[]], 
+         Pattern[$CellContext`T2, 
+          Blank[]], 
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`b, 
+          
+          Blank[]]] := (((
+            2 $CellContext`q) (-(((
+                2 $CellContext`q) (($CellContext`b $CellContext`kP) (1/(
+                 E^(($CellContext`a $CellContext`EP)/$CellContext`T2) ((-
+                    
+                    E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - \
+(2 $CellContext`q)/$CellContext`Vo)))))/((((-
+                  E^(-(($CellContext`a $CellContext`EP)/$CellContext`T2))) \
+$CellContext`b) $CellContext`kP - (
+                2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo)) - (((
+               2 $CellContext`b) $CellContext`kP) $CellContext`q) (1/(
+             E^(($CellContext`a $CellContext`EP)/$CellContext`T1) ((((-
+                  E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo) ((-
+                  E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo))))) \
+$CellContext`cR[
+           0])/((((-
+             E^(-(($CellContext`a $CellContext`EP)/$CellContext`T1))) \
+$CellContext`b) $CellContext`kP - (
+           2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo) + ((
+           4 $CellContext`q^2) $CellContext`cP[
+           0])/((((-
+             E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo) ((-
+             E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo^2), \
+$CellContext`q = 10., $CellContext`kP = 100, $CellContext`EP = 
+       4000, $CellContext`Vo = 100., $CellContext`cR[0] = 
+       1., $CellContext`cP[0] = 0.}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1105374045]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell["\<\
+This Demonstration examines a two-stage continuous-flow stirred tank reactor \
+(CSTR). Conversion to an intermediate product of consecutive chemical \
+reactions can be maximized in a combination of two CSTRs operating in series.\
+\>", "ManipulateCaption",
+ CellChangeTimes->{{3.553200870997085*^9, 3.553200977039167*^9}, {
+   3.553201035584552*^9, 3.553201132830449*^9}, {3.553201165421433*^9, 
+   3.5532011788540087`*^9}, 3.553201416828088*^9, {3.553323907118246*^9, 
+   3.553323941879649*^9}, {3.553323979736058*^9, 3.5533240188201447`*^9}, {
+   3.5533252740331573`*^9, 3.553325311403913*^9}, {3.5534110014893084`*^9, 
+   3.553411026948028*^9}, {3.5534125297106113`*^9, 3.553412541221052*^9}, {
+   3.553412573767063*^9, 3.553412641582974*^9}, {3.553412704492778*^9, 
+   3.553412717436866*^9}, {3.553412771111497*^9, 3.5534128549062157`*^9}, {
+   3.553412893798717*^9, 3.5534129101753263`*^9}, {3.553415302455596*^9, 
+   3.5534154923544083`*^9}, {3.553415522928643*^9, 3.553415531073476*^9}, {
+   3.553415629370078*^9, 3.553415642583438*^9}, 3.553415686575943*^9, {
+   3.553415719309535*^9, 3.553415769849345*^9}, {3.5534158184339943`*^9, 
+   3.553415946310295*^9}, {3.553416052010971*^9, 3.5534160616879807`*^9}, {
+   3.553416096708579*^9, 3.553416135439033*^9}, {3.553416252293973*^9, 
+   3.553416401388962*^9}, {3.553416433396295*^9, 3.5534164377184963`*^9}, 
+   3.553416474123371*^9, {3.55341650729213*^9, 3.553416519305208*^9}, {
+   3.553416578701906*^9, 3.553416630912428*^9}, {3.5534167376117973`*^9, 
+   3.5534168417159023`*^9}, {3.553416905900201*^9, 3.553417002066801*^9}, {
+   3.553417154214407*^9, 3.5534171557276783`*^9}, {3.553417237856468*^9, 
+   3.553417261331052*^9}, {3.55341730513916*^9, 3.5534173136299334`*^9}, {
+   3.553417387920719*^9, 3.553417398518489*^9}, {3.55341749325209*^9, 
+   3.5534175160429173`*^9}, {3.553417970748884*^9, 3.553417972345249*^9}, {
+   3.553418026410625*^9, 3.553418035334951*^9}, {3.553418065650117*^9, 
+   3.553418074390686*^9}, {3.553421130275194*^9, 3.5534211807103252`*^9}, {
+   3.553423147806481*^9, 3.5534231815000067`*^9}, {3.553423288949391*^9, 
+   3.553423408935088*^9}, {3.553423452761791*^9, 3.553423453436459*^9}, {
+   3.55342363201472*^9, 3.5534236479067993`*^9}, {3.55342367961801*^9, 
+   3.553423686784156*^9}, {3.5539625693415413`*^9, 3.5539625699031525`*^9}, {
+   3.554031940226814*^9, 3.554031973549909*^9}, {3.554032013628107*^9, 
+   3.554032014564149*^9}, {3.554327409391859*^9, 3.554327420203107*^9}, {
+   3.554332719822422*^9, 3.554332746117588*^9}},
+ CellID->1811356692],
+
+Cell[TextData[{
+ "The system of equations is solved and the result is plotted on the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", 
+     StyleBox["I",
+      FontSlant->"Plain"]], "-", 
+    SubscriptBox["T", "II"]}], TraditionalForm]], "InlineMath"],
+ " plane. "
+}], "ManipulateCaption",
+ CellChangeTimes->{{3.553200870997085*^9, 3.553200977039167*^9}, {
+   3.553201035584552*^9, 3.553201132830449*^9}, {3.553201165421433*^9, 
+   3.5532011788540087`*^9}, 3.553201416828088*^9, {3.553323907118246*^9, 
+   3.553323941879649*^9}, {3.553323979736058*^9, 3.5533240188201447`*^9}, {
+   3.5533252740331573`*^9, 3.553325311403913*^9}, {3.5534110014893084`*^9, 
+   3.553411026948028*^9}, {3.5534125297106113`*^9, 3.553412541221052*^9}, {
+   3.553412573767063*^9, 3.553412641582974*^9}, {3.553412704492778*^9, 
+   3.553412717436866*^9}, {3.553412771111497*^9, 3.5534128549062157`*^9}, {
+   3.553412893798717*^9, 3.5534129101753263`*^9}, {3.553415302455596*^9, 
+   3.5534154923544083`*^9}, {3.553415522928643*^9, 3.553415531073476*^9}, {
+   3.553415629370078*^9, 3.553415642583438*^9}, 3.553415686575943*^9, {
+   3.553415719309535*^9, 3.553415769849345*^9}, {3.5534158184339943`*^9, 
+   3.553415946310295*^9}, {3.553416052010971*^9, 3.5534160616879807`*^9}, {
+   3.553416096708579*^9, 3.553416135439033*^9}, {3.553416252293973*^9, 
+   3.553416401388962*^9}, {3.553416433396295*^9, 3.5534164377184963`*^9}, 
+   3.553416474123371*^9, {3.55341650729213*^9, 3.553416519305208*^9}, {
+   3.553416578701906*^9, 3.553416630912428*^9}, {3.5534167376117973`*^9, 
+   3.5534168417159023`*^9}, {3.553416905900201*^9, 3.553417002066801*^9}, {
+   3.553417154214407*^9, 3.5534171557276783`*^9}, {3.553417237856468*^9, 
+   3.553417261331052*^9}, {3.55341730513916*^9, 3.553417313620338*^9}, 
+   3.5534174057711573`*^9, 3.5539625699967546`*^9, {3.554327437889531*^9, 
+   3.554327443423325*^9}, {3.55433276280726*^9, 3.5543327651988792`*^9}, {
+   3.5545681929325113`*^9, 3.554568204140632*^9}, {3.554568867534965*^9, 
+   3.5545688886310744`*^9}},
+ CellID->743742572]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.75, $CellContext`b$$ = 1., 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.75, "E products / E waste"}, 0.5, 1.}, {{
+       Hold[$CellContext`b$$], 1., "A products / A waste"}, 0.25, 10}}, 
+    Typeset`size$$ = {450., {223., 227.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$329439$$ = 0, $CellContext`b$329440$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0.75, $CellContext`b$$ = 1.}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$329439$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$329440$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Quiet[
+        Module[{$CellContext`max$, $CellContext`point$, $CellContext`line1$, \
+$CellContext`line2$, $CellContext`plot$}, $CellContext`max$ = Maximize[{
+             $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], 250 < $CellContext`T1 < 750, 
+             250 < $CellContext`T2 < 
+             750}, {$CellContext`T1, $CellContext`T2}]; $CellContext`line1$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {0, 
+              Part[
+               Part[$CellContext`max$, 2, 1], 2]}}]; $CellContext`line2$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 0}}]; $CellContext`point$ = 
+          Point[{
+             Part[
+              Part[$CellContext`max$, 2, 1], 2], 
+             Part[
+              Part[$CellContext`max$, 2, 2], 2]}]; $CellContext`plot$ = 
+          ContourPlot[
+            $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], {$CellContext`T1, 250, 
+             750}, {$CellContext`T2, 250, 750}, ColorFunction -> "Rainbow", 
+            ContourStyle -> Dotted, PlotLabel -> 
+            "reactants \[LongRightArrow] products \[LongRightArrow] waste", 
+            Frame -> True, GridLines -> Automatic, 
+            FrameLabel -> {
+             "temperature of reactor I", "temperature of reactor II", 
+              Part[
+               Flatten[$CellContext`max$], 1]}, ImageSize -> {450, 450}]; 
+         Show[$CellContext`plot$, 
+           
+           Graphics[{$CellContext`line1$, $CellContext`line2$, \
+$CellContext`point$}]]]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.75, "E products / E waste"}, 
+         0.5, 1., Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`b$$, 1., "A products / A waste"}, 0.25, 10, 
+         Appearance -> "Labeled", ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Top, 
+        TrackedSymbols :> {$CellContext`a$$, $CellContext`b$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{499., {283., 288.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`T1, 
+          Blank[]], 
+         Pattern[$CellContext`T2, 
+          Blank[]], 
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`b, 
+          
+          Blank[]]] := (((
+            2 $CellContext`q) (-(((
+                2 $CellContext`q) (($CellContext`b $CellContext`kP) (1/(
+                 E^(($CellContext`a $CellContext`EP)/$CellContext`T2) ((-
+                    
+                    E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - \
+(2 $CellContext`q)/$CellContext`Vo)))))/((((-
+                  E^(-(($CellContext`a $CellContext`EP)/$CellContext`T2))) \
+$CellContext`b) $CellContext`kP - (
+                2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo)) - (((
+               2 $CellContext`b) $CellContext`kP) $CellContext`q) (1/(
+             E^(($CellContext`a $CellContext`EP)/$CellContext`T1) ((((-
+                  E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo) ((-
+                  E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo))))) \
+$CellContext`cR[
+           0])/((((-
+             E^(-(($CellContext`a $CellContext`EP)/$CellContext`T1))) \
+$CellContext`b) $CellContext`kP - (
+           2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo) + ((
+           4 $CellContext`q^2) $CellContext`cP[
+           0])/((((-
+             E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo) ((-
+             E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo^2), \
+$CellContext`q = 10., $CellContext`kP = 100, $CellContext`EP = 
+       4000, $CellContext`Vo = 100., $CellContext`cR[0] = 
+       1., $CellContext`cP[0] = 0.}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->140544118]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.5, $CellContext`b$$ = 10., 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.5, "E products / E waste"}, 0.5, 1.}, {{
+       Hold[$CellContext`b$$], 10., "A products / A waste"}, 0.25, 10}}, 
+    Typeset`size$$ = {450., {223., 227.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$329495$$ = 0, $CellContext`b$329496$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0.5, $CellContext`b$$ = 10.}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$329495$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$329496$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Quiet[
+        Module[{$CellContext`max$, $CellContext`point$, $CellContext`line1$, \
+$CellContext`line2$, $CellContext`plot$}, $CellContext`max$ = Maximize[{
+             $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], 250 < $CellContext`T1 < 750, 
+             250 < $CellContext`T2 < 
+             750}, {$CellContext`T1, $CellContext`T2}]; $CellContext`line1$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {0, 
+              Part[
+               Part[$CellContext`max$, 2, 1], 2]}}]; $CellContext`line2$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 0}}]; $CellContext`point$ = 
+          Point[{
+             Part[
+              Part[$CellContext`max$, 2, 1], 2], 
+             Part[
+              Part[$CellContext`max$, 2, 2], 2]}]; $CellContext`plot$ = 
+          ContourPlot[
+            $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], {$CellContext`T1, 250, 
+             750}, {$CellContext`T2, 250, 750}, ColorFunction -> "Rainbow", 
+            ContourStyle -> Dotted, PlotLabel -> 
+            "reactants \[LongRightArrow] products \[LongRightArrow] waste", 
+            Frame -> True, GridLines -> Automatic, 
+            FrameLabel -> {
+             "temperature of reactor I", "temperature of reactor II", 
+              Part[
+               Flatten[$CellContext`max$], 1]}, ImageSize -> {450, 450}]; 
+         Show[$CellContext`plot$, 
+           
+           Graphics[{$CellContext`line1$, $CellContext`line2$, \
+$CellContext`point$}]]]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.5, "E products / E waste"}, 
+         0.5, 1., Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`b$$, 10., "A products / A waste"}, 0.25, 10, 
+         Appearance -> "Labeled", ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Top, 
+        TrackedSymbols :> {$CellContext`a$$, $CellContext`b$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{499., {283., 288.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`T1, 
+          Blank[]], 
+         Pattern[$CellContext`T2, 
+          Blank[]], 
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`b, 
+          
+          Blank[]]] := (((
+            2 $CellContext`q) (-(((
+                2 $CellContext`q) (($CellContext`b $CellContext`kP) (1/(
+                 E^(($CellContext`a $CellContext`EP)/$CellContext`T2) ((-
+                    
+                    E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - \
+(2 $CellContext`q)/$CellContext`Vo)))))/((((-
+                  E^(-(($CellContext`a $CellContext`EP)/$CellContext`T2))) \
+$CellContext`b) $CellContext`kP - (
+                2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo)) - (((
+               2 $CellContext`b) $CellContext`kP) $CellContext`q) (1/(
+             E^(($CellContext`a $CellContext`EP)/$CellContext`T1) ((((-
+                  E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo) ((-
+                  E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo))))) \
+$CellContext`cR[
+           0])/((((-
+             E^(-(($CellContext`a $CellContext`EP)/$CellContext`T1))) \
+$CellContext`b) $CellContext`kP - (
+           2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo) + ((
+           4 $CellContext`q^2) $CellContext`cP[
+           0])/((((-
+             E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo) ((-
+             E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo^2), \
+$CellContext`q = 10., $CellContext`kP = 100, $CellContext`EP = 
+       4000, $CellContext`Vo = 100., $CellContext`cR[0] = 
+       1., $CellContext`cP[0] = 0.}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->2040463173],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.75, $CellContext`b$$ = 1., 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.75, "E products / E waste"}, 0.5, 1.}, {{
+       Hold[$CellContext`b$$], 1., "A products / A waste"}, 0.25, 10}}, 
+    Typeset`size$$ = {450., {223., 227.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$329551$$ = 0, $CellContext`b$329552$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0.75, $CellContext`b$$ = 1.}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$329551$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$329552$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Quiet[
+        Module[{$CellContext`max$, $CellContext`point$, $CellContext`line1$, \
+$CellContext`line2$, $CellContext`plot$}, $CellContext`max$ = Maximize[{
+             $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], 250 < $CellContext`T1 < 750, 
+             250 < $CellContext`T2 < 
+             750}, {$CellContext`T1, $CellContext`T2}]; $CellContext`line1$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {0, 
+              Part[
+               Part[$CellContext`max$, 2, 1], 2]}}]; $CellContext`line2$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 0}}]; $CellContext`point$ = 
+          Point[{
+             Part[
+              Part[$CellContext`max$, 2, 1], 2], 
+             Part[
+              Part[$CellContext`max$, 2, 2], 2]}]; $CellContext`plot$ = 
+          ContourPlot[
+            $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], {$CellContext`T1, 250, 
+             750}, {$CellContext`T2, 250, 750}, ColorFunction -> "Rainbow", 
+            ContourStyle -> Dotted, PlotLabel -> 
+            "reactants \[LongRightArrow] products \[LongRightArrow] waste", 
+            Frame -> True, GridLines -> Automatic, 
+            FrameLabel -> {
+             "temperature of reactor I", "temperature of reactor II", 
+              Part[
+               Flatten[$CellContext`max$], 1]}, ImageSize -> {450, 450}]; 
+         Show[$CellContext`plot$, 
+           
+           Graphics[{$CellContext`line1$, $CellContext`line2$, \
+$CellContext`point$}]]]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.75, "E products / E waste"}, 
+         0.5, 1., Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`b$$, 1., "A products / A waste"}, 0.25, 10, 
+         Appearance -> "Labeled", ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Top, 
+        TrackedSymbols :> {$CellContext`a$$, $CellContext`b$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{499., {283., 288.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`T1, 
+          Blank[]], 
+         Pattern[$CellContext`T2, 
+          Blank[]], 
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`b, 
+          
+          Blank[]]] := (((
+            2 $CellContext`q) (-(((
+                2 $CellContext`q) (($CellContext`b $CellContext`kP) (1/(
+                 E^(($CellContext`a $CellContext`EP)/$CellContext`T2) ((-
+                    
+                    E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - \
+(2 $CellContext`q)/$CellContext`Vo)))))/((((-
+                  E^(-(($CellContext`a $CellContext`EP)/$CellContext`T2))) \
+$CellContext`b) $CellContext`kP - (
+                2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo)) - (((
+               2 $CellContext`b) $CellContext`kP) $CellContext`q) (1/(
+             E^(($CellContext`a $CellContext`EP)/$CellContext`T1) ((((-
+                  E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo) ((-
+                  E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo))))) \
+$CellContext`cR[
+           0])/((((-
+             E^(-(($CellContext`a $CellContext`EP)/$CellContext`T1))) \
+$CellContext`b) $CellContext`kP - (
+           2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo) + ((
+           4 $CellContext`q^2) $CellContext`cP[
+           0])/((((-
+             E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo) ((-
+             E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo^2), \
+$CellContext`q = 10., $CellContext`kP = 100, $CellContext`EP = 
+       4000, $CellContext`Vo = 100., $CellContext`cR[0] = 
+       1., $CellContext`cP[0] = 0.}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->898189668],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 1., $CellContext`b$$ = 0.25, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 1., "E products / E waste"}, 0.5, 1.}, {{
+       Hold[$CellContext`b$$], 0.25, "A products / A waste"}, 0.25, 10}}, 
+    Typeset`size$$ = {450., {223., 227.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$329607$$ = 0, $CellContext`b$329608$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 1., $CellContext`b$$ = 0.25}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$329607$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$329608$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Quiet[
+        Module[{$CellContext`max$, $CellContext`point$, $CellContext`line1$, \
+$CellContext`line2$, $CellContext`plot$}, $CellContext`max$ = Maximize[{
+             $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], 250 < $CellContext`T1 < 750, 
+             250 < $CellContext`T2 < 
+             750}, {$CellContext`T1, $CellContext`T2}]; $CellContext`line1$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {0, 
+              Part[
+               Part[$CellContext`max$, 2, 1], 2]}}]; $CellContext`line2$ = 
+          Line[{{
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 
+              Part[
+               Part[$CellContext`max$, 2, 2], 2]}, {
+              Part[
+               Part[$CellContext`max$, 2, 1], 2], 0}}]; $CellContext`point$ = 
+          Point[{
+             Part[
+              Part[$CellContext`max$, 2, 1], 2], 
+             Part[
+              Part[$CellContext`max$, 2, 2], 2]}]; $CellContext`plot$ = 
+          ContourPlot[
+            $CellContext`f[$CellContext`T1, $CellContext`T2, \
+$CellContext`a$$, $CellContext`b$$], {$CellContext`T1, 250, 
+             750}, {$CellContext`T2, 250, 750}, ColorFunction -> "Rainbow", 
+            ContourStyle -> Dotted, PlotLabel -> 
+            "reactants \[LongRightArrow] products \[LongRightArrow] waste", 
+            Frame -> True, GridLines -> Automatic, 
+            FrameLabel -> {
+             "temperature of reactor I", "temperature of reactor II", 
+              Part[
+               Flatten[$CellContext`max$], 1]}, ImageSize -> {450, 450}]; 
+         Show[$CellContext`plot$, 
+           
+           Graphics[{$CellContext`line1$, $CellContext`line2$, \
+$CellContext`point$}]]]], 
+      "Specifications" :> {{{$CellContext`a$$, 1., "E products / E waste"}, 
+         0.5, 1., Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`b$$, 0.25, "A products / A waste"}, 0.25, 10, 
+         Appearance -> "Labeled", ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Top, 
+        TrackedSymbols :> {$CellContext`a$$, $CellContext`b$$}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{499., {283., 288.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`f[
+         Pattern[$CellContext`T1, 
+          Blank[]], 
+         Pattern[$CellContext`T2, 
+          Blank[]], 
+         Pattern[$CellContext`a, 
+          Blank[]], 
+         Pattern[$CellContext`b, 
+          
+          Blank[]]] := (((
+            2 $CellContext`q) (-(((
+                2 $CellContext`q) (($CellContext`b $CellContext`kP) (1/(
+                 E^(($CellContext`a $CellContext`EP)/$CellContext`T2) ((-
+                    
+                    E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - \
+(2 $CellContext`q)/$CellContext`Vo)))))/((((-
+                  E^(-(($CellContext`a $CellContext`EP)/$CellContext`T2))) \
+$CellContext`b) $CellContext`kP - (
+                2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo)) - (((
+               2 $CellContext`b) $CellContext`kP) $CellContext`q) (1/(
+             E^(($CellContext`a $CellContext`EP)/$CellContext`T1) ((((-
+                  E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo) ((-
+                  E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+                 2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo))))) \
+$CellContext`cR[
+           0])/((((-
+             E^(-(($CellContext`a $CellContext`EP)/$CellContext`T1))) \
+$CellContext`b) $CellContext`kP - (
+           2 $CellContext`q)/$CellContext`Vo) $CellContext`Vo) + ((
+           4 $CellContext`q^2) $CellContext`cP[
+           0])/((((-
+             E^(-($CellContext`EP/$CellContext`T1))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo) ((-
+             E^(-($CellContext`EP/$CellContext`T2))) $CellContext`kP - (
+            2 $CellContext`q)/$CellContext`Vo)) $CellContext`Vo^2), \
+$CellContext`q = 10., $CellContext`kP = 100, $CellContext`EP = 
+       4000, $CellContext`Vo = 100., $CellContext`cR[0] = 
+       1., $CellContext`cP[0] = 0.}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1211195313]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell[TextData[{
+ "Consider the consecutive first-order chemical reaction ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{Cell["R", "InlineMath"], 
+    RowBox[{Cell["", "InlineMath"], 
+     OverscriptBox["\[LongRightArrow]", 
+      SubscriptBox["k", "R"]], Cell["P", "InlineMath"], 
+     OverscriptBox["\[LongRightArrow]", 
+      SubscriptBox["k", "P"]], Cell["W", "InlineMath"]}]}], TraditionalForm]],
+   "InlineMath"],
+ " with ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox["R",
+    FontSlant->"Plain"], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox["P",
+    FontSlant->"Plain"], TraditionalForm]], "InlineMath"],
+ ", and ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox["W",
+    FontSlant->"Plain"], TraditionalForm]], "InlineMath"],
+ " representing reactants, products, and waste, involving the equations ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["k", 
+     StyleBox["R",
+      FontSlant->"Plain"]], "=", 
+    RowBox[{
+     SubscriptBox["A", 
+      StyleBox["R",
+       FontSlant->"Plain"]], " ", 
+     SuperscriptBox["e", 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["E", 
+         StyleBox["R",
+          FontSlant->"Plain"]]}], "/", "T"}]]}]}], TraditionalForm]], 
+  "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["k", 
+     StyleBox["P",
+      FontSlant->"Plain"]], "=", 
+    RowBox[{
+     SubscriptBox["A", 
+      StyleBox["P",
+       FontSlant->"Plain"]], " ", 
+     SuperscriptBox["e", 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["E", 
+         StyleBox["P",
+          FontSlant->"Plain"]]}], "/", "T"}]]}]}], TraditionalForm]], 
+  "InlineMath"],
+ ". Here ",
+ Cell[BoxData[
+  FormBox["k", TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", "A"}], TraditionalForm]], "InlineMath"],
+ ", and ",
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]], "InlineMath"],
+ " are the rate constants, Arrhenius constants, and activation energies of \
+the products and reactants, and ",
+ Cell[BoxData[
+  FormBox[Cell[TextData[StyleBox["T",
+    FontSlant->"Italic"]], "InlineMath"], TraditionalForm]], "InlineMath"],
+ " is the temperature."
+}], "DetailNotes",
+ CellChangeTimes->{{3.5540320388384194`*^9, 3.554032101895236*^9}, {
+   3.5543274571509132`*^9, 3.554327457351981*^9}, {3.554327516201309*^9, 
+   3.554327544876297*^9}, {3.554332843031068*^9, 3.554332881356875*^9}, {
+   3.554332941367979*^9, 3.554332964402587*^9}, 3.5545678080200243`*^9, {
+   3.5545678388341055`*^9, 3.5545678518504066`*^9}, {3.5545689867328835`*^9, 
+   3.5545689869309034`*^9}},
+ CellID->148178085],
+
+Cell[TextData[{
+ "The equations describing the steady state condition of the CSTR are:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["R", 
+         RowBox[{"n", "-", "1"}]], "-", 
+        SubscriptBox["R", "n"]}], ")"}], " ", 
+      RowBox[{"q", "/", 
+       SubscriptBox["V", "n"]}]}], "-", 
+     RowBox[{
+      SubscriptBox["A", 
+       StyleBox["R",
+        FontSlant->"Plain"]], " ", 
+      SuperscriptBox["e", 
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["E", 
+          StyleBox["R",
+           FontSlant->"Plain"]]}], "/", 
+        SubscriptBox["T", "n"]}]], 
+      SubscriptBox["R", "n"]}]}]}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["P", 
+         RowBox[{"n", "-", "1"}]], "-", 
+        SubscriptBox["P", "n"]}], ")"}], 
+      RowBox[{"q", "/", 
+       SubscriptBox["V", "n"]}]}], "+", 
+     RowBox[{
+      SubscriptBox["A", 
+       RowBox[{
+        StyleBox["R",
+         FontSlant->"Plain"], " "}]], " ", 
+      SuperscriptBox["e", 
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["E", 
+          StyleBox["R",
+           FontSlant->"Plain"]]}], "/", 
+        SubscriptBox["T", "n"]}]], " ", 
+      SubscriptBox["R", "n"]}], "-", 
+     RowBox[{
+      SubscriptBox["A", 
+       StyleBox["P",
+        FontSlant->"Plain"]], " ", 
+      SuperscriptBox["e", 
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["E", "P"]}], "/", 
+        SubscriptBox["T", "n"]}]], 
+      SubscriptBox["P", "n"]}]}]}], TraditionalForm]], "InlineMath"],
+ ",\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["R", "n"], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["P", "n"], TraditionalForm]], "InlineMath"],
+ " are the concentrations, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"q", " "}], TraditionalForm]], "InlineMath"],
+ "is the flow rate, and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["V", "n"], TraditionalForm]], "InlineMath"],
+ " is the reactor volume for reactors ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "1"}], TraditionalForm]], "InlineMath"],
+ " and 2, with initial conditions ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["R", "0"], "=", "1"}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", "0"], "=", 
+    RowBox[{
+     SubscriptBox["W", "0"], "=", "0"}]}], TraditionalForm]], "InlineMath"],
+ "."
+}], "DetailNotes",
+ CellChangeTimes->{{3.5540320388384194`*^9, 3.5540321783844776`*^9}, {
+  3.554327565477419*^9, 3.5543275674681787`*^9}, {3.5543276030286837`*^9, 
+  3.554327623672373*^9}, {3.5543329260242*^9, 3.554332930404046*^9}, {
+  3.554332973745327*^9, 3.5543329972936363`*^9}, {3.554333054997039*^9, 
+  3.5543330831712112`*^9}, {3.5545677010413275`*^9, 3.5545677010413275`*^9}, {
+  3.55456786648487*^9, 3.5545679480070214`*^9}, {3.5545690369669065`*^9, 
+  3.55456905310352*^9}},
+ CellID->240759340],
+
+Cell["Reference", "DetailNotes",
+ CellChangeTimes->{{3.5543330183284397`*^9, 3.554333021672556*^9}, 
+   3.5545679538546057`*^9},
+ CellID->1433937487],
+
+Cell[TextData[{
+ "[1] Wikipedia. \"Continuous Reactor.\" (Aug 21, 2012) ",
+ ButtonBox["en.wikipedia.org/wiki/Continuous_reactor",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://en.wikipedia.org/wiki/Continuous_reactor"], 
+    "http://en.wikipedia.org/wiki/Continuous_reactor"},
+  ButtonNote->"http://en.wikipedia.org/wiki/Continuous_reactor"],
+ "."
+}], "DetailNotes",
+ CellChangeTimes->{{3.554032191859968*^9, 3.5540322228550625`*^9}, {
+   3.554567956686889*^9, 3.554568008289049*^9}, 3.5545690900712166`*^9},
+ CellID->158954596]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.553201259933736*^9},
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.553201264602474*^9},
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9, 
+  3.55432763469641*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.554327635630247*^9},
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["chemical engineering", "SearchTerms",
+ CellChangeTimes->{{3.5543333078468018`*^9, 3.554333313164184*^9}},
+ CellID->1125857375]
+}, Open  ]],
+
+Cell["", "RelatedLinksSection"],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Clay Gruesbeck",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Clay+Gruesbeck"]\
+, None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Clay+Gruesbeck"]
+}], "Author",
+ CellChangeTimes->{{3.553201272478076*^9, 3.55320128250072*^9}, {
+  3.553962592269964*^9, 3.5539625928783755`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{761, 868},
+WindowMargins->{{Automatic, 148}, {Automatic, -37}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+Magnification->1.,
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "WindowsANSI"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[53460, 1291, 353, 9, 27, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[53816, 1302, 678, 16, 27, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[54497, 1320, 340, 11, 27, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[54840, 1333, 637, 15, 27, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[55480, 1350, 885, 22, 27, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[56368, 1374, 392, 10, 27, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[56763, 1386, 1505, 32, 27, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[58271, 1420, 908, 21, 27, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 60374, 1488},
+ {"RotateAndZoomIn3D", 60483, 1491},
+ {"DragLocators", 60593, 1494},
+ {"CreateAndDeleteLocators", 60709, 1497},
+ {"SliderZoom", 60823, 1500},
+ {"GamepadControls", 60929, 1503},
+ {"AutomaticAnimation", 61043, 1506},
+ {"BookmarkAnimation", 61160, 1509}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 416, 7, 104, "DemoTitle"],
+Cell[CellGroupData[{
+Cell[1020, 33, 33, 0, 287, "InitializationSection"],
+Cell[1056, 35, 6018, 179, 308, "Input",
+ InitializationCell->True,
+ CellID->1079997341]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7111, 219, 29, 0, 236, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[7165, 223, 5682, 144, 308, "Input",
+ CellID->983525743],
+Cell[12850, 369, 5851, 120, 583, "Output",
+ CellID->1105374045]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18750, 495, 36, 0, 169, "ManipulateCaptionSection"],
+Cell[18789, 497, 2553, 36, 52, "ManipulateCaption",
+ CellID->1811356692],
+Cell[21345, 535, 2052, 35, 23, "ManipulateCaption",
+ CellID->743742572]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23434, 575, 28, 0, 173, "ThumbnailSection"],
+Cell[23465, 577, 5850, 120, 583, "Output",
+ CellID->140544118]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29352, 702, 28, 0, 143, "SnapshotsSection"],
+Cell[29383, 704, 5851, 120, 583, "Output",
+ CellID->2040463173],
+Cell[35237, 826, 5850, 120, 583, "Output",
+ CellID->898189668],
+Cell[41090, 948, 5851, 120, 583, "Output",
+ CellID->1211195313]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46978, 1073, 26, 0, 336, "DetailsSection"],
+Cell[47007, 1075, 2586, 85, 81, "DetailNotes",
+ CellID->148178085],
+Cell[49596, 1162, 3092, 103, 87, "DetailNotes",
+ CellID->240759340],
+Cell[52691, 1267, 149, 3, 22, "DetailNotes",
+ CellID->1433937487],
+Cell[52843, 1272, 540, 12, 22, "DetailNotes",
+ CellID->158954596]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53420, 1289, 37, 0, 126, "ControlSuggestionsSection"],
+Cell[53460, 1291, 353, 9, 27, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[53816, 1302, 678, 16, 27, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[54497, 1320, 340, 11, 27, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[54840, 1333, 637, 15, 27, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[55480, 1350, 885, 22, 27, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[56368, 1374, 392, 10, 27, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[56763, 1386, 1505, 32, 27, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[58271, 1420, 908, 21, 27, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59216, 1446, 30, 0, 155, "SearchTermsSection"],
+Cell[59249, 1448, 132, 2, 22, "SearchTerms",
+ CellID->1125857375]
+}, Open  ]],
+Cell[59396, 1453, 31, 0, 141, "RelatedLinksSection"],
+Cell[CellGroupData[{
+Cell[59452, 1457, 25, 0, 129, "AuthorSection"],
+Cell[59480, 1459, 415, 11, 22, "Author"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
